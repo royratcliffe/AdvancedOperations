@@ -43,8 +43,8 @@ public struct KeyValueChange {
   ///   number, or that number does not match any of the enumerator values.
   public var kind: NSKeyValueChange? {
     guard let rawKind = change[NSKeyValueChangeKindKey] as? NSNumber,
-      let kind = NSKeyValueChange(rawValue: rawKind.unsignedIntegerValue) else {
-        return nil
+          let kind = NSKeyValueChange(rawValue: rawKind.unsignedIntegerValue) else {
+      return nil
     }
     return kind
   }
