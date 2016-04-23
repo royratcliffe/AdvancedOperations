@@ -79,7 +79,9 @@ extension NSOperation {
       return
     }
     if observer === oldObserver {
+      oldObserver.operationWillRemoveObserver(self)
       self.observer = nil
+      oldObserver.operationDidRemoveObserver(self)
     }
     else if let observers = observer as? OperationObservers {
       guard observers.containsObserver(oldObserver) else {
