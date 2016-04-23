@@ -60,7 +60,7 @@ extension NSOperation {
         let observers = OperationObservers()
         observers.addObserver(observer)
         observers.addObserver(newObserver)
-        self.observer = observer
+        self.observer = observers
       }
       newObserver.operationDidAddObserver(self)
     }
