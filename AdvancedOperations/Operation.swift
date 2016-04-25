@@ -32,31 +32,31 @@ public class Operation: NSOperation {
   /// otherwise observers will not see the pre-start notification. The operation
   /// starts when the method returns. This is therefore a useful place to set up
   /// the operation, e.g. by adding dependencies.
-  func willStart() {
+  public func willStart() {
     observer?.operationWillStart(self)
   }
 
-  func didStart() {
+  public func didStart() {
     observer?.operationDidStart(self)
   }
 
-  func willExecute() {
+  public func willExecute() {
     observer?.operationWillExecute(self)
   }
 
-  func didExecute() {
+  public func didExecute() {
     observer?.operationDidExecute(self)
   }
 
-  func willCancel() {
+  public func willCancel() {
     observer?.operationWillCancel(self)
   }
 
-  func didCancel() {
+  public func didCancel() {
     observer?.operationDidCancel(self)
   }
 
-  func execute() {}
+  public func execute() {}
 
   //----------------------------------------------------------------------------
   // MARK: - NSOperation Overrides

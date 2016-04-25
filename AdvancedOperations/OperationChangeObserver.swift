@@ -46,7 +46,7 @@ public class OperationChangeObserver: KeyValueObserver, OperationObserver {
     removeObject(op)
   }
 
-  func operation(op: NSOperation, willChange keyPath: String, oldValue: AnyObject) {
+  public func operation(op: NSOperation, willChange keyPath: String, oldValue: AnyObject) {
     switch keyPath {
     case "isCancelled":
       guard let oldValue = oldValue as? Bool else {
@@ -73,7 +73,7 @@ public class OperationChangeObserver: KeyValueObserver, OperationObserver {
     }
   }
 
-  func operation(op: NSOperation, didChange keyPath: String, oldValue: AnyObject, newValue: AnyObject) {
+  public func operation(op: NSOperation, didChange keyPath: String, oldValue: AnyObject, newValue: AnyObject) {
     switch keyPath {
     case "isCancelled":
       guard let oldValue = oldValue as? Bool,
