@@ -26,6 +26,12 @@ import Foundation
 
 public class Operation: NSOperation {
 
+  /// Issues a pre-start notification to the observer, or observers if a
+  /// composite. Override this method in order to insert behaviour just before
+  /// the operation starts. Do not forget to invoke the super-class method,
+  /// otherwise observers will not see the pre-start notification. The operation
+  /// starts when the method returns. This is therefore a useful place to set up
+  /// the operation, e.g. by adding dependencies.
   func willStart() {
     observer?.operationWillStart(self)
   }
