@@ -375,10 +375,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Operations/Info.plist;
+				INFOPLIST_FILE = AdvancedOperations/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = uk.co.pioneeringsoftware.Operations;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.co.pioneeringsoftware.AdvancedOperations;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -393,10 +393,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Operations/Info.plist;
+				INFOPLIST_FILE = AdvancedOperations/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = uk.co.pioneeringsoftware.Operations;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.co.pioneeringsoftware.AdvancedOperations;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -405,9 +405,9 @@
 		7893D95C1CC9175C0026AB53 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = OperationsTests/Info.plist;
+				INFOPLIST_FILE = AdvancedOperationsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = uk.co.pioneeringsoftware.OperationsTests;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.co.pioneeringsoftware.AdvancedOperationsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -415,9 +415,9 @@
 		7893D95D1CC9175C0026AB53 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = OperationsTests/Info.plist;
+				INFOPLIST_FILE = AdvancedOperationsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = uk.co.pioneeringsoftware.OperationsTests;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.co.pioneeringsoftware.AdvancedOperationsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
