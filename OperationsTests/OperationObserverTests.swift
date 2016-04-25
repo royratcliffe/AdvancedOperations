@@ -23,7 +23,7 @@
 //------------------------------------------------------------------------------
 
 import XCTest
-import Operations
+import AdvancedOperations
 
 class OperationObserverTests: XCTestCase {
 

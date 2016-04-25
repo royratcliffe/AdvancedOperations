@@ -23,6 +23,6 @@
 //------------------------------------------------------------------------------
 
 import XCTest
-@testable import Operations
+@testable import AdvancedOperations
 
 class OperationsTests: XCTestCase {}
