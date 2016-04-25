@@ -39,7 +39,7 @@ class OperationObserverTests: XCTestCase {
     }
 
     override func operation(_: NSOperation, didChangeIsFinished isFinished: Bool, wasFinished: Bool) {
-      if isFinished && wasFinished {
+      if isFinished && !wasFinished {
         expectation.fulfill()
       }
     }
