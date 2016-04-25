@@ -1,4 +1,4 @@
-# Operations
+# Advanced Operations
 
 Some time ago, at WWDC 2015, Apple released a sample application called
 Advanced NSOperations. You can find the accompanying video presentation on-line
