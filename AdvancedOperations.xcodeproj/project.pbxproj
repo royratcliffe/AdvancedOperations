@@ -83,8 +83,8 @@
 		7893D93A1CC9175C0026AB53 = {
 			isa = PBXGroup;
 			children = (
-				7893D9461CC9175C0026AB53 /* Operations */,
-				7893D9521CC9175C0026AB53 /* OperationsTests */,
+				7893D9461CC9175C0026AB53 /* AdvancedOperations */,
+				7893D9521CC9175C0026AB53 /* AdvancedOperationsTests */,
 				7893D9451CC9175C0026AB53 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -98,7 +98,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7893D9461CC9175C0026AB53 /* Operations */ = {
+		7893D9461CC9175C0026AB53 /* AdvancedOperations */ = {
 			isa = PBXGroup;
 			children = (
 				7893D9471CC9175C0026AB53 /* Operations.h */,
@@ -118,16 +118,18 @@
 				780981911CC9FEE6001D1491 /* OperationChangeObserver.swift */,
 				7893D9491CC9175C0026AB53 /* Info.plist */,
 			);
+			name = AdvancedOperations;
 			path = Operations;
 			sourceTree = "<group>";
 		};
-		7893D9521CC9175C0026AB53 /* OperationsTests */ = {
+		7893D9521CC9175C0026AB53 /* AdvancedOperationsTests */ = {
 			isa = PBXGroup;
 			children = (
 				7893D9531CC9175C0026AB53 /* OperationsTests.swift */,
 				780981B31CCA5B39001D1491 /* OperationObserverTests.swift */,
 				7893D9551CC9175C0026AB53 /* Info.plist */,
 			);
+			name = AdvancedOperationsTests;
 			path = OperationsTests;
 			sourceTree = "<group>";
 		};
@@ -199,7 +201,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7893D93E1CC9175C0026AB53 /* Build configuration list for PBXProject "Operations" */;
+			buildConfigurationList = 7893D93E1CC9175C0026AB53 /* Build configuration list for PBXProject "AdvancedOperations" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -425,7 +427,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7893D93E1CC9175C0026AB53 /* Build configuration list for PBXProject "Operations" */ = {
+		7893D93E1CC9175C0026AB53 /* Build configuration list for PBXProject "AdvancedOperations" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7893D9561CC9175C0026AB53 /* Debug */,
