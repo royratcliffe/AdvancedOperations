@@ -26,8 +26,9 @@ import Foundation
 
 public class OperationChangeObserver: KeyValueObserver, OperationObserver {
 
-  /// Observes a given operation. Observes all its key-value-observing compliant properties.
-  public func observeOperation(op: NSOperation) {
+  /// Observes a given operation. Observes all its key-value-observing compliant
+  /// properties.
+  public func addOperation(op: NSOperation) {
     for keyPath in ["isCancelled",
                     "isExecuting",
                     "isFinished",
@@ -38,6 +39,11 @@ public class OperationChangeObserver: KeyValueObserver, OperationObserver {
                     "completionBlock"] {
       addObject(op, keyPath: keyPath, options: [.New, .Old, .Prior])
     }
+  }
+
+  /// Removes all observations for the given operation.
+  public func removeOperation(op: NSOperation) {
+    removeObject(op)
   }
 
   func operation(op: NSOperation, willChange keyPath: String, oldValue: AnyObject) {
@@ -111,6 +117,8 @@ public class OperationChangeObserver: KeyValueObserver, OperationObserver {
     }
     switch kind {
     case .Setting:
+      // Prior notifications do not provide a new value, just an old value,
+      // i.e. the currently unchanged value of the observable property.
       if change.isPrior {
         operation(op, willChange: keyPath, oldValue: oldValue)
       }
@@ -127,5 +135,48 @@ public class OperationChangeObserver: KeyValueObserver, OperationObserver {
 
   //----------------------------------------------------------------------------
   // MARK: - OperationObserver
+
+  /// Change observers see themselves being added to an operation. Start
+  /// observing the operation immediately. This runs when the operation adds the
+  /// observer.
+  public func operationWillAddObserver(op: NSOperation) {
+    addOperation(op)
+  }
+
+  public func operationDidAddObserver(op: NSOperation) {}
+
+  public func operationWillRemoveObserver(op: NSOperation) {}
+
+  public func operationDidRemoveObserver(op: NSOperation) {
+    removeOperation(op)
+  }
+
+  public func operationWillStart(op: NSOperation) {}
+
+  public func operationDidStart(op: NSOperation) {}
+
+  public func operationWillExecute(op: NSOperation) {}
+
+  public func operationDidExecute(op: NSOperation) {}
+
+  public func operationWillCancel(op: NSOperation) {}
+
+  public func operationDidCancel(op: NSOperation) {}
+
+  public func operation(op: NSOperation, willChangeIsCancelled isCancelled: Bool) {}
+
+  public func operation(op: NSOperation, didChangeIsCancelled isCancelled: Bool, wasCancelled: Bool) {}
+
+  public func operation(op: NSOperation, willChangeIsExecuting isExecuting: Bool) {}
+
+  public func operation(op: NSOperation, didChangeIsExecuting isExecuting: Bool, wasExecuting: Bool) {}
+
+  public func operation(op: NSOperation, willChangeIsFinished isFinished: Bool) {}
+
+  public func operation(op: NSOperation, didChangeIsFinished isFinished: Bool, wasFinished: Bool) {}
+
+  public func operation(op: NSOperation, willChangeIsReady isReady: Bool) {}
+
+  public func operation(op: NSOperation, didChangeIsReady isReady: Bool, wasReady: Bool) {}
 
 }

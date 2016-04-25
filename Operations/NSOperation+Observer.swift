@@ -30,17 +30,20 @@ extension NSOperation {
 
   /// Supports an operation observer for every operation, for every
   /// `NSOperation` and all sub-classes. The operation retains the observer.
+  ///
+  /// The observer setter performs no notifications about adding or removing
+  /// observers. This is by design. If it did, setting a new observer means
+  /// removing an old one if one already installed. Setting a new observer must
+  /// remove any old one first. That observer will see itself being removed,
+  /// even if not actually being removed from observations such as when a single
+  /// observer becomes a composite observer. The single observer does not stop
+  /// observing, it merely transfers to the composite.
   public var observer: OperationObserver? {
     get {
       return objc_getAssociatedObject(self, &OperationObserverKey) as? OperationObserver
     }
     set(newObserver) {
-      let observer = objc_getAssociatedObject(self, &OperationObserverKey) as? OperationObserver
-      observer?.operationWillRemoveObserver(self)
-      newObserver?.operationWillAddObserver(self)
       objc_setAssociatedObject(self, &OperationObserverKey, newObserver, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-      newObserver?.operationDidAddObserver(self)
-      observer?.operationDidRemoveObserver(self)
     }
   }
 
@@ -51,8 +54,8 @@ extension NSOperation {
   /// notifications. The observer composite does not itself trigger observer
   /// notifications.
   public func addObserver(newObserver: OperationObserver) {
+    newObserver.operationWillAddObserver(self)
     if let observer = observer {
-      newObserver.operationWillAddObserver(self)
       if let observers = observer as? OperationObservers {
         observers.addObserver(newObserver)
       }
@@ -60,13 +63,13 @@ extension NSOperation {
         let observers = OperationObservers()
         observers.addObserver(observer)
         observers.addObserver(newObserver)
-        self.observer = observer
+        self.observer = observers
       }
-      newObserver.operationDidAddObserver(self)
     }
     else {
       observer = newObserver
     }
+    newObserver.operationDidAddObserver(self)
   }
 
   /// Removes an operation observer from this operation. The observer
@@ -76,7 +79,9 @@ extension NSOperation {
       return
     }
     if observer === oldObserver {
+      oldObserver.operationWillRemoveObserver(self)
       self.observer = nil
+      oldObserver.operationDidRemoveObserver(self)
     }
     else if let observers = observer as? OperationObservers {
       guard observers.containsObserver(oldObserver) else {

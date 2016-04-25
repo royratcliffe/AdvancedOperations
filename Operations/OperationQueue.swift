@@ -49,75 +49,75 @@ public class OperationQueue: NSOperationQueue {
       self.q = q
     }
 
-    internal func operationWillAddObserver(op: NSOperation) {
+    internal override func operationWillAddObserver(op: NSOperation) {
       q?.operationWillAddObserver(op)
     }
 
-    internal func operationDidAddObserver(op: NSOperation) {
+    internal override func operationDidAddObserver(op: NSOperation) {
       q?.operationDidAddObserver(op)
     }
 
-    internal func operationWillRemoveObserver(op: NSOperation) {
+    internal override func operationWillRemoveObserver(op: NSOperation) {
       q?.operationWillRemoveObserver(op)
     }
 
-    internal func operationDidRemoveObserver(op: NSOperation) {
+    internal override func operationDidRemoveObserver(op: NSOperation) {
       q?.operationDidRemoveObserver(op)
     }
 
-    internal func operationWillStart(op: NSOperation) {
+    internal override func operationWillStart(op: NSOperation) {
       q?.operationWillStart(op)
     }
 
-    internal func operationDidStart(op: NSOperation) {
+    internal override func operationDidStart(op: NSOperation) {
       q?.operationDidStart(op)
     }
 
-    internal func operationWillExecute(op: NSOperation) {
+    internal override func operationWillExecute(op: NSOperation) {
       q?.operationWillExecute(op)
     }
 
-    internal func operationDidExecute(op: NSOperation) {
+    internal override func operationDidExecute(op: NSOperation) {
       q?.operationDidExecute(op)
     }
 
-    internal func operationWillCancel(op: NSOperation) {
+    internal override func operationWillCancel(op: NSOperation) {
       q?.operationWillCancel(op)
     }
 
-    internal func operationDidCancel(op: NSOperation) {
+    internal override func operationDidCancel(op: NSOperation) {
       q?.operationDidCancel(op)
     }
 
-    internal func operation(op: NSOperation, willChangeIsCancelled isCancelled: Bool) {
+    internal override func operation(op: NSOperation, willChangeIsCancelled isCancelled: Bool) {
       q?.operation(op, willChangeIsCancelled: isCancelled)
     }
 
-    internal func operation(op: NSOperation, didChangeIsCancelled isCancelled: Bool, wasCancelled: Bool) {
+    internal override func operation(op: NSOperation, didChangeIsCancelled isCancelled: Bool, wasCancelled: Bool) {
       q?.operation(op, didChangeIsCancelled: isCancelled, wasCancelled: wasCancelled)
     }
 
-    internal func operation(op: NSOperation, willChangeIsExecuting isExecuting: Bool) {
+    internal override func operation(op: NSOperation, willChangeIsExecuting isExecuting: Bool) {
       q?.operation(op, willChangeIsExecuting: isExecuting)
     }
 
-    internal func operation(op: NSOperation, didChangeIsExecuting isExecuting: Bool, wasExecuting: Bool) {
+    internal override func operation(op: NSOperation, didChangeIsExecuting isExecuting: Bool, wasExecuting: Bool) {
       q?.operation(op, didChangeIsExecuting: isExecuting, wasExecuting: wasExecuting)
     }
 
-    internal func operation(op: NSOperation, willChangeIsFinished isFinished: Bool) {
+    internal override func operation(op: NSOperation, willChangeIsFinished isFinished: Bool) {
       q?.operation(op, willChangeIsFinished: isFinished)
     }
 
-    internal func operation(op: NSOperation, didChangeIsFinished isFinished: Bool, wasFinished: Bool) {
+    internal override func operation(op: NSOperation, didChangeIsFinished isFinished: Bool, wasFinished: Bool) {
       q?.operation(op, didChangeIsFinished: isFinished, wasFinished: wasFinished)
     }
 
-    internal func operation(op: NSOperation, willChangeIsReady isReady: Bool) {
+    internal override func operation(op: NSOperation, willChangeIsReady isReady: Bool) {
       q?.operation(op, willChangeIsReady: isReady)
     }
 
-    internal func operation(op: NSOperation, didChangeIsReady isReady: Bool, wasReady: Bool) {
+    internal override func operation(op: NSOperation, didChangeIsReady isReady: Bool, wasReady: Bool) {
       q?.operation(op, didChangeIsReady: isReady, wasReady: wasReady)
     }
 

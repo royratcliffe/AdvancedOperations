@@ -102,10 +102,10 @@ public class KeyValueObserver: NSObject {
                                                        change: [String: AnyObject]?,
                                                        context: UnsafeMutablePointer<Void>) {
     guard let keyPath = keyPath,
-      let object = object as? NSObject,
-      let change = KeyValueChange(change: change),
-      let _ = change.kind else {
-        return
+          let object = object as? NSObject,
+          let change = KeyValueChange(change: change),
+          let _ = change.kind else {
+      return
     }
     observeValueForKeyPath(keyPath, ofObject: object, change: change)
   }
