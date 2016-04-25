@@ -118,8 +118,7 @@
 				780981911CC9FEE6001D1491 /* OperationChangeObserver.swift */,
 				7893D9491CC9175C0026AB53 /* Info.plist */,
 			);
-			name = AdvancedOperations;
-			path = Operations;
+			path = AdvancedOperations;
 			sourceTree = "<group>";
 		};
 		7893D9521CC9175C0026AB53 /* AdvancedOperationsTests */ = {
@@ -129,8 +128,7 @@
 				780981B31CCA5B39001D1491 /* OperationObserverTests.swift */,
 				7893D9551CC9175C0026AB53 /* Info.plist */,
 			);
-			name = AdvancedOperationsTests;
-			path = OperationsTests;
+			path = AdvancedOperationsTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
