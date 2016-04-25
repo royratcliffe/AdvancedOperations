@@ -1,4 +1,4 @@
-// Operations OperationQueueDelegates.swift
+// AdvancedOperations Operations.h
 //
 // Copyright © 2016, Roy Ratcliffe, Pioneering Software, United Kingdom
 //
@@ -22,33 +22,7 @@
 //
 //------------------------------------------------------------------------------
 
-import Foundation
+@import UIKit;
 
-/// Implements an operation-queue delegate that relays delegate notifications to
-/// zero or more *other* operation-queue delegates. The `addDelegate()` method
-/// of `OperationQueue` uses an instance of this class to add new delegates when
-/// an already-existing delegate appears for the queue.
-public class OperationQueueDelegates: OperationQueueDelegate {
-
-  var delegates = [OperationQueueDelegate]()
-
-  public func addDelegate(newDelegate: OperationQueueDelegate) {
-    delegates.append(newDelegate)
-  }
-
-  //----------------------------------------------------------------------------
-  // MARK: - OperationQueueDelegate
-
-  public func operationQueue(q: OperationQueue, willAddOperation op: NSOperation) {
-    for delegate in delegates {
-      delegate.operationQueue(q, willAddOperation: op)
-    }
-  }
-
-  public func operationQueue(q: OperationQueue, didAddOperation op: NSOperation) {
-    for delegate in delegates {
-      delegate.operationQueue(q, didAddOperation: op)
-    }
-  }
-
-}
+FOUNDATION_EXPORT double OperationsVersionNumber;
+FOUNDATION_EXPORT const unsigned char OperationsVersionString[];

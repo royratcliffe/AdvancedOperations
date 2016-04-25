@@ -1,4 +1,4 @@
-// Operations Operation.swift
+// AdvancedOperations OperationQueueDelegates.swift
 //
 // Copyright © 2016, Roy Ratcliffe, Pioneering Software, United Kingdom
 //
@@ -24,62 +24,31 @@
 
 import Foundation
 
-public class Operation: NSOperation {
+/// Implements an operation-queue delegate that relays delegate notifications to
+/// zero or more *other* operation-queue delegates. The `addDelegate()` method
+/// of `OperationQueue` uses an instance of this class to add new delegates when
+/// an already-existing delegate appears for the queue.
+public class OperationQueueDelegates: OperationQueueDelegate {
 
-  /// Issues a pre-start notification to the observer, or observers if a
-  /// composite. Override this method in order to insert behaviour just before
-  /// the operation starts. Do not forget to invoke the super-class method,
-  /// otherwise observers will not see the pre-start notification. The operation
-  /// starts when the method returns. This is therefore a useful place to set up
-  /// the operation, e.g. by adding dependencies.
-  func willStart() {
-    observer?.operationWillStart(self)
+  var delegates = [OperationQueueDelegate]()
+
+  public func addDelegate(newDelegate: OperationQueueDelegate) {
+    delegates.append(newDelegate)
   }
-
-  func didStart() {
-    observer?.operationDidStart(self)
-  }
-
-  func willExecute() {
-    observer?.operationWillExecute(self)
-  }
-
-  func didExecute() {
-    observer?.operationDidExecute(self)
-  }
-
-  func willCancel() {
-    observer?.operationWillCancel(self)
-  }
-
-  func didCancel() {
-    observer?.operationDidCancel(self)
-  }
-
-  func execute() {}
 
   //----------------------------------------------------------------------------
-  // MARK: - NSOperation Overrides
+  // MARK: - OperationQueueDelegate
 
-  public override func start() {
-    willStart()
-    super.start()
-    didStart()
-  }
-
-  public override func main() {
-    guard !cancelled else {
-      return
+  public func operationQueue(q: OperationQueue, willAddOperation op: NSOperation) {
+    for delegate in delegates {
+      delegate.operationQueue(q, willAddOperation: op)
     }
-    willExecute()
-    execute()
-    didExecute()
   }
 
-  public override func cancel() {
-    willCancel()
-    super.cancel()
-    didCancel()
+  public func operationQueue(q: OperationQueue, didAddOperation op: NSOperation) {
+    for delegate in delegates {
+      delegate.operationQueue(q, didAddOperation: op)
+    }
   }
 
 }

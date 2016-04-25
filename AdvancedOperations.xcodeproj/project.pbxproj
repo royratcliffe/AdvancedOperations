@@ -17,7 +17,7 @@
 		788754101CC9627000E4DFCB /* KeyValueChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7887540D1CC9627000E4DFCB /* KeyValueChange.swift */; };
 		788754121CC962CB00E4DFCB /* OperationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788754111CC962CB00E4DFCB /* OperationObserver.swift */; };
 		7893D9481CC9175C0026AB53 /* Operations.h in Headers */ = {isa = PBXBuildFile; fileRef = 7893D9471CC9175C0026AB53 /* Operations.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7893D94F1CC9175C0026AB53 /* Operations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7893D9441CC9175C0026AB53 /* Operations.framework */; };
+		7893D94F1CC9175C0026AB53 /* AdvancedOperations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7893D9441CC9175C0026AB53 /* AdvancedOperations.framework */; };
 		7893D9541CC9175C0026AB53 /* OperationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7893D9531CC9175C0026AB53 /* OperationsTests.swift */; };
 		7893D9611CC918F60026AB53 /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7893D9601CC918F60026AB53 /* Operation.swift */; };
 		7893D9631CC9190E0026AB53 /* OperationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7893D9621CC9190E0026AB53 /* OperationQueue.swift */; };
@@ -47,10 +47,10 @@
 		7887540C1CC9627000E4DFCB /* KeyValueChangeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyValueChangeHandler.swift; sourceTree = "<group>"; };
 		7887540D1CC9627000E4DFCB /* KeyValueChange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyValueChange.swift; sourceTree = "<group>"; };
 		788754111CC962CB00E4DFCB /* OperationObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = OperationObserver.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		7893D9441CC9175C0026AB53 /* Operations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Operations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7893D9441CC9175C0026AB53 /* AdvancedOperations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AdvancedOperations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7893D9471CC9175C0026AB53 /* Operations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Operations.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		7893D9491CC9175C0026AB53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7893D94E1CC9175C0026AB53 /* OperationsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OperationsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7893D94E1CC9175C0026AB53 /* AdvancedOperationsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AdvancedOperationsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7893D9531CC9175C0026AB53 /* OperationsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = OperationsTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		7893D9551CC9175C0026AB53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7893D9601CC918F60026AB53 /* Operation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Operation.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -73,7 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7893D94F1CC9175C0026AB53 /* Operations.framework in Frameworks */,
+				7893D94F1CC9175C0026AB53 /* AdvancedOperations.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,8 +83,8 @@
 		7893D93A1CC9175C0026AB53 = {
 			isa = PBXGroup;
 			children = (
-				7893D9461CC9175C0026AB53 /* Operations */,
-				7893D9521CC9175C0026AB53 /* OperationsTests */,
+				7893D9461CC9175C0026AB53 /* AdvancedOperations */,
+				7893D9521CC9175C0026AB53 /* AdvancedOperationsTests */,
 				7893D9451CC9175C0026AB53 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -92,13 +92,13 @@
 		7893D9451CC9175C0026AB53 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7893D9441CC9175C0026AB53 /* Operations.framework */,
-				7893D94E1CC9175C0026AB53 /* OperationsTests.xctest */,
+				7893D9441CC9175C0026AB53 /* AdvancedOperations.framework */,
+				7893D94E1CC9175C0026AB53 /* AdvancedOperationsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7893D9461CC9175C0026AB53 /* Operations */ = {
+		7893D9461CC9175C0026AB53 /* AdvancedOperations */ = {
 			isa = PBXGroup;
 			children = (
 				7893D9471CC9175C0026AB53 /* Operations.h */,
@@ -118,17 +118,17 @@
 				780981911CC9FEE6001D1491 /* OperationChangeObserver.swift */,
 				7893D9491CC9175C0026AB53 /* Info.plist */,
 			);
-			path = Operations;
+			path = AdvancedOperations;
 			sourceTree = "<group>";
 		};
-		7893D9521CC9175C0026AB53 /* OperationsTests */ = {
+		7893D9521CC9175C0026AB53 /* AdvancedOperationsTests */ = {
 			isa = PBXGroup;
 			children = (
 				7893D9531CC9175C0026AB53 /* OperationsTests.swift */,
 				780981B31CCA5B39001D1491 /* OperationObserverTests.swift */,
 				7893D9551CC9175C0026AB53 /* Info.plist */,
 			);
-			path = OperationsTests;
+			path = AdvancedOperationsTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,9 +145,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		7893D9431CC9175C0026AB53 /* Operations */ = {
+		7893D9431CC9175C0026AB53 /* AdvancedOperations */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7893D9581CC9175C0026AB53 /* Build configuration list for PBXNativeTarget "Operations" */;
+			buildConfigurationList = 7893D9581CC9175C0026AB53 /* Build configuration list for PBXNativeTarget "AdvancedOperations" */;
 			buildPhases = (
 				7893D93F1CC9175C0026AB53 /* Sources */,
 				7893D9401CC9175C0026AB53 /* Frameworks */,
@@ -158,14 +158,14 @@
 			);
 			dependencies = (
 			);
-			name = Operations;
+			name = AdvancedOperations;
 			productName = Operations;
-			productReference = 7893D9441CC9175C0026AB53 /* Operations.framework */;
+			productReference = 7893D9441CC9175C0026AB53 /* AdvancedOperations.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		7893D94D1CC9175C0026AB53 /* OperationsTests */ = {
+		7893D94D1CC9175C0026AB53 /* AdvancedOperationsTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7893D95B1CC9175C0026AB53 /* Build configuration list for PBXNativeTarget "OperationsTests" */;
+			buildConfigurationList = 7893D95B1CC9175C0026AB53 /* Build configuration list for PBXNativeTarget "AdvancedOperationsTests" */;
 			buildPhases = (
 				7893D94A1CC9175C0026AB53 /* Sources */,
 				7893D94B1CC9175C0026AB53 /* Frameworks */,
@@ -176,9 +176,9 @@
 			dependencies = (
 				7893D9511CC9175C0026AB53 /* PBXTargetDependency */,
 			);
-			name = OperationsTests;
+			name = AdvancedOperationsTests;
 			productName = OperationsTests;
-			productReference = 7893D94E1CC9175C0026AB53 /* OperationsTests.xctest */;
+			productReference = 7893D94E1CC9175C0026AB53 /* AdvancedOperationsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -199,7 +199,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7893D93E1CC9175C0026AB53 /* Build configuration list for PBXProject "Operations" */;
+			buildConfigurationList = 7893D93E1CC9175C0026AB53 /* Build configuration list for PBXProject "AdvancedOperations" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -211,8 +211,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7893D9431CC9175C0026AB53 /* Operations */,
-				7893D94D1CC9175C0026AB53 /* OperationsTests */,
+				7893D9431CC9175C0026AB53 /* AdvancedOperations */,
+				7893D94D1CC9175C0026AB53 /* AdvancedOperationsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -270,7 +270,7 @@
 /* Begin PBXTargetDependency section */
 		7893D9511CC9175C0026AB53 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7893D9431CC9175C0026AB53 /* Operations */;
+			target = 7893D9431CC9175C0026AB53 /* AdvancedOperations */;
 			targetProxy = 7893D9501CC9175C0026AB53 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -375,10 +375,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Operations/Info.plist;
+				INFOPLIST_FILE = AdvancedOperations/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = uk.co.pioneeringsoftware.Operations;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.co.pioneeringsoftware.AdvancedOperations;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -393,10 +393,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Operations/Info.plist;
+				INFOPLIST_FILE = AdvancedOperations/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = uk.co.pioneeringsoftware.Operations;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.co.pioneeringsoftware.AdvancedOperations;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -405,9 +405,9 @@
 		7893D95C1CC9175C0026AB53 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = OperationsTests/Info.plist;
+				INFOPLIST_FILE = AdvancedOperationsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = uk.co.pioneeringsoftware.OperationsTests;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.co.pioneeringsoftware.AdvancedOperationsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -415,9 +415,9 @@
 		7893D95D1CC9175C0026AB53 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = OperationsTests/Info.plist;
+				INFOPLIST_FILE = AdvancedOperationsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = uk.co.pioneeringsoftware.OperationsTests;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.co.pioneeringsoftware.AdvancedOperationsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -425,7 +425,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7893D93E1CC9175C0026AB53 /* Build configuration list for PBXProject "Operations" */ = {
+		7893D93E1CC9175C0026AB53 /* Build configuration list for PBXProject "AdvancedOperations" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7893D9561CC9175C0026AB53 /* Debug */,
@@ -434,7 +434,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7893D9581CC9175C0026AB53 /* Build configuration list for PBXNativeTarget "Operations" */ = {
+		7893D9581CC9175C0026AB53 /* Build configuration list for PBXNativeTarget "AdvancedOperations" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7893D9591CC9175C0026AB53 /* Debug */,
@@ -443,7 +443,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7893D95B1CC9175C0026AB53 /* Build configuration list for PBXNativeTarget "OperationsTests" */ = {
+		7893D95B1CC9175C0026AB53 /* Build configuration list for PBXNativeTarget "AdvancedOperationsTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7893D95C1CC9175C0026AB53 /* Debug */,

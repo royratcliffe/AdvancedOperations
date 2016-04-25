@@ -1,4 +1,4 @@
-// Operations NSOperation+Observer.swift
+// AdvancedOperations NSOperation+Observer.swift
 //
 // Copyright © 2016, Roy Ratcliffe, Pioneering Software, United Kingdom
 //

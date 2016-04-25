@@ -1,4 +1,4 @@
-// OperationsTests OperationObserverTests.swift
+// AdvancedOperationsTests OperationObserverTests.swift
 //
 // Copyright © 2016, Roy Ratcliffe, Pioneering Software, United Kingdom
 //
@@ -23,7 +23,7 @@
 //------------------------------------------------------------------------------
 
 import XCTest
-import Operations
+import AdvancedOperations
 
 class OperationObserverTests: XCTestCase {
 
@@ -39,7 +39,7 @@ class OperationObserverTests: XCTestCase {
     }
 
     override func operation(_: NSOperation, didChangeIsFinished isFinished: Bool, wasFinished: Bool) {
-      if isFinished && wasFinished {
+      if isFinished && !wasFinished {
         expectation.fulfill()
       }
     }
@@ -66,7 +66,7 @@ class OperationObserverTests: XCTestCase {
     q.addOperation(op)
 
     // then
-    waitForExpectationsWithTimeout(100.0, handler: nil)
+    waitForExpectationsWithTimeout(10.0, handler: nil)
   }
 
 }

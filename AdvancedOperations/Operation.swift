@@ -1,4 +1,4 @@
-// Operations GroupOperation.swift
+// AdvancedOperations Operation.swift
 //
 // Copyright © 2016, Roy Ratcliffe, Pioneering Software, United Kingdom
 //
@@ -24,34 +24,62 @@
 
 import Foundation
 
-public class GroupOperation: Operation {
+public class Operation: NSOperation {
 
-  let q = OperationQueue()
-
-  public override init() {
-    super.init()
-    q.suspended = true
-    q.delegate = self
+  /// Issues a pre-start notification to the observer, or observers if a
+  /// composite. Override this method in order to insert behaviour just before
+  /// the operation starts. Do not forget to invoke the super-class method,
+  /// otherwise observers will not see the pre-start notification. The operation
+  /// starts when the method returns. This is therefore a useful place to set up
+  /// the operation, e.g. by adding dependencies.
+  func willStart() {
+    observer?.operationWillStart(self)
   }
 
-  /// Adds a given operation to this operation group. The given operation does
-  /// not start until *this* operation starts. The group itself is an operation
-  /// that needs adding to an operation queue in order to kickstart the group.
-  /// - parameter op: Operation to add to this group.
-  func addOperation(op: NSOperation) {
-    q.addOperation(op)
+  func didStart() {
+    observer?.operationDidStart(self)
   }
+
+  func willExecute() {
+    observer?.operationWillExecute(self)
+  }
+
+  func didExecute() {
+    observer?.operationDidExecute(self)
+  }
+
+  func willCancel() {
+    observer?.operationWillCancel(self)
+  }
+
+  func didCancel() {
+    observer?.operationDidCancel(self)
+  }
+
+  func execute() {}
 
   //----------------------------------------------------------------------------
-  // MARK: - Operation Overrides
+  // MARK: - NSOperation Overrides
 
-  /// Runs unless cancelled. Un-suspends the group operation queue; the queue
-  /// was suspended initially. Then waits for all operations in the queue to
-  /// finish. Finishing includes cancelling. Hence when this operation finishes,
-  /// all its component operations have also finished.
-  override func execute() {
-    q.suspended = false
-    q.waitUntilAllOperationsAreFinished()
+  public override func start() {
+    willStart()
+    super.start()
+    didStart()
+  }
+
+  public override func main() {
+    guard !cancelled else {
+      return
+    }
+    willExecute()
+    execute()
+    didExecute()
+  }
+
+  public override func cancel() {
+    willCancel()
+    super.cancel()
+    didCancel()
   }
 
 }

@@ -1,4 +1,4 @@
-// Operations Operations.h
+// AdvancedOperations GroupOperation+Delegate.swift
 //
 // Copyright © 2016, Roy Ratcliffe, Pioneering Software, United Kingdom
 //
@@ -22,7 +22,8 @@
 //
 //------------------------------------------------------------------------------
 
-@import UIKit;
+import Foundation
 
-FOUNDATION_EXPORT double OperationsVersionNumber;
-FOUNDATION_EXPORT const unsigned char OperationsVersionString[];
+extension GroupOperation: OperationQueueDelegate {
+
+}

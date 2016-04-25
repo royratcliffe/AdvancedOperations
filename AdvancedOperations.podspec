@@ -1,6 +1,6 @@
 # coding: utf-8
 Pod::Spec.new do |spec|
-  spec.name = 'Operations'
+  spec.name = 'AdvancedOperations'
   spec.version = '0.1.0'
   spec.summary = 'Advanced NSOperations Framework for Swift'
   spec.description = <<-DESCRIPTION.gsub(/\s+/, ' ').chomp
@@ -13,7 +13,7 @@ Pod::Spec.new do |spec|
   spec.authors = {
     'Roy Ratcliffe' => 'roy@pioneeringsoftware.co.uk' }
   spec.source = {
-    git: 'https://github.com/royratcliffe/Operations.git',
+    git: 'https://github.com/royratcliffe/AdvancedOperations.git',
     tag: spec.version.to_s }
   spec.source_files = 'Operations/**/*.{swift,h}'
   spec.platform = :ios, '9.0'
