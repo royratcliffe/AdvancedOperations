@@ -126,11 +126,11 @@ public class OperationQueue: NSOperationQueue {
   //----------------------------------------------------------------------------
   // MARK: - Delegate Notifications
 
-  func willAddOperation(op: NSOperation) {
+  public func willAddOperation(op: NSOperation) {
     delegate?.operationQueue(self, willAddOperation: op)
   }
 
-  func didAddOperation(op: NSOperation) {
+  public func didAddOperation(op: NSOperation) {
     delegate?.operationQueue(self, didAddOperation: op)
     op.addObserver(OperationObserver(self))
   }

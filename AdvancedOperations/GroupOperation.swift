@@ -38,7 +38,7 @@ public class GroupOperation: Operation {
   /// not start until *this* operation starts. The group itself is an operation
   /// that needs adding to an operation queue in order to kickstart the group.
   /// - parameter op: Operation to add to this group.
-  func addOperation(op: NSOperation) {
+  public func addOperation(op: NSOperation) {
     q.addOperation(op)
   }
 
@@ -49,7 +49,7 @@ public class GroupOperation: Operation {
   /// was suspended initially. Then waits for all operations in the queue to
   /// finish. Finishing includes cancelling. Hence when this operation finishes,
   /// all its component operations have also finished.
-  override func execute() {
+  public override func execute() {
     q.suspended = false
     q.waitUntilAllOperationsAreFinished()
   }
