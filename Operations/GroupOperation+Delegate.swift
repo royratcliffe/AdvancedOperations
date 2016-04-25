@@ -1,4 +1,4 @@
-// Operations GroupOperation+Delegate.swift
+// AdvancedOperations GroupOperation+Delegate.swift
 //
 // Copyright © 2016, Roy Ratcliffe, Pioneering Software, United Kingdom
 //

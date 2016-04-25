@@ -1,4 +1,4 @@
-// Operations Operations.h
+// AdvancedOperations Operations.h
 //
 // Copyright © 2016, Roy Ratcliffe, Pioneering Software, United Kingdom
 //

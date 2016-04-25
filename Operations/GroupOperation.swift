@@ -1,4 +1,4 @@
-// Operations GroupOperation.swift
+// AdvancedOperations GroupOperation.swift
 //
 // Copyright © 2016, Roy Ratcliffe, Pioneering Software, United Kingdom
 //

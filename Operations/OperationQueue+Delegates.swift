@@ -1,4 +1,4 @@
-// Operations OperationQueue+Delegates.swift
+// AdvancedOperations OperationQueue+Delegates.swift
 //
 // Copyright © 2016, Roy Ratcliffe, Pioneering Software, United Kingdom
 //
