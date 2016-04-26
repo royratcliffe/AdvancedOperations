@@ -121,8 +121,7 @@ public class OperationChangeObserver: KeyValueObserver, OperationObserver {
       // i.e. the currently unchanged value of the observable property.
       if change.isPrior {
         operation(op, willChange: keyPath, oldValue: oldValue)
-      }
-      else {
+      } else {
         guard let newValue = change.newValue else {
           return
         }

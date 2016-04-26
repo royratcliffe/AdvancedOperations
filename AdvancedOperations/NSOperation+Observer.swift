@@ -58,15 +58,13 @@ extension NSOperation {
     if let observer = observer {
       if let observers = observer as? OperationObservers {
         observers.addObserver(newObserver)
-      }
-      else {
+      } else {
         let observers = OperationObservers()
         observers.addObserver(observer)
         observers.addObserver(newObserver)
         self.observer = observers
       }
-    }
-    else {
+    } else {
       observer = newObserver
     }
     newObserver.operationDidAddObserver(self)
@@ -82,8 +80,7 @@ extension NSOperation {
       oldObserver.operationWillRemoveObserver(self)
       self.observer = nil
       oldObserver.operationDidRemoveObserver(self)
-    }
-    else if let observers = observer as? OperationObservers {
+    } else if let observers = observer as? OperationObservers {
       guard observers.containsObserver(oldObserver) else {
         return
       }

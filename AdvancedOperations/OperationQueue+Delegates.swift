@@ -34,15 +34,13 @@ extension OperationQueue {
     if let delegate = delegate {
       if let delegates = delegate as? OperationQueueDelegates {
         delegates.addDelegate(newDelegate)
-      }
-      else {
+      } else {
         let delegates = OperationQueueDelegates()
         delegates.addDelegate(delegate)
         delegates.addDelegate(newDelegate)
         self.delegate = delegates
       }
-    }
-    else {
+    } else {
       delegate = newDelegate
     }
   }
