@@ -24,7 +24,7 @@
 
 import Foundation
 
-var OperationObserverKey = 0
+var operationObserverKey = 0
 
 extension NSOperation {
 
@@ -40,10 +40,10 @@ extension NSOperation {
   /// observing, it merely transfers to the composite.
   public var observer: OperationObserver? {
     get {
-      return objc_getAssociatedObject(self, &OperationObserverKey) as? OperationObserver
+      return objc_getAssociatedObject(self, &operationObserverKey) as? OperationObserver
     }
     set(newObserver) {
-      objc_setAssociatedObject(self, &OperationObserverKey, newObserver, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+      objc_setAssociatedObject(self, &operationObserverKey, newObserver, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     }
   }
 
