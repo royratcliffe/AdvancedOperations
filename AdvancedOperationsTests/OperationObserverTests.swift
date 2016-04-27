@@ -27,25 +27,6 @@ import AdvancedOperations
 
 class OperationObserverTests: XCTestCase {
 
-  /// Fulfills an expectation when an operation changes from not finished to
-  /// finished. Assumes that it only observes one operation, hence ignores
-  /// *which* operation finished, if there really are more than one.
-  class IsFinishedObserver: OperationChangeObserver {
-
-    let expectation: XCTestExpectation
-
-    init(_ expectation: XCTestExpectation) {
-      self.expectation = expectation
-    }
-
-    override func operation(_: NSOperation, didChangeIsFinished isFinished: Bool, wasFinished: Bool) {
-      if isFinished && !wasFinished {
-        expectation.fulfill()
-      }
-    }
-
-  }
-
   /// Tests operation is-finished observations. Executes a three-second waiting
   /// operation while watching for its finished status to change from false to
   /// true.
@@ -60,7 +41,13 @@ class OperationObserverTests: XCTestCase {
       }
       dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
     }
-    op.addObserver(IsFinishedObserver(expectationWithDescription("IsFinished")))
+    let expectation = expectationWithDescription("IsFinished")
+    op.addObserver(IsFinishedObserver { (_) in
+      // Fulfills the expectation when the operation changes from not finished to
+      // finished. Assumes that it only observes one operation, hence ignores
+      // *which* operation finished, if there really are more than one.
+      expectation.fulfill()
+      })
 
     // when
     q.addOperation(op)
