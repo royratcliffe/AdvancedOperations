@@ -66,6 +66,9 @@ public class KeyValueObserver: NSObject {
   /// Adds an object and key-path for observing. Note, you can add the same
   /// object and key-path pair more than once though it makes little sense to do
   /// so.
+  /// - parameter object: Object to observe.
+  /// - parameter keyPath: Property to observe.
+  /// - parameter options: Key-value observing options, including new, old and prior.
   public func addObject(object: NSObject, keyPath: String, options: NSKeyValueObservingOptions) {
     object.addObserver(self, forKeyPath: keyPath, options: options, context: nil)
     observing.append((object: object, keyPath: keyPath))
