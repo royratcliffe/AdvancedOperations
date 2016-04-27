@@ -130,9 +130,17 @@ public class OperationQueue: NSOperationQueue {
     delegate?.operationQueue(self, willAddOperation: op)
   }
 
+  /// Runs *after* running the underlying NSOperation.addOperation()
+  /// method. Notifies the delegate, then adds itself (the queue) as an
+  /// operation observer before finally making this queue the producer for the
+  /// operation. Becoming the producer unloads the stash if there is one, adding
+  /// all its operations to this queue also. As the new producer, this queue
+  /// then automatically adds any further produced operations to the queue, as
+  /// and when they appear.
   public func didAddOperation(op: NSOperation) {
     delegate?.operationQueue(self, didAddOperation: op)
     op.addObserver(OperationObserver(self))
+    produceForOperation(op)
   }
 
   public func operationWillAddObserver(op: NSOperation) {
@@ -214,6 +222,18 @@ public class OperationQueue: NSOperationQueue {
     willAddOperation(op)
     super.addOperation(op)
     didAddOperation(op)
+  }
+
+  // Adds operations and optionally waits until finishes. This implementation
+  // entirely replaces that of the underlying `NSOperation` method since the
+  // super-class does not invoke `addOperation()` iteratively when adding.
+  public override func addOperations(ops: [NSOperation], waitUntilFinished wait: Bool) {
+    for op in ops {
+      addOperation(op)
+    }
+    if wait {
+      waitUntilAllOperationsAreFinished()
+    }
   }
 
 }
