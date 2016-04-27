@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		78064E171CD0809800A8224F /* OperationProducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78064E161CD0809800A8224F /* OperationProducer.swift */; };
+		78064E191CD087FF00A8224F /* NSOperation+Producer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78064E181CD087FF00A8224F /* NSOperation+Producer.swift */; };
+		78064E1F1CD09C7100A8224F /* OperationStash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78064E1E1CD09C7100A8224F /* OperationStash.swift */; };
+		78064E211CD09D5200A8224F /* ProduceHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78064E201CD09D5200A8224F /* ProduceHandler.swift */; };
+		78064E251CD0B93200A8224F /* NSOperationQueue+Producer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78064E241CD0B93200A8224F /* NSOperationQueue+Producer.swift */; };
 		7809818C1CC9F1E5001D1491 /* NSOperation+Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7809818B1CC9F1E4001D1491 /* NSOperation+Observer.swift */; };
 		780981901CC9F580001D1491 /* OperationObservers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7809818F1CC9F580001D1491 /* OperationObservers.swift */; };
 		780981921CC9FEE6001D1491 /* OperationChangeObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780981911CC9FEE6001D1491 /* OperationChangeObserver.swift */; };
@@ -25,6 +30,8 @@
 		7893D9671CC936B40026AB53 /* OperationQueueDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7893D9661CC936B40026AB53 /* OperationQueueDelegates.swift */; };
 		7893D9691CC937B20026AB53 /* OperationQueue+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7893D9681CC937B20026AB53 /* OperationQueue+Delegates.swift */; };
 		7893D96B1CC953E90026AB53 /* GroupOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7893D96A1CC953E90026AB53 /* GroupOperation.swift */; };
+		78F2448D1CD1511800B80CAB /* OperationProducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F2448C1CD1511800B80CAB /* OperationProducerTests.swift */; };
+		78F2448F1CD1561600B80CAB /* IsFinishedObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F2448E1CD1561600B80CAB /* IsFinishedObserver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +45,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		78064E161CD0809800A8224F /* OperationProducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = OperationProducer.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		78064E181CD087FF00A8224F /* NSOperation+Producer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "NSOperation+Producer.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		78064E1E1CD09C7100A8224F /* OperationStash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = OperationStash.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		78064E201CD09D5200A8224F /* ProduceHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ProduceHandler.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		78064E241CD0B93200A8224F /* NSOperationQueue+Producer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "NSOperationQueue+Producer.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		7809818B1CC9F1E4001D1491 /* NSOperation+Observer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "NSOperation+Observer.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		7809818F1CC9F580001D1491 /* OperationObservers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = OperationObservers.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		780981911CC9FEE6001D1491 /* OperationChangeObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = OperationChangeObserver.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -59,6 +71,8 @@
 		7893D9661CC936B40026AB53 /* OperationQueueDelegates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = OperationQueueDelegates.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		7893D9681CC937B20026AB53 /* OperationQueue+Delegates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "OperationQueue+Delegates.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		7893D96A1CC953E90026AB53 /* GroupOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = GroupOperation.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		78F2448C1CD1511800B80CAB /* OperationProducerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = OperationProducerTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		78F2448E1CD1561600B80CAB /* IsFinishedObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = IsFinishedObserver.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +130,12 @@
 				7809818B1CC9F1E4001D1491 /* NSOperation+Observer.swift */,
 				7809818F1CC9F580001D1491 /* OperationObservers.swift */,
 				780981911CC9FEE6001D1491 /* OperationChangeObserver.swift */,
+				78F2448E1CD1561600B80CAB /* IsFinishedObserver.swift */,
+				78064E161CD0809800A8224F /* OperationProducer.swift */,
+				78064E181CD087FF00A8224F /* NSOperation+Producer.swift */,
+				78064E241CD0B93200A8224F /* NSOperationQueue+Producer.swift */,
+				78064E1E1CD09C7100A8224F /* OperationStash.swift */,
+				78064E201CD09D5200A8224F /* ProduceHandler.swift */,
 				7893D9491CC9175C0026AB53 /* Info.plist */,
 			);
 			path = AdvancedOperations;
@@ -126,6 +146,7 @@
 			children = (
 				7893D9531CC9175C0026AB53 /* OperationsTests.swift */,
 				780981B31CCA5B39001D1491 /* OperationObserverTests.swift */,
+				78F2448C1CD1511800B80CAB /* OperationProducerTests.swift */,
 				7893D9551CC9175C0026AB53 /* Info.plist */,
 			);
 			path = AdvancedOperationsTests;
@@ -256,12 +277,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78064E171CD0809800A8224F /* OperationProducer.swift in Sources */,
+				78064E251CD0B93200A8224F /* NSOperationQueue+Producer.swift in Sources */,
 				7893D9691CC937B20026AB53 /* OperationQueue+Delegates.swift in Sources */,
+				78064E1F1CD09C7100A8224F /* OperationStash.swift in Sources */,
 				7887540F1CC9627000E4DFCB /* KeyValueChangeHandler.swift in Sources */,
+				78F2448F1CD1561600B80CAB /* IsFinishedObserver.swift in Sources */,
 				780981B21CCA5164001D1491 /* GroupOperation+Delegate.swift in Sources */,
 				7893D96B1CC953E90026AB53 /* GroupOperation.swift in Sources */,
 				7893D9671CC936B40026AB53 /* OperationQueueDelegates.swift in Sources */,
+				78064E191CD087FF00A8224F /* NSOperation+Producer.swift in Sources */,
 				7893D9651CC935130026AB53 /* OperationQueueDelegate.swift in Sources */,
+				78064E211CD09D5200A8224F /* ProduceHandler.swift in Sources */,
 				7809818C1CC9F1E5001D1491 /* NSOperation+Observer.swift in Sources */,
 				7893D9611CC918F60026AB53 /* Operation.swift in Sources */,
 				7893D9631CC9190E0026AB53 /* OperationQueue.swift in Sources */,
@@ -278,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7893D9541CC9175C0026AB53 /* OperationsTests.swift in Sources */,
+				78F2448D1CD1511800B80CAB /* OperationProducerTests.swift in Sources */,
 				780981B41CCA5B39001D1491 /* OperationObserverTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

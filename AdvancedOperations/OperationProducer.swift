@@ -1,4 +1,4 @@
-// AdvancedOperationsTests OperationObserverTests.swift
+// AdvancedOperations OperationProducer.swift
 //
 // Copyright © 2016, Roy Ratcliffe, Pioneering Software, United Kingdom
 //
@@ -22,38 +22,15 @@
 //
 //------------------------------------------------------------------------------
 
-import XCTest
-import AdvancedOperations
+import Foundation
 
-class OperationObserverTests: XCTestCase {
+/// Operations produce another operation by invoking their producer. The
+/// producer receives the same operation with a request to produce it. The
+/// Operation-instance message just relays the new operation to the producer,
+/// not much more apart from sending observer notifications. Producers known
+/// what to do when one operation produces another.
+public protocol OperationProducer: class {
 
-  /// Tests operation is-finished observations. Executes a three-second waiting
-  /// operation while watching for its finished status to change from false to
-  /// true.
-  func testIsFinished() {
-    // given
-    let q = OperationQueue()
-    let op = NSBlockOperation {
-      let semaphore = dispatch_semaphore_create(0)
-      let when = dispatch_time(DISPATCH_TIME_NOW, Int64(3.0 * Double(NSEC_PER_SEC)))
-      dispatch_after(when, dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0)) {
-        dispatch_semaphore_signal(semaphore)
-      }
-      dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
-    }
-    let expectation = expectationWithDescription("IsFinished")
-    op.addObserver(IsFinishedObserver { (_) in
-      // Fulfills the expectation when the operation changes from not finished to
-      // finished. Assumes that it only observes one operation, hence ignores
-      // *which* operation finished, if there really are more than one.
-      expectation.fulfill()
-      })
-
-    // when
-    q.addOperation(op)
-
-    // then
-    waitForExpectationsWithTimeout(10.0, handler: nil)
-  }
+  func produceOperation(op: NSOperation)
 
 }

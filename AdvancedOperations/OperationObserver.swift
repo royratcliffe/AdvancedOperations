@@ -65,6 +65,10 @@ public protocol OperationObserver: class {
 
   func operation(op: NSOperation, didChangeIsReady isReady: Bool, wasReady: Bool)
 
+  func operation(op: NSOperation, willProduceOperation newOp: NSOperation)
+
+  func operation(op: NSOperation, didProduceOperation newOp: NSOperation)
+
 }
 
 extension OperationObserver {
@@ -104,5 +108,9 @@ extension OperationObserver {
   public func operation(op: NSOperation, willChangeIsReady isReady: Bool) {}
 
   public func operation(op: NSOperation, didChangeIsReady isReady: Bool, wasReady: Bool) {}
+
+  public func operation(op: NSOperation, willProduceOperation newOp: NSOperation) {}
+
+  public func operation(op: NSOperation, didProduceOperation newOp: NSOperation) {}
 
 }
