@@ -1,0 +1,6 @@
+variable_name:
+  excluded:
+    - q
+    - op
+
+line_length: 150

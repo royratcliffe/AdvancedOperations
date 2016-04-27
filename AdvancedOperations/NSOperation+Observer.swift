@@ -24,7 +24,7 @@
 
 import Foundation
 
-var OperationObserverKey = 0
+var operationObserverKey = 0
 
 extension NSOperation {
 
@@ -40,10 +40,10 @@ extension NSOperation {
   /// observing, it merely transfers to the composite.
   public var observer: OperationObserver? {
     get {
-      return objc_getAssociatedObject(self, &OperationObserverKey) as? OperationObserver
+      return objc_getAssociatedObject(self, &operationObserverKey) as? OperationObserver
     }
     set(newObserver) {
-      objc_setAssociatedObject(self, &OperationObserverKey, newObserver, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+      objc_setAssociatedObject(self, &operationObserverKey, newObserver, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     }
   }
 
@@ -58,15 +58,13 @@ extension NSOperation {
     if let observer = observer {
       if let observers = observer as? OperationObservers {
         observers.addObserver(newObserver)
-      }
-      else {
+      } else {
         let observers = OperationObservers()
         observers.addObserver(observer)
         observers.addObserver(newObserver)
         self.observer = observers
       }
-    }
-    else {
+    } else {
       observer = newObserver
     }
     newObserver.operationDidAddObserver(self)
@@ -82,8 +80,7 @@ extension NSOperation {
       oldObserver.operationWillRemoveObserver(self)
       self.observer = nil
       oldObserver.operationDidRemoveObserver(self)
-    }
-    else if let observers = observer as? OperationObservers {
+    } else if let observers = observer as? OperationObservers {
       guard observers.containsObserver(oldObserver) else {
         return
       }
