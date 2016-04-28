@@ -24,13 +24,17 @@
 
 import Foundation
 
+/// Operation that runs its own internal operation queue so that you can add one
+/// or more sub-operations and wait for them to finish during execution of this
+/// operation. You can add sub-operations at any time, and wait for operations
+/// more than once.
 public class GroupOperation: Operation {
 
   let q = OperationQueue()
 
   public override init() {
     super.init()
-    q.suspended = true
+    suspended = true
     q.delegate = self
   }
 
@@ -42,6 +46,31 @@ public class GroupOperation: Operation {
     q.addOperation(op)
   }
 
+  /// Accesses the group's suspend status.
+  public var suspended: Bool {
+    get {
+      return q.suspended
+    }
+    set(newSuspended) {
+      q.suspended = newSuspended
+    }
+  }
+
+  /// Waits until all the group's operations are finished.
+  public func waitUntilAllOperationsAreFinished() {
+    q.waitUntilAllOperationsAreFinished()
+  }
+
+  /// Waits for all group sub-operations to finish, then checks if the operation
+  /// itself has been cancelled. That does not mean that the finished
+  /// sub-operations themselves were cancelled.
+  /// - returns: True if this operation has been cancelled and should terminate
+  ///   at the earliest opportunity, false if the operation should continue.
+  public func waitUntilNotCancelled() -> Bool {
+    waitUntilAllOperationsAreFinished()
+    return !cancelled
+  }
+
   //----------------------------------------------------------------------------
   // MARK: - Operation Overrides
 
@@ -50,8 +79,8 @@ public class GroupOperation: Operation {
   /// finish. Finishing includes cancelling. Hence when this operation finishes,
   /// all its component operations have also finished.
   public override func execute() {
-    q.suspended = false
-    q.waitUntilAllOperationsAreFinished()
+    suspended = false
+    waitUntilAllOperationsAreFinished()
   }
 
 }
