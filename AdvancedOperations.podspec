@@ -1,7 +1,7 @@
 # coding: utf-8
 Pod::Spec.new do |spec|
   spec.name = 'AdvancedOperations'
-  spec.version = '0.1.5'
+  spec.version = '0.1.6'
   spec.summary = 'Advanced NSOperations Framework for Swift'
   spec.description = <<-DESCRIPTION.gsub(/\s+/, ' ').chomp
   Framework that decouples the Advanced NSOperations concepts as much as
