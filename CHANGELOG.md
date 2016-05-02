@@ -1,5 +1,14 @@
 # Change Log
 
+## [0.1.7](https://github.com/royratcliffe/AdvancedOperations/tree/0.1.7) (2016-05-02)
+
+- Disable some SwiftLint rules
+- Fix C header name
+- More commentary for group-operation methods
+- Group operation tests added
+
+[Full Change Log](https://github.com/royratcliffe/AdvancedOperations/compare/0.1.6...0.1.7)
+
 ## [0.1.6](https://github.com/royratcliffe/AdvancedOperations/tree/0.1.6) (2016-04-28)
 
 Group operation enhancements: suspend the queue, and wait for operations to

@@ -1,4 +1,4 @@
-// AdvancedOperations Operations.h
+// AdvancedOperationsTests GroupOperationTests.swift
 //
 // Copyright © 2016, Roy Ratcliffe, Pioneering Software, United Kingdom
 //
@@ -22,7 +22,46 @@
 //
 //------------------------------------------------------------------------------
 
-@import UIKit;
+import XCTest
+import AdvancedOperations
 
-FOUNDATION_EXPORT double OperationsVersionNumber;
-FOUNDATION_EXPORT const unsigned char OperationsVersionString[];
+class GroupOperationTests: XCTestCase {
+
+  let q = OperationQueue()
+
+  /// Adds a group operation to an operation queue. The group operation, in
+  /// turn, adds a nested operation to its internal queue. The group operation
+  /// then un-suspends the queue and waits for the sub-operation to finish.
+  func testWaitUntilAllOperationsAreFinished() {
+    // given
+    class MyGroupOperation: GroupOperation {
+
+      let expectation: XCTestExpectation
+
+      init(_ expectation: XCTestExpectation) {
+        self.expectation = expectation
+      }
+
+      private override func execute() {
+        addOperation(NSBlockOperation())
+
+        // This test would fail if the group operation failed to un-suspend its
+        // queue. It would wait indefinitely for the queue to resume. Some other
+        // operation or block would have to resume it.
+        suspended = false
+
+        waitUntilAllOperationsAreFinished()
+        expectation.fulfill()
+      }
+
+    }
+    let groupOp = MyGroupOperation(expectationWithDescription("\(#function)"))
+
+    // when
+    q.addOperation(groupOp)
+
+    // then
+    waitForExpectationsWithTimeout(10.0, handler: nil)
+  }
+
+}
