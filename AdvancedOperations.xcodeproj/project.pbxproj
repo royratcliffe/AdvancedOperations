@@ -23,7 +23,7 @@
 		7887540F1CC9627000E4DFCB /* KeyValueChangeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7887540C1CC9627000E4DFCB /* KeyValueChangeHandler.swift */; };
 		788754101CC9627000E4DFCB /* KeyValueChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7887540D1CC9627000E4DFCB /* KeyValueChange.swift */; };
 		788754121CC962CB00E4DFCB /* OperationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788754111CC962CB00E4DFCB /* OperationObserver.swift */; };
-		7893D9481CC9175C0026AB53 /* Operations.h in Headers */ = {isa = PBXBuildFile; fileRef = 7893D9471CC9175C0026AB53 /* Operations.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7893D9481CC9175C0026AB53 /* AdvancedOperations.h in Headers */ = {isa = PBXBuildFile; fileRef = 7893D9471CC9175C0026AB53 /* AdvancedOperations.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7893D94F1CC9175C0026AB53 /* AdvancedOperations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7893D9441CC9175C0026AB53 /* AdvancedOperations.framework */; };
 		7893D9541CC9175C0026AB53 /* OperationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7893D9531CC9175C0026AB53 /* OperationsTests.swift */; };
 		7893D9611CC918F60026AB53 /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7893D9601CC918F60026AB53 /* Operation.swift */; };
@@ -64,7 +64,7 @@
 		7887540D1CC9627000E4DFCB /* KeyValueChange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyValueChange.swift; sourceTree = "<group>"; };
 		788754111CC962CB00E4DFCB /* OperationObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = OperationObserver.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		7893D9441CC9175C0026AB53 /* AdvancedOperations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AdvancedOperations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7893D9471CC9175C0026AB53 /* Operations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Operations.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		7893D9471CC9175C0026AB53 /* AdvancedOperations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AdvancedOperations.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		7893D9491CC9175C0026AB53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7893D94E1CC9175C0026AB53 /* AdvancedOperationsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AdvancedOperationsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7893D9531CC9175C0026AB53 /* OperationsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = OperationsTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -119,7 +119,7 @@
 		7893D9461CC9175C0026AB53 /* AdvancedOperations */ = {
 			isa = PBXGroup;
 			children = (
-				7893D9471CC9175C0026AB53 /* Operations.h */,
+				7893D9471CC9175C0026AB53 /* AdvancedOperations.h */,
 				7893D9601CC918F60026AB53 /* Operation.swift */,
 				7893D9621CC9190E0026AB53 /* OperationQueue.swift */,
 				7893D9641CC935130026AB53 /* OperationQueueDelegate.swift */,
@@ -165,7 +165,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7893D9481CC9175C0026AB53 /* Operations.h in Headers */,
+				7893D9481CC9175C0026AB53 /* AdvancedOperations.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

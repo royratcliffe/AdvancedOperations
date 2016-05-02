@@ -1,4 +1,4 @@
-// AdvancedOperations Operations.h
+// AdvancedOperations AdvancedOperations.h
 //
 // Copyright © 2016, Roy Ratcliffe, Pioneering Software, United Kingdom
 //
@@ -24,5 +24,5 @@
 
 @import UIKit;
 
-FOUNDATION_EXPORT double OperationsVersionNumber;
-FOUNDATION_EXPORT const unsigned char OperationsVersionString[];
+FOUNDATION_EXPORT double AdvancedOperationsVersionNumber;
+FOUNDATION_EXPORT const unsigned char AdvancedOperationsVersionString[];
