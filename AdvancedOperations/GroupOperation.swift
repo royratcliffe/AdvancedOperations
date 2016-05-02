@@ -46,7 +46,8 @@ public class GroupOperation: Operation {
     q.addOperation(op)
   }
 
-  /// Accesses the group's suspend status.
+  /// Accesses the group's suspend status. The group starts off suspended. Make
+  /// `suspended` equal to false in order to start any added group operations.
   public var suspended: Bool {
     get {
       return q.suspended
@@ -57,6 +58,12 @@ public class GroupOperation: Operation {
   }
 
   /// Waits until all the group's operations are finished.
+  ///
+  /// Does *not* automatically resume the group's operation queue. Waiting for
+  /// the group operations makes no sense when the queue is suspended. The
+  /// operation will wait forever unless empty. Empty queues will not wait
+  /// because all its operations have finished, because there are none
+  /// remaining.
   public func waitUntilAllOperationsAreFinished() {
     q.waitUntilAllOperationsAreFinished()
   }
