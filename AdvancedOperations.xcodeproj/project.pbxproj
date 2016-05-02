@@ -17,6 +17,7 @@
 		780981921CC9FEE6001D1491 /* OperationChangeObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780981911CC9FEE6001D1491 /* OperationChangeObserver.swift */; };
 		780981B21CCA5164001D1491 /* GroupOperation+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780981B11CCA5164001D1491 /* GroupOperation+Delegate.swift */; };
 		780981B41CCA5B39001D1491 /* OperationObserverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780981B31CCA5B39001D1491 /* OperationObserverTests.swift */; };
+		780D49081CD325A300F56D4C /* GroupOperationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780D49071CD325A300F56D4C /* GroupOperationTests.swift */; };
 		784C619E1CD218D2008F26BC /* NSOperation+AdvancedOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784C619D1CD218D2008F26BC /* NSOperation+AdvancedOperations.swift */; };
 		7887540E1CC9627000E4DFCB /* KeyValueObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7887540B1CC9627000E4DFCB /* KeyValueObserver.swift */; };
 		7887540F1CC9627000E4DFCB /* KeyValueChangeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7887540C1CC9627000E4DFCB /* KeyValueChangeHandler.swift */; };
@@ -56,6 +57,7 @@
 		780981911CC9FEE6001D1491 /* OperationChangeObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = OperationChangeObserver.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		780981B11CCA5164001D1491 /* GroupOperation+Delegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "GroupOperation+Delegate.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		780981B31CCA5B39001D1491 /* OperationObserverTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationObserverTests.swift; sourceTree = "<group>"; };
+		780D49071CD325A300F56D4C /* GroupOperationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupOperationTests.swift; sourceTree = "<group>"; };
 		784C619D1CD218D2008F26BC /* NSOperation+AdvancedOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSOperation+AdvancedOperations.swift"; sourceTree = "<group>"; };
 		7887540B1CC9627000E4DFCB /* KeyValueObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyValueObserver.swift; sourceTree = "<group>"; };
 		7887540C1CC9627000E4DFCB /* KeyValueChangeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyValueChangeHandler.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				7893D9531CC9175C0026AB53 /* OperationsTests.swift */,
+				780D49071CD325A300F56D4C /* GroupOperationTests.swift */,
 				780981B31CCA5B39001D1491 /* OperationObserverTests.swift */,
 				78F2448C1CD1511800B80CAB /* OperationProducerTests.swift */,
 				7893D9551CC9175C0026AB53 /* Info.plist */,
@@ -309,6 +312,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7893D9541CC9175C0026AB53 /* OperationsTests.swift in Sources */,
+				780D49081CD325A300F56D4C /* GroupOperationTests.swift in Sources */,
 				78F2448D1CD1511800B80CAB /* OperationProducerTests.swift in Sources */,
 				780981B41CCA5B39001D1491 /* OperationObserverTests.swift in Sources */,
 			);
