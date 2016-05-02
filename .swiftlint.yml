@@ -4,3 +4,15 @@ variable_name:
     - op
 
 line_length: 150
+
+disabled_rules:
+  # Switch off nagging about repeated `let` statements in conditional binding
+  # cascades.
+  - conditional_binding_cascade
+
+  # Disable insistence on parameter and returns documentation. "Writing a great
+  # summary is more important than leveraging keywords." See
+  # https://github.com/realm/SwiftLint/issues/284 for discussion.
+  - valid_docs
+
+  - nesting
