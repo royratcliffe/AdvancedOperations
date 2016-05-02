@@ -10,4 +10,4 @@ before_install:
   - brew uninstall xctool && brew install --HEAD xctool
 
 xcode_project: AdvancedOperations.xcodeproj
-xcode_scheme: AdvancedOperationsTests
+xcode_scheme: AdvancedOperations
