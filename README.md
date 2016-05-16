@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/royratcliffe/AdvancedOperations.svg?branch=master)](https://travis-ci.org/royratcliffe/AdvancedOperations)
+
 # Advanced Operations
 
 Some time ago, at WWDC 2015, Apple released a sample application called

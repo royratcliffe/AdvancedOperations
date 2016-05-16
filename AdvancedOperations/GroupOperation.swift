@@ -30,12 +30,17 @@ import Foundation
 /// more than once.
 public class GroupOperation: Operation {
 
-  let q = OperationQueue()
+  /// Accesses the underlying group operation queue. Sub-classes or other
+  /// callers can access the queue directly, if necessary. It might be necessary
+  /// for example, when needing to key-value observe the group's underlying
+  /// operation queue. Most of the group queue's properties comply with
+  /// key-value observing protocols.
+  public let groupQueue = OperationQueue()
 
   public override init() {
     super.init()
     suspended = true
-    q.delegate = self
+    groupQueue.delegate = self
   }
 
   /// Adds a given operation to this operation group. The given operation does
@@ -43,18 +48,34 @@ public class GroupOperation: Operation {
   /// that needs adding to an operation queue in order to kickstart the group.
   /// - parameter op: Operation to add to this group.
   public func addOperation(op: NSOperation) {
-    q.addOperation(op)
+    groupQueue.addOperation(op)
   }
 
   /// Accesses the group's suspend status. The group starts off suspended. Make
   /// `suspended` equal to false in order to start any added group operations.
   public var suspended: Bool {
     get {
-      return q.suspended
+      return groupQueue.suspended
     }
     set(newSuspended) {
-      q.suspended = newSuspended
+      groupQueue.suspended = newSuspended
     }
+  }
+
+  /// Accesses the group operation queue's quality of service. It defaults to
+  /// background quality.
+  public var groupQualityOfService: NSQualityOfService {
+    get {
+      return groupQueue.qualityOfService
+    }
+    set(newGroupQualityOfService) {
+      groupQueue.qualityOfService = newGroupQualityOfService
+    }
+  }
+
+  /// Cancels all group sub-operations.
+  public func cancelAllOperations() {
+    groupQueue.cancelAllOperations()
   }
 
   /// Waits until all the group's operations are finished.
@@ -65,7 +86,7 @@ public class GroupOperation: Operation {
   /// because all its operations have finished, because there are none
   /// remaining.
   public func waitUntilAllOperationsAreFinished() {
-    q.waitUntilAllOperationsAreFinished()
+    groupQueue.waitUntilAllOperationsAreFinished()
   }
 
   /// Waits for all group sub-operations to finish, then checks if the operation
