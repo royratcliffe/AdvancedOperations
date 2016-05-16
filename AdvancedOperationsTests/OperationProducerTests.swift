@@ -83,4 +83,21 @@ class OperationProducerTests: XCTestCase {
     waitForExpectationsWithTimeout(10.0, handler: nil)
   }
 
+  func testProduceDependentWithBlock() {
+    // given
+    let q = OperationQueue()
+    let op = NSBlockOperation {}
+    let expectation = expectationWithDescription("\(#function)")
+    // when
+    op.produceDependentWithBlock { (op) in
+      guard let op = op where !op.cancelled else {
+        return
+      }
+      expectation.fulfill()
+    }
+    q.addOperation(op)
+    // then
+    waitForExpectationsWithTimeout(10.0, handler: nil)
+  }
+
 }
