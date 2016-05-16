@@ -62,6 +62,22 @@ public class GroupOperation: Operation {
     }
   }
 
+  /// Accesses the group operation queue's quality of service. It defaults to
+  /// background quality.
+  public var groupQualityOfService: NSQualityOfService {
+    get {
+      return groupQueue.qualityOfService
+    }
+    set(newGroupQualityOfService) {
+      groupQueue.qualityOfService = newGroupQualityOfService
+    }
+  }
+
+  /// Cancels all group sub-operations.
+  public func cancelAllOperations() {
+    groupQueue.cancelAllOperations()
+  }
+
   /// Waits until all the group's operations are finished.
   ///
   /// Does *not* automatically resume the group's operation queue. Waiting for
