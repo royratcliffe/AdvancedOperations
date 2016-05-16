@@ -1,5 +1,19 @@
 # Change Log
 
+## [0.1.8](https://github.com/royratcliffe/AdvancedOperations/tree/0.1.8) (2016-05-16)
+
+- Add test for NSOperation.produceDependentWithBlock
+- Merge branch 'feature/group_queue' into develop
+- NSOperation extensions: produce dependency, dependent ops and with blocks
+- New GroupOperation methods: for group QoS and for cancelling all sub-operations
+- GroupOperation.groupQueue now accessible
+- Master branch build status
+- Merge branch 'feature/travis_ci' into develop
+- Compile using Swift 2.2
+- Use the correct scheme
+
+[Full Change Log](https://github.com/royratcliffe/AdvancedOperations/compare/0.1.7...0.1.8)
+
 ## [0.1.7](https://github.com/royratcliffe/AdvancedOperations/tree/0.1.7) (2016-05-02)
 
 - Disable some SwiftLint rules
