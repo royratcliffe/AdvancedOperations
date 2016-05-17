@@ -1,5 +1,12 @@
 # Change Log
 
+## [0.1.9](https://github.com/royratcliffe/AdvancedOperations/tree/0.1.9) (2016-05-17)
+
+- Use "underlying" queue rather than group queue
+- Include extract for producing dependent with block
+
+[Full Change Log](https://github.com/royratcliffe/AdvancedOperations/compare/0.1.8...0.1.9)
+
 ## [0.1.8](https://github.com/royratcliffe/AdvancedOperations/tree/0.1.8) (2016-05-16)
 
 - Add test for NSOperation.produceDependentWithBlock
