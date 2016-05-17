@@ -33,14 +33,14 @@ public class GroupOperation: Operation {
   /// Accesses the underlying group operation queue. Sub-classes or other
   /// callers can access the queue directly, if necessary. It might be necessary
   /// for example, when needing to key-value observe the group's underlying
-  /// operation queue. Most of the group queue's properties comply with
-  /// key-value observing protocols.
-  public let groupQueue = OperationQueue()
+  /// operation queue. Most of the underlying group queue's properties comply
+  /// with key-value observing protocols.
+  public let underlyingQueue = OperationQueue()
 
   public override init() {
     super.init()
     suspended = true
-    groupQueue.delegate = self
+    underlyingQueue.delegate = self
   }
 
   /// Adds a given operation to this operation group. The given operation does
@@ -48,34 +48,34 @@ public class GroupOperation: Operation {
   /// that needs adding to an operation queue in order to kickstart the group.
   /// - parameter op: Operation to add to this group.
   public func addOperation(op: NSOperation) {
-    groupQueue.addOperation(op)
+    underlyingQueue.addOperation(op)
   }
 
   /// Accesses the group's suspend status. The group starts off suspended. Make
   /// `suspended` equal to false in order to start any added group operations.
   public var suspended: Bool {
     get {
-      return groupQueue.suspended
+      return underlyingQueue.suspended
     }
     set(newSuspended) {
-      groupQueue.suspended = newSuspended
+      underlyingQueue.suspended = newSuspended
     }
   }
 
   /// Accesses the group operation queue's quality of service. It defaults to
   /// background quality.
-  public var groupQualityOfService: NSQualityOfService {
+  public var underlyingQualityOfService: NSQualityOfService {
     get {
-      return groupQueue.qualityOfService
+      return underlyingQueue.qualityOfService
     }
-    set(newGroupQualityOfService) {
-      groupQueue.qualityOfService = newGroupQualityOfService
+    set(newUnderlyingQualityOfService) {
+      underlyingQueue.qualityOfService = newUnderlyingQualityOfService
     }
   }
 
   /// Cancels all group sub-operations.
   public func cancelAllOperations() {
-    groupQueue.cancelAllOperations()
+    underlyingQueue.cancelAllOperations()
   }
 
   /// Waits until all the group's operations are finished.
@@ -86,7 +86,7 @@ public class GroupOperation: Operation {
   /// because all its operations have finished, because there are none
   /// remaining.
   public func waitUntilAllOperationsAreFinished() {
-    groupQueue.waitUntilAllOperationsAreFinished()
+    underlyingQueue.waitUntilAllOperationsAreFinished()
   }
 
   /// Waits for all group sub-operations to finish, then checks if the operation
