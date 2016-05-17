@@ -100,6 +100,14 @@ extension NSOperation {
   ///   block operation only weakly. This avoids retain cycles. The block should
   ///   guard that there is some operation and that the operation is not
   ///   cancelled before proceeding.
+  ///
+  ///       op.produceDependentWithBlock { (op) in
+  ///         guard let op = op where !op.cancelled else {
+  ///           return
+  ///         }
+  ///         // do something
+  ///       }
+  ///
   /// - returns: The newly produced block operation on which this operation
   ///   depends.
   public func produceDependencyWithBlock(block: (NSBlockOperation?) -> Void) -> NSBlockOperation {
