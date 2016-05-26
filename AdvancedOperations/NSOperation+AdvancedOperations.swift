@@ -36,4 +36,31 @@ extension NSOperation {
     }
   }
 
+  /// Adds zero or more dependent operations.
+  public func addDependencies(dependencies: [NSOperation]) {
+    for dependency in dependencies {
+      addDependency(dependency)
+    }
+  }
+
+  /// Sets up a completion block or adds a completion block if a previous
+  /// completion block already exists for this operation.
+  ///
+  /// Next Step operations allow for only a single completion block. Adding
+  /// _another_ completion block therefore sets up a third block which invokes the
+  /// existing block first. So if a completion block already exists, adding
+  /// actually replaces it with a new block which first invokes the existing
+  /// block then invokes the new block, thereby chaining the blocks together. As
+  /// a result, completion blocks always execute in the order added.
+  public func addCompletionBlock(newCompletionBlock: Void -> Void) {
+    if let oldCompletionBlock = completionBlock {
+      completionBlock = {
+        oldCompletionBlock()
+        newCompletionBlock()
+      }
+    } else {
+      completionBlock = newCompletionBlock
+    }
+  }
+
 }

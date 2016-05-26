@@ -3,7 +3,7 @@ variable_name:
     - q
     - op
 
-line_length: 150
+line_length: 200
 
 disabled_rules:
   # Switch off nagging about repeated `let` statements in conditional binding
