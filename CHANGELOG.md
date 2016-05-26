@@ -1,5 +1,19 @@
 # Change Log
 
+## [0.1.10](https://github.com/royratcliffe/AdvancedOperations/tree/0.1.10) (2016-05-26)
+
+- Merge branch 'feature/delay_operation' into develop
+- Merge branch 'feature/operation_log_observer' into develop
+- Line-length warnings at 200 columns
+- Operation log observer
+- Operation change observer relays dependencies and queue-priority changes
+- Will- and did-produce operation needs empty implementation for overriding
+- NSOperation extensions: addDependencies and addCompletionBlock
+- Added delay operation and test to project
+- DelayOperation class, including test
+
+[Full Change Log](https://github.com/royratcliffe/AdvancedOperations/compare/0.1.9...0.1.10)
+
 ## [0.1.9](https://github.com/royratcliffe/AdvancedOperations/tree/0.1.9) (2016-05-17)
 
 - Use "underlying" queue rather than group queue
