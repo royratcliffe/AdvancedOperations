@@ -46,6 +46,7 @@ public class OperationChangeObserver: KeyValueObserver, OperationObserver {
     removeObject(op)
   }
 
+  // swiftlint:disable:next cyclomatic_complexity
   public func operation(op: NSOperation, willChange keyPath: String, oldValue: AnyObject) {
     switch keyPath {
     case "isCancelled":
@@ -68,11 +69,22 @@ public class OperationChangeObserver: KeyValueObserver, OperationObserver {
         break
       }
       operation(op, willChangeIsReady: oldValue)
+    case "dependencies":
+      guard let oldValue = oldValue as? [NSOperation] else {
+        return
+      }
+      operation(op, willChangeDependencies: oldValue)
+    case "queuePriority":
+      guard let oldValue = oldValue as? NSOperationQueuePriority else {
+        return
+      }
+      operation(op, willChangeQueuePriority: oldValue)
     default:
       break
     }
   }
 
+  // swiftlint:disable:next cyclomatic_complexity
   public func operation(op: NSOperation, didChange keyPath: String, oldValue: AnyObject, newValue: AnyObject) {
     switch keyPath {
     case "isCancelled":
@@ -99,6 +111,18 @@ public class OperationChangeObserver: KeyValueObserver, OperationObserver {
         break
       }
       operation(op, didChangeIsReady: newValue, wasReady: oldValue)
+    case "dependencies":
+      guard let oldValue = oldValue as? [NSOperation],
+            let newValue = newValue as? [NSOperation] else {
+        return
+      }
+      operation(op, didChangeDependencies: newValue, hadDependencies: oldValue)
+    case "queuePriority":
+      guard let oldValue = oldValue as? NSOperationQueuePriority,
+            let newValue = newValue as? NSOperationQueuePriority else {
+        return
+      }
+      operation(op, didChangeQueuePriority: newValue, hadQueuePriority: oldValue)
     default:
       break
     }
@@ -177,6 +201,14 @@ public class OperationChangeObserver: KeyValueObserver, OperationObserver {
   public func operation(op: NSOperation, willChangeIsReady isReady: Bool) {}
 
   public func operation(op: NSOperation, didChangeIsReady isReady: Bool, wasReady: Bool) {}
+
+  public func operation(op: NSOperation, willChangeDependencies dependencies: [NSOperation]) {}
+
+  public func operation(op: NSOperation, didChangeDependencies dependencies: [NSOperation], hadDependencies: [NSOperation]) {}
+
+  public func operation(op: NSOperation, willChangeQueuePriority queuePriority: NSOperationQueuePriority) {}
+
+  public func operation(op: NSOperation, didChangeQueuePriority queuePriority: NSOperationQueuePriority, hadQueuePriority: NSOperationQueuePriority) {}
 
   public func operation(op: NSOperation, willProduceOperation newOp: NSOperation) {}
 
