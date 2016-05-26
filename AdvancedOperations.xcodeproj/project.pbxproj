@@ -34,6 +34,8 @@
 		7893D9691CC937B20026AB53 /* OperationQueue+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7893D9681CC937B20026AB53 /* OperationQueue+Delegates.swift */; };
 		7893D96B1CC953E90026AB53 /* GroupOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7893D96A1CC953E90026AB53 /* GroupOperation.swift */; };
 		78AE26481CEC7B9A0027E909 /* OperationLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AE26471CEC7B9A0027E909 /* OperationLogTests.swift */; };
+		78AE264A1CECA5C60027E909 /* DelayOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AE26491CECA5C60027E909 /* DelayOperation.swift */; };
+		78AE264C1CECB1E70027E909 /* DelayOperationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AE264B1CECB1E70027E909 /* DelayOperationTests.swift */; };
 		78F2448D1CD1511800B80CAB /* OperationProducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F2448C1CD1511800B80CAB /* OperationProducerTests.swift */; };
 		78F2448F1CD1561600B80CAB /* IsFinishedObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F2448E1CD1561600B80CAB /* IsFinishedObserver.swift */; };
 /* End PBXBuildFile section */
@@ -79,6 +81,8 @@
 		7893D9681CC937B20026AB53 /* OperationQueue+Delegates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "OperationQueue+Delegates.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		7893D96A1CC953E90026AB53 /* GroupOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = GroupOperation.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		78AE26471CEC7B9A0027E909 /* OperationLogTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationLogTests.swift; sourceTree = "<group>"; };
+		78AE26491CECA5C60027E909 /* DelayOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelayOperation.swift; sourceTree = "<group>"; };
+		78AE264B1CECB1E70027E909 /* DelayOperationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelayOperationTests.swift; sourceTree = "<group>"; };
 		78F2448C1CD1511800B80CAB /* OperationProducerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = OperationProducerTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		78F2448E1CD1561600B80CAB /* IsFinishedObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = IsFinishedObserver.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
@@ -146,6 +150,7 @@
 				78064E1E1CD09C7100A8224F /* OperationStash.swift */,
 				78064E201CD09D5200A8224F /* ProduceHandler.swift */,
 				784C619D1CD218D2008F26BC /* NSOperation+AdvancedOperations.swift */,
+				78AE26491CECA5C60027E909 /* DelayOperation.swift */,
 				7893D9491CC9175C0026AB53 /* Info.plist */,
 			);
 			path = AdvancedOperations;
@@ -159,6 +164,7 @@
 				780981B31CCA5B39001D1491 /* OperationObserverTests.swift */,
 				78F2448C1CD1511800B80CAB /* OperationProducerTests.swift */,
 				78AE26471CEC7B9A0027E909 /* OperationLogTests.swift */,
+				78AE264B1CECB1E70027E909 /* DelayOperationTests.swift */,
 				7893D9551CC9175C0026AB53 /* Info.plist */,
 			);
 			path = AdvancedOperationsTests;
@@ -308,6 +314,7 @@
 				7887540E1CC9627000E4DFCB /* KeyValueObserver.swift in Sources */,
 				788754101CC9627000E4DFCB /* KeyValueChange.swift in Sources */,
 				788754121CC962CB00E4DFCB /* OperationObserver.swift in Sources */,
+				78AE264A1CECA5C60027E909 /* DelayOperation.swift in Sources */,
 				780981901CC9F580001D1491 /* OperationObservers.swift in Sources */,
 				78663A001CEB2A2C0081D667 /* OperationLogObserver.swift in Sources */,
 				780981921CC9FEE6001D1491 /* OperationChangeObserver.swift in Sources */,
@@ -318,6 +325,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78AE264C1CECB1E70027E909 /* DelayOperationTests.swift in Sources */,
 				7893D9541CC9175C0026AB53 /* OperationsTests.swift in Sources */,
 				780D49081CD325A300F56D4C /* GroupOperationTests.swift in Sources */,
 				78F2448D1CD1511800B80CAB /* OperationProducerTests.swift in Sources */,
