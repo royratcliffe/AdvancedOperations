@@ -178,4 +178,8 @@ public class OperationChangeObserver: KeyValueObserver, OperationObserver {
 
   public func operation(op: NSOperation, didChangeIsReady isReady: Bool, wasReady: Bool) {}
 
+  public func operation(op: NSOperation, willProduceOperation newOp: NSOperation) {}
+
+  public func operation(op: NSOperation, didProduceOperation newOp: NSOperation) {}
+
 }
