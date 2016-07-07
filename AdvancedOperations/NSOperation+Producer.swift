@@ -74,7 +74,7 @@ extension NSOperation {
   /// hence this operation will not start until `op` has finished; where
   /// finished includes cancelled.
   /// - parameter op: Operation to produce and make a dependency.
-  public func produceDependency(_ op: NSOperation) {
+  public func produce(dependency op: NSOperation) {
     addDependency(op)
     produce(operation: op)
   }
@@ -82,7 +82,7 @@ extension NSOperation {
   /// Produces a dependent operation.
   /// - parameter op: Operation to produce and make dependent on this
   ///   operation. Operation `op` will not start until this operation finishes.
-  public func produceDependent(_ op: NSOperation) {
+  public func produce(dependent op: NSOperation) {
     op.addDependency(self)
     produce(operation: op)
   }
@@ -115,7 +115,7 @@ extension NSOperation {
     op.addExecutionBlock { [weak op] in
       block(op)
     }
-    produceDependency(op)
+    produce(dependency: op)
     return op
   }
 
@@ -126,7 +126,7 @@ extension NSOperation {
     op.addExecutionBlock { [weak op] in
       block(op)
     }
-    produceDependent(op)
+    produce(dependent: op)
     return op
   }
 

@@ -46,7 +46,7 @@ class OperationLogTests: XCTestCase {
     // when
     op.add(observer: observer)
     fulfillOp.add(observer: observer)
-    fulfillOp.produceDependency(op)
+    fulfillOp.produce(dependency: op)
     op.queuePriority = .high
     fulfillOp.queuePriority = .normal
     q.addOperation(fulfillOp)

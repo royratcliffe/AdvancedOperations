@@ -47,8 +47,8 @@ class DelayOperationTests: XCTestCase {
     }
 
     // when
-    firstOp.produceDependent(delayOp)
-    delayOp.produceDependent(lastOp)
+    firstOp.produce(dependent: delayOp)
+    delayOp.produce(dependent: lastOp)
     q.addOperation(firstOp)
 
     // then
