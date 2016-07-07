@@ -30,7 +30,7 @@ extension OperationQueue {
   /// delegate to a composite delegate. Only *sets* the new delegate if the
   /// queue does not already have a delegate. The queue's delegate progresses
   /// from `nil`, to delegate to composite.
-  public func addDelegate(_ newDelegate: OperationQueueDelegate) {
+  public func add(delegate newDelegate: OperationQueueDelegate) {
     if let delegate = delegate {
       if let delegates = delegate as? OperationQueueDelegates {
         delegates.add(delegate: newDelegate)
