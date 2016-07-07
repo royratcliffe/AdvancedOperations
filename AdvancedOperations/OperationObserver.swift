@@ -29,104 +29,104 @@ import Foundation
 /// was made. It appears as the first parameter.
 public protocol OperationObserver: class {
 
-  func operationWillAddObserver(op: NSOperation)
+  func operationWillAddObserver(_ op: NSOperation)
 
-  func operationDidAddObserver(op: NSOperation)
+  func operationDidAddObserver(_ op: NSOperation)
 
-  func operationWillRemoveObserver(op: NSOperation)
+  func operationWillRemoveObserver(_ op: NSOperation)
 
-  func operationDidRemoveObserver(op: NSOperation)
+  func operationDidRemoveObserver(_ op: NSOperation)
 
-  func operationWillStart(op: NSOperation)
+  func operationWillStart(_ op: NSOperation)
 
-  func operationDidStart(op: NSOperation)
+  func operationDidStart(_ op: NSOperation)
 
-  func operationWillExecute(op: NSOperation)
+  func operationWillExecute(_ op: NSOperation)
 
-  func operationDidExecute(op: NSOperation)
+  func operationDidExecute(_ op: NSOperation)
 
-  func operationWillCancel(op: NSOperation)
+  func operationWillCancel(_ op: NSOperation)
 
-  func operationDidCancel(op: NSOperation)
+  func operationDidCancel(_ op: NSOperation)
 
-  func operation(op: NSOperation, willChangeIsCancelled isCancelled: Bool)
+  func operation(_ op: NSOperation, willChangeIsCancelled isCancelled: Bool)
 
-  func operation(op: NSOperation, didChangeIsCancelled isCancelled: Bool, wasCancelled: Bool)
+  func operation(_ op: NSOperation, didChangeIsCancelled isCancelled: Bool, wasCancelled: Bool)
 
-  func operation(op: NSOperation, willChangeIsExecuting isExecuting: Bool)
+  func operation(_ op: NSOperation, willChangeIsExecuting isExecuting: Bool)
 
-  func operation(op: NSOperation, didChangeIsExecuting isExecuting: Bool, wasExecuting: Bool)
+  func operation(_ op: NSOperation, didChangeIsExecuting isExecuting: Bool, wasExecuting: Bool)
 
-  func operation(op: NSOperation, willChangeIsFinished isFinished: Bool)
+  func operation(_ op: NSOperation, willChangeIsFinished isFinished: Bool)
 
-  func operation(op: NSOperation, didChangeIsFinished isFinished: Bool, wasFinished: Bool)
+  func operation(_ op: NSOperation, didChangeIsFinished isFinished: Bool, wasFinished: Bool)
 
-  func operation(op: NSOperation, willChangeIsReady isReady: Bool)
+  func operation(_ op: NSOperation, willChangeIsReady isReady: Bool)
 
-  func operation(op: NSOperation, didChangeIsReady isReady: Bool, wasReady: Bool)
+  func operation(_ op: NSOperation, didChangeIsReady isReady: Bool, wasReady: Bool)
 
-  func operation(op: NSOperation, willChangeDependencies dependencies: [NSOperation])
+  func operation(_ op: NSOperation, willChangeDependencies dependencies: [NSOperation])
 
-  func operation(op: NSOperation, didChangeDependencies dependencies: [NSOperation], hadDependencies: [NSOperation])
+  func operation(_ op: NSOperation, didChangeDependencies dependencies: [NSOperation], hadDependencies: [NSOperation])
 
-  func operation(op: NSOperation, willChangeQueuePriority queuePriority: NSOperationQueuePriority)
+  func operation(_ op: NSOperation, willChangeQueuePriority queuePriority: Operation.QueuePriority)
 
-  func operation(op: NSOperation, didChangeQueuePriority queuePriority: NSOperationQueuePriority, hadQueuePriority: NSOperationQueuePriority)
+  func operation(_ op: NSOperation, didChangeQueuePriority queuePriority: Operation.QueuePriority, hadQueuePriority: Operation.QueuePriority)
 
-  func operation(op: NSOperation, willProduceOperation newOp: NSOperation)
+  func operation(_ op: NSOperation, willProduceOperation newOp: NSOperation)
 
-  func operation(op: NSOperation, didProduceOperation newOp: NSOperation)
+  func operation(_ op: NSOperation, didProduceOperation newOp: NSOperation)
 
 }
 
 extension OperationObserver {
 
-  public func operationWillAddObserver(op: NSOperation) {}
+  public func operationWillAddObserver(_ op: NSOperation) {}
 
-  public func operationDidAddObserver(op: NSOperation) {}
+  public func operationDidAddObserver(_ op: NSOperation) {}
 
-  public func operationWillRemoveObserver(op: NSOperation) {}
+  public func operationWillRemoveObserver(_ op: NSOperation) {}
 
-  public func operationDidRemoveObserver(op: NSOperation) {}
+  public func operationDidRemoveObserver(_ op: NSOperation) {}
 
-  public func operationWillStart(op: NSOperation) {}
+  public func operationWillStart(_ op: NSOperation) {}
 
-  public func operationDidStart(op: NSOperation) {}
+  public func operationDidStart(_ op: NSOperation) {}
 
-  public func operationWillExecute(op: NSOperation) {}
+  public func operationWillExecute(_ op: NSOperation) {}
 
-  public func operationDidExecute(op: NSOperation) {}
+  public func operationDidExecute(_ op: NSOperation) {}
 
-  public func operationWillCancel(op: NSOperation) {}
+  public func operationWillCancel(_ op: NSOperation) {}
 
-  public func operationDidCancel(op: NSOperation) {}
+  public func operationDidCancel(_ op: NSOperation) {}
 
-  public func operation(op: NSOperation, willChangeIsCancelled isCancelled: Bool) {}
+  public func operation(_ op: NSOperation, willChangeIsCancelled isCancelled: Bool) {}
 
-  public func operation(op: NSOperation, didChangeIsCancelled isCancelled: Bool, wasCancelled: Bool) {}
+  public func operation(_ op: NSOperation, didChangeIsCancelled isCancelled: Bool, wasCancelled: Bool) {}
 
-  public func operation(op: NSOperation, willChangeIsExecuting isExecuting: Bool) {}
+  public func operation(_ op: NSOperation, willChangeIsExecuting isExecuting: Bool) {}
 
-  public func operation(op: NSOperation, didChangeIsExecuting isExecuting: Bool, wasExecuting: Bool) {}
+  public func operation(_ op: NSOperation, didChangeIsExecuting isExecuting: Bool, wasExecuting: Bool) {}
 
-  public func operation(op: NSOperation, willChangeIsFinished isFinished: Bool) {}
+  public func operation(_ op: NSOperation, willChangeIsFinished isFinished: Bool) {}
 
-  public func operation(op: NSOperation, didChangeIsFinished isFinished: Bool, wasFinished: Bool) {}
+  public func operation(_ op: NSOperation, didChangeIsFinished isFinished: Bool, wasFinished: Bool) {}
 
-  public func operation(op: NSOperation, willChangeIsReady isReady: Bool) {}
+  public func operation(_ op: NSOperation, willChangeIsReady isReady: Bool) {}
 
-  public func operation(op: NSOperation, didChangeIsReady isReady: Bool, wasReady: Bool) {}
+  public func operation(_ op: NSOperation, didChangeIsReady isReady: Bool, wasReady: Bool) {}
 
-  public func operation(op: NSOperation, willChangeDependencies dependencies: [NSOperation]) {}
+  public func operation(_ op: NSOperation, willChangeDependencies dependencies: [NSOperation]) {}
 
-  public func operation(op: NSOperation, didChangeDependencies dependencies: [NSOperation], hadDependencies: [NSOperation]) {}
+  public func operation(_ op: NSOperation, didChangeDependencies dependencies: [NSOperation], hadDependencies: [NSOperation]) {}
 
-  public func operation(op: NSOperation, willChangeQueuePriority queuePriority: NSOperationQueuePriority) {}
+  public func operation(_ op: NSOperation, willChangeQueuePriority queuePriority: Operation.QueuePriority) {}
 
-  public func operation(op: NSOperation, didChangeQueuePriority queuePriority: NSOperationQueuePriority, hadQueuePriority: NSOperationQueuePriority) {}
+  public func operation(_ op: NSOperation, didChangeQueuePriority queuePriority: Operation.QueuePriority, hadQueuePriority: Operation.QueuePriority) {}
 
-  public func operation(op: NSOperation, willProduceOperation newOp: NSOperation) {}
+  public func operation(_ op: NSOperation, willProduceOperation newOp: NSOperation) {}
 
-  public func operation(op: NSOperation, didProduceOperation newOp: NSOperation) {}
+  public func operation(_ op: NSOperation, didProduceOperation newOp: NSOperation) {}
 
 }

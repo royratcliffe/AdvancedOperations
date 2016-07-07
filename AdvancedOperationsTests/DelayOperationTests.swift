@@ -33,16 +33,16 @@ class DelayOperationTests: XCTestCase {
   /// as well as fulfilling a one-second delay expectation.
   func testOneSecond() {
     // given
-    let expectation = expectationWithDescription("OneSecond")
-    let q = OperationQueue()
-    var firstDate: NSDate?
-    let firstOp = NSBlockOperation {
-      firstDate = NSDate()
+    let expectation = self.expectation(withDescription: "OneSecond")
+    let q = AdvancedOperations.OperationQueue()
+    var firstDate: Date?
+    let firstOp = BlockOperation {
+      firstDate = Date()
     }
     let delayOp = DelayOperation(timeInterval: 1.0)
-    var lastDate: NSDate?
-    let lastOp = NSBlockOperation {
-      lastDate = NSDate()
+    var lastDate: Date?
+    let lastOp = BlockOperation {
+      lastDate = Date()
       expectation.fulfill()
     }
 
@@ -52,7 +52,7 @@ class DelayOperationTests: XCTestCase {
     q.addOperation(firstOp)
 
     // then
-    waitForExpectationsWithTimeout(3.0) { (error) in
+    waitForExpectations(withTimeout: 3.0) { (error) in
       if let error = error {
         NSLog("%@", error.localizedDescription)
       }
@@ -60,7 +60,7 @@ class DelayOperationTests: XCTestCase {
     }
     XCTAssertNotNil(firstDate)
     XCTAssertNotNil(lastDate)
-    XCTAssertEqualWithAccuracy(lastDate!.timeIntervalSinceDate(firstDate!), 1.0, accuracy: 0.1)
+    XCTAssertEqualWithAccuracy(lastDate!.timeIntervalSince(firstDate!), 1.0, accuracy: 0.25)
   }
 
 }

@@ -32,17 +32,16 @@ class OperationObserverTests: XCTestCase {
   /// true.
   func testIsFinished() {
     // given
-    let q = OperationQueue()
-    let op = NSBlockOperation {
-      let semaphore = dispatch_semaphore_create(0)
-      let when = dispatch_time(DISPATCH_TIME_NOW, Int64(3.0 * Double(NSEC_PER_SEC)))
-      dispatch_after(when, dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0)) {
-        dispatch_semaphore_signal(semaphore)
+    let q = AdvancedOperations.OperationQueue()
+    let op = BlockOperation {
+      let semaphore = DispatchSemaphore(value: 0)
+      DispatchQueue.global(attributes: .qosDefault).after(when: .now() + 3.0) {
+        semaphore.signal()
       }
-      dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+      let _ = semaphore.wait(timeout: DispatchTime.distantFuture)
     }
-    let expectation = expectationWithDescription("IsFinished")
-    op.addObserver(IsFinishedObserver { (_) in
+    let expectation = self.expectation(withDescription: "IsFinished")
+    op.add(observer: IsFinishedObserver { (_) in
       // Fulfills the expectation when the operation changes from not finished to
       // finished. Assumes that it only observes one operation, hence ignores
       // *which* operation finished, if there really are more than one.
@@ -53,7 +52,7 @@ class OperationObserverTests: XCTestCase {
     q.addOperation(op)
 
     // then
-    waitForExpectationsWithTimeout(10.0, handler: nil)
+    waitForExpectations(withTimeout: 10.0, handler: nil)
   }
 
 }

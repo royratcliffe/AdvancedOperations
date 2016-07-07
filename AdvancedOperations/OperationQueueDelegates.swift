@@ -32,20 +32,20 @@ public class OperationQueueDelegates: OperationQueueDelegate {
 
   var delegates = [OperationQueueDelegate]()
 
-  public func addDelegate(newDelegate: OperationQueueDelegate) {
+  public func add(delegate newDelegate: OperationQueueDelegate) {
     delegates.append(newDelegate)
   }
 
   //----------------------------------------------------------------------------
   // MARK: - OperationQueueDelegate
 
-  public func operationQueue(q: OperationQueue, willAddOperation op: NSOperation) {
+  public func operationQueue(_ q: OperationQueue, willAddOperation op: NSOperation) {
     for delegate in delegates {
       delegate.operationQueue(q, willAddOperation: op)
     }
   }
 
-  public func operationQueue(q: OperationQueue, didAddOperation op: NSOperation) {
+  public func operationQueue(_ q: OperationQueue, didAddOperation op: NSOperation) {
     for delegate in delegates {
       delegate.operationQueue(q, didAddOperation: op)
     }

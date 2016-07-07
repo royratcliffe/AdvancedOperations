@@ -32,83 +32,83 @@ public class OperationObservers: OperationObserver {
 
   var observers = [OperationObserver]()
 
-  public func addObserver(newObserver: OperationObserver) {
+  public func add(observer newObserver: OperationObserver) {
     observers.append(newObserver)
   }
 
   /// Removes a given observer.
   /// - returns: The removed observer if currently registered as an
   ///   observer. Answers `nil` if not an observer.
-  public func removeObserver(oldObserver: OperationObserver) -> OperationObserver? {
-    guard let index = observers.indexOf({ $0 === oldObserver }) else {
+  public func remove(observer oldObserver: OperationObserver) -> OperationObserver? {
+    guard let index = observers.index(where: { $0 === oldObserver }) else {
       return nil
     }
-    return observers.removeAtIndex(index)
+    return observers.remove(at: index)
   }
 
   /// - returns: True if the sub-observer is currently registered, false if not.
-  public func containsObserver(observer: OperationObserver) -> Bool {
+  public func contains(observer: OperationObserver) -> Bool {
     return observers.contains({ $0 === observer })
   }
 
   //----------------------------------------------------------------------------
   // MARK: - OperationObserver
 
-  public func operationWillAddObserver(op: NSOperation) {
+  public func operationWillAddObserver(_ op: NSOperation) {
     for observer in observers {
       observer.operationWillAddObserver(op)
     }
   }
 
-  public func operationDidAddObserver(op: NSOperation) {
+  public func operationDidAddObserver(_ op: NSOperation) {
     for observer in observers {
       observer.operationDidAddObserver(op)
     }
   }
 
-  public func operationWillRemoveObserver(op: NSOperation) {
+  public func operationWillRemoveObserver(_ op: NSOperation) {
     for observer in observers {
       observer.operationWillRemoveObserver(op)
     }
   }
 
-  public func operationDidRemoveObserver(op: NSOperation) {
+  public func operationDidRemoveObserver(_ op: NSOperation) {
     for observer in observers {
       observer.operationDidRemoveObserver(op)
     }
   }
 
-  public func operationWillStart(op: NSOperation) {
+  public func operationWillStart(_ op: NSOperation) {
     for observer in observers {
       observer.operationWillStart(op)
     }
   }
 
-  public func operationDidStart(op: NSOperation) {
+  public func operationDidStart(_ op: NSOperation) {
     for observer in observers {
       observer.operationDidStart(op)
     }
   }
 
-  public func operationWillExecute(op: NSOperation) {
+  public func operationWillExecute(_ op: NSOperation) {
     for observer in observers {
       observer.operationWillExecute(op)
     }
   }
 
-  public func operationDidExecute(op: NSOperation) {
+  public func operationDidExecute(_ op: NSOperation) {
     for observer in observers {
       observer.operationDidExecute(op)
     }
   }
 
-  public func operationWillCancel(op: NSOperation) {
+  public func operationWillCancel(_ op: NSOperation) {
     for observer in observers {
       observer.operationWillCancel(op)
     }
   }
 
-  public func operationDidCancel(op: NSOperation) {
+  public func operationDidCancel(_ op: NSOperation) {
     for observer in observers {
       observer.operationDidCancel(op)
     }

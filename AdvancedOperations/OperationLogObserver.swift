@@ -31,75 +31,75 @@ import Foundation
 /// does not accept `AnyObject` types in variadic argument lists.
 public class OperationLogObserver: OperationChangeObserver {
 
-  public override func operation(op: NSOperation,
+  public override func operation(_ op: NSOperation,
                                  willChange keyPath: String,
                                             oldValue: AnyObject) {
     NSLog("%@ %@ will change %@", op, keyPath, "\(oldValue)")
   }
 
-  public override func operation(op: NSOperation,
+  public override func operation(_ op: NSOperation,
                                  didChange keyPath: String,
                                            oldValue: AnyObject,
                                            newValue: AnyObject) {
     NSLog("%@ %@ did change %@ -> %@", op, keyPath, "\(oldValue)", "\(newValue)")
   }
 
-  public override func operationWillAddObserver(op: NSOperation) {
+  public override func operationWillAddObserver(_ op: NSOperation) {
     NSLog("%@ will add observer %@", op, self)
     super.operationWillAddObserver(op)
   }
 
-  public override func operationDidAddObserver(op: NSOperation) {
+  public override func operationDidAddObserver(_ op: NSOperation) {
     super.operationDidAddObserver(op)
     NSLog("%@ did add observer %@", op, self)
   }
 
-  public override func operationWillRemoveObserver(op: NSOperation) {
+  public override func operationWillRemoveObserver(_ op: NSOperation) {
     NSLog("%@ will remove observer %@", op, self)
     super.operationWillRemoveObserver(op)
   }
 
-  public override func operationDidRemoveObserver(op: NSOperation) {
+  public override func operationDidRemoveObserver(_ op: NSOperation) {
     super.operationDidRemoveObserver(op)
     NSLog("%@ did remove observer %@", op, self)
   }
 
-  public override func operationWillStart(op: NSOperation) {
+  public override func operationWillStart(_ op: NSOperation) {
     NSLog("%@ will start", op)
     super.operationWillStart(op)
   }
 
-  public override func operationDidStart(op: NSOperation) {
+  public override func operationDidStart(_ op: NSOperation) {
     super.operationDidStart(op)
     NSLog("%@ did start", op)
   }
 
-  public override func operationWillExecute(op: NSOperation) {
+  public override func operationWillExecute(_ op: NSOperation) {
     NSLog("%@ will execute", op)
     super.operationWillExecute(op)
   }
 
-  public override func operationDidExecute(op: NSOperation) {
+  public override func operationDidExecute(_ op: NSOperation) {
     super.operationDidExecute(op)
     NSLog("%@ did execute", op)
   }
 
-  public override func operationWillCancel(op: NSOperation) {
+  public override func operationWillCancel(_ op: NSOperation) {
     NSLog("%@ will cancel", op)
     super.operationWillCancel(op)
   }
 
-  public override func operationDidCancel(op: NSOperation) {
+  public override func operationDidCancel(_ op: NSOperation) {
     super.operationDidCancel(op)
     NSLog("%@ did cancel", op)
   }
 
-  public override func operation(op: NSOperation, willProduceOperation newOp: NSOperation) {
+  public override func operation(_ op: NSOperation, willProduceOperation newOp: NSOperation) {
     NSLog("%@ will produce %@", op, newOp)
     super.operation(op, willProduceOperation: newOp)
   }
 
-  public override func operation(op: NSOperation, didProduceOperation newOp: NSOperation) {
+  public override func operation(_ op: NSOperation, didProduceOperation newOp: NSOperation) {
     super.operation(op, didProduceOperation: newOp)
     NSLog("%@ did produce %@", op, newOp)
   }

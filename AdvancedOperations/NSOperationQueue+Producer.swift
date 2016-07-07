@@ -29,7 +29,7 @@ extension NSOperationQueue {
   /// Sets up producing of operations using this queue. Additionally sets up any
   /// stashed operations. Replaces any existing operation producer.
   /// - parameter op: Operation to produce for.
-  public func produceForOperation(op: NSOperation) {
+  public func produceForOperation(_ op: NSOperation) {
     if let stash = op.producer as? OperationStash {
       addOperations(stash.operations, waitUntilFinished: false)
     }

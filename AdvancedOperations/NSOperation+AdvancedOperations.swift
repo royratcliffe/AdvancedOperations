@@ -32,7 +32,7 @@ extension NSOperation {
   ///   without cancellation.
   public var cancelledDependencies: [NSOperation] {
     return dependencies.filter { (op) -> Bool in
-      return op.cancelled
+      return op.isCancelled
     }
   }
 
@@ -52,7 +52,7 @@ extension NSOperation {
   /// actually replaces it with a new block which first invokes the existing
   /// block then invokes the new block, thereby chaining the blocks together. As
   /// a result, completion blocks always execute in the order added.
-  public func addCompletionBlock(newCompletionBlock: Void -> Void) {
+  public func addCompletionBlock(newCompletionBlock: (Void) -> Void) {
     if let oldCompletionBlock = completionBlock {
       completionBlock = {
         oldCompletionBlock()

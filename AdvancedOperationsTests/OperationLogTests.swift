@@ -32,10 +32,10 @@ class OperationLogTests: XCTestCase {
   /// changes to the operation.
   func testLog() {
     // given
-    let expectation = expectationWithDescription("Log")
-    let q = OperationQueue()
-    let op = Operation()
-    let fulfillOp = NSBlockOperation {
+    let expectation = self.expectation(withDescription: "Log")
+    let q = AdvancedOperations.OperationQueue()
+    let op = AdvancedOperations.Operation()
+    let fulfillOp = BlockOperation {
       expectation.fulfill()
     }
     let observer = OperationLogObserver()
@@ -44,15 +44,15 @@ class OperationLogTests: XCTestCase {
     fulfillOp.name = "MyFulfillOp"
 
     // when
-    op.addObserver(observer)
-    fulfillOp.addObserver(observer)
+    op.add(observer: observer)
+    fulfillOp.add(observer: observer)
     fulfillOp.produceDependency(op)
-    op.queuePriority = .High
-    fulfillOp.queuePriority = .Normal
+    op.queuePriority = .high
+    fulfillOp.queuePriority = .normal
     q.addOperation(fulfillOp)
 
     // then
-    waitForExpectationsWithTimeout(10.0, handler: nil)
+    waitForExpectations(withTimeout: 10.0, handler: nil)
   }
 
 }

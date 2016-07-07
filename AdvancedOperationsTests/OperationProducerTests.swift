@@ -31,11 +31,11 @@ class OperationProducerTests: XCTestCase {
   /// a queue. Stashes the produced operation temporarily.
   func testStashOperation() {
     // given
-    let q = OperationQueue()
-    let producingOp = NSBlockOperation {}
-    let producedOp = NSBlockOperation {}
-    let expectation = expectationWithDescription("\(#function)")
-    producedOp.addObserver(IsFinishedObserver { (op) in
+    let q = AdvancedOperations.OperationQueue()
+    let producingOp = BlockOperation {}
+    let producedOp = BlockOperation {}
+    let expectation = self.expectation(withDescription: "\(#function)")
+    producedOp.add(observer: IsFinishedObserver { (op) in
       XCTAssert(op === producedOp)
       expectation.fulfill()
       })
@@ -43,16 +43,16 @@ class OperationProducerTests: XCTestCase {
     producingOp.produceOperation(producedOp)
     q.addOperation(producingOp)
     // then
-    waitForExpectationsWithTimeout(10.0, handler: nil)
+    waitForExpectations(withTimeout: 10.0, handler: nil)
   }
 
   func testProduceOperation() {
     // given
-    let q = OperationQueue()
-    let producingOp = NSBlockOperation {}
-    let producedOp = NSBlockOperation {}
-    let expectation = expectationWithDescription("\(#function)")
-    producedOp.addObserver(IsFinishedObserver { (op) in
+    let q = AdvancedOperations.OperationQueue()
+    let producingOp = BlockOperation {}
+    let producedOp = BlockOperation {}
+    let expectation = self.expectation(withDescription: "\(#function)")
+    producedOp.add(observer: IsFinishedObserver { (op) in
       XCTAssert(op === producedOp)
       expectation.fulfill()
       })
@@ -60,44 +60,44 @@ class OperationProducerTests: XCTestCase {
     q.addOperation(producingOp)
     producingOp.produceOperation(producedOp)
     // then
-    waitForExpectationsWithTimeout(10.0, handler: nil)
+    waitForExpectations(withTimeout: 10.0, handler: nil)
   }
 
   /// Produces an operation while executing.
   func testProduceOperationWhileExecuting() {
     // given
-    let q = OperationQueue()
-    let producedOp = NSBlockOperation {}
-    let producingOp = NSBlockOperation()
+    let q = AdvancedOperations.OperationQueue()
+    let producedOp = BlockOperation {}
+    let producingOp = BlockOperation()
     producingOp.addExecutionBlock {
       producingOp.produceOperation(producedOp)
     }
-    let expectation = expectationWithDescription("\(#function)")
-    producedOp.addObserver(IsFinishedObserver { (op) in
+    let expectation = self.expectation(withDescription: "\(#function)")
+    producedOp.add(observer: IsFinishedObserver { (op) in
       XCTAssert(op === producedOp)
       expectation.fulfill()
       })
     // when
     q.addOperation(producingOp)
     // then
-    waitForExpectationsWithTimeout(10.0, handler: nil)
+    waitForExpectations(withTimeout: 10.0, handler: nil)
   }
 
   func testProduceDependentWithBlock() {
     // given
-    let q = OperationQueue()
-    let op = NSBlockOperation {}
-    let expectation = expectationWithDescription("\(#function)")
+    let q = AdvancedOperations.OperationQueue()
+    let op = BlockOperation {}
+    let expectation = self.expectation(withDescription: "\(#function)")
     // when
-    op.produceDependentWithBlock { (op) in
-      guard let op = op where !op.cancelled else {
+    let _ = op.produceDependentWithBlock { (op) in
+      guard let op = op where !op.isCancelled else {
         return
       }
       expectation.fulfill()
     }
     q.addOperation(op)
     // then
-    waitForExpectationsWithTimeout(10.0, handler: nil)
+    waitForExpectations(withTimeout: 10.0, handler: nil)
   }
 
 }

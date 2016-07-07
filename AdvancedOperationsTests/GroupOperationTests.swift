@@ -27,7 +27,7 @@ import AdvancedOperations
 
 class GroupOperationTests: XCTestCase {
 
-  let q = OperationQueue()
+  let q = AdvancedOperations.OperationQueue()
 
   /// Adds a group operation to an operation queue. The group operation, in
   /// turn, adds a nested operation to its internal queue. The group operation
@@ -43,25 +43,25 @@ class GroupOperationTests: XCTestCase {
       }
 
       private override func execute() {
-        addOperation(NSBlockOperation())
+        addOperation(BlockOperation())
 
         // This test would fail if the group operation failed to un-suspend its
         // queue. It would wait indefinitely for the queue to resume. Some other
         // operation or block would have to resume it.
-        suspended = false
+        isSuspended = false
 
         waitUntilAllOperationsAreFinished()
         expectation.fulfill()
       }
 
     }
-    let groupOp = MyGroupOperation(expectationWithDescription("\(#function)"))
+    let groupOp = MyGroupOperation(expectation(withDescription: "\(#function)"))
 
     // when
     q.addOperation(groupOp)
 
     // then
-    waitForExpectationsWithTimeout(10.0, handler: nil)
+    waitForExpectations(withTimeout: 10.0, handler: nil)
   }
 
 }

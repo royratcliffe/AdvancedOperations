@@ -32,7 +32,7 @@ public class DelayOperation: Operation {
 
   public enum Delay {
 
-    case TimeInterval(NSTimeInterval)
+    case TimeInterval(Foundation.TimeInterval)
 
     case Date(NSDate)
 
@@ -42,7 +42,7 @@ public class DelayOperation: Operation {
     /// Invoked by the operation's `execute()` method whenever the operation
     /// begins. Hence the time interval from "now" only begins whenever the
     /// operation starts. Other dependencies may delay the start of the delay.
-    public var timeInterval: NSTimeInterval {
+    public var timeInterval: Foundation.TimeInterval {
       switch self {
       case .TimeInterval(let timeInterval):
         return timeInterval
@@ -60,7 +60,7 @@ public class DelayOperation: Operation {
     super.init()
   }
 
-  public convenience init(timeInterval: NSTimeInterval) {
+  public convenience init(timeInterval: Foundation.TimeInterval) {
     self.init(delay: .TimeInterval(timeInterval))
   }
 
@@ -83,13 +83,12 @@ public class DelayOperation: Operation {
     guard timeInterval > 0 else {
       return
     }
-    let semaphore = dispatch_semaphore_create(0)
-    let delta = Int64(timeInterval * NSTimeInterval(NSEC_PER_SEC))
-    let when = dispatch_time(DISPATCH_TIME_NOW, delta)
-    dispatch_after(when, dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0)) {
-      dispatch_semaphore_signal(semaphore)
+    let semaphore = DispatchSemaphore(value: 0)
+    let queue = DispatchQueue.global(attributes: .qosDefault)
+    queue.after(when: .now() + timeInterval) {
+      semaphore.signal()
     }
-    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+    semaphore.wait()
   }
 
 }

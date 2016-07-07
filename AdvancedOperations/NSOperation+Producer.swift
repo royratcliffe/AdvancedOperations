@@ -58,7 +58,7 @@ extension NSOperation {
   /// to trigger that step manually.
   ///
   /// - parameter op: Operation to produce.
-  public func produceOperation(op: NSOperation) {
+  public func produceOperation(_ op: NSOperation) {
     willProduceOperation(op)
     if let producer = producer {
       producer.produceOperation(op)
@@ -74,7 +74,7 @@ extension NSOperation {
   /// hence this operation will not start until `op` has finished; where
   /// finished includes cancelled.
   /// - parameter op: Operation to produce and make a dependency.
-  public func produceDependency(op: NSOperation) {
+  public func produceDependency(_ op: NSOperation) {
     addDependency(op)
     produceOperation(op)
   }
@@ -82,7 +82,7 @@ extension NSOperation {
   /// Produces a dependent operation.
   /// - parameter op: Operation to produce and make dependent on this
   ///   operation. Operation `op` will not start until this operation finishes.
-  public func produceDependent(op: NSOperation) {
+  public func produceDependent(_ op: NSOperation) {
     op.addDependency(self)
     produceOperation(op)
   }
@@ -110,8 +110,8 @@ extension NSOperation {
   ///
   /// - returns: The newly produced block operation on which this operation
   ///   depends.
-  public func produceDependencyWithBlock(block: (NSBlockOperation?) -> Void) -> NSBlockOperation {
-    let op = NSBlockOperation()
+  public func produceDependencyWithBlock(block: (BlockOperation?) -> Void) -> BlockOperation {
+    let op = BlockOperation()
     op.addExecutionBlock { [weak op] in
       block(op)
     }
@@ -121,8 +121,8 @@ extension NSOperation {
 
   /// Produces a dependent block operation whose start delays until this
   /// operation finishes.
-  public func produceDependentWithBlock(block: (NSBlockOperation?) -> Void) -> NSBlockOperation {
-    let op = NSBlockOperation()
+  public func produceDependentWithBlock(block: (BlockOperation?) -> Void) -> BlockOperation {
+    let op = BlockOperation()
     op.addExecutionBlock { [weak op] in
       block(op)
     }
@@ -130,11 +130,11 @@ extension NSOperation {
     return op
   }
 
-  public func willProduceOperation(op: NSOperation) {
+  public func willProduceOperation(_ op: NSOperation) {
     observer?.operation(self, willProduceOperation: op)
   }
 
-  public func didProduceOperation(op: NSOperation) {
+  public func didProduceOperation(_ op: NSOperation) {
     observer?.operation(self, didProduceOperation: op)
   }
 

@@ -39,7 +39,7 @@ public class GroupOperation: Operation {
 
   public override init() {
     super.init()
-    suspended = true
+    isSuspended = true
     underlyingQueue.delegate = self
   }
 
@@ -47,24 +47,24 @@ public class GroupOperation: Operation {
   /// not start until *this* operation starts. The group itself is an operation
   /// that needs adding to an operation queue in order to kickstart the group.
   /// - parameter op: Operation to add to this group.
-  public func addOperation(op: NSOperation) {
+  public func addOperation(_ op: NSOperation) {
     underlyingQueue.addOperation(op)
   }
 
   /// Accesses the group's suspend status. The group starts off suspended. Make
   /// `suspended` equal to false in order to start any added group operations.
-  public var suspended: Bool {
+  public var isSuspended: Bool {
     get {
-      return underlyingQueue.suspended
+      return underlyingQueue.isSuspended
     }
-    set(newSuspended) {
-      underlyingQueue.suspended = newSuspended
+    set(newIsSuspended) {
+      underlyingQueue.isSuspended = newIsSuspended
     }
   }
 
   /// Accesses the group operation queue's quality of service. It defaults to
   /// background quality.
-  public var underlyingQualityOfService: NSQualityOfService {
+  public var underlyingQualityOfService: QualityOfService {
     get {
       return underlyingQueue.qualityOfService
     }
@@ -96,7 +96,7 @@ public class GroupOperation: Operation {
   ///   at the earliest opportunity, false if the operation should continue.
   public func waitUntilNotCancelled() -> Bool {
     waitUntilAllOperationsAreFinished()
-    return !cancelled
+    return !isCancelled
   }
 
   //----------------------------------------------------------------------------
@@ -107,7 +107,7 @@ public class GroupOperation: Operation {
   /// finish. Finishing includes cancelling. Hence when this operation finishes,
   /// all its component operations have also finished.
   public override func execute() {
-    suspended = false
+    isSuspended = false
     waitUntilAllOperationsAreFinished()
   }
 

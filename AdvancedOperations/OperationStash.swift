@@ -35,7 +35,7 @@ public class OperationStash: NSObject, OperationProducer {
 
   public convenience init(ops: NSOperation...) {
     self.init()
-    operations.appendContentsOf(ops)
+    operations.append(contentsOf: ops)
   }
 
   /// Empties the stash.
@@ -45,7 +45,7 @@ public class OperationStash: NSObject, OperationProducer {
 
   // MARK: - OperationProducer
 
-  public func produceOperation(op: NSOperation) {
+  public func produceOperation(_ op: NSOperation) {
     operations.append(op)
   }
 

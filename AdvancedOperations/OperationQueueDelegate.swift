@@ -26,88 +26,88 @@ import Foundation
 
 public protocol OperationQueueDelegate: class {
 
-  func operationQueue(q: OperationQueue, willAddOperation op: NSOperation)
+  func operationQueue(_ q: OperationQueue, willAddOperation op: NSOperation)
 
-  func operationQueue(q: OperationQueue, didAddOperation op: NSOperation)
+  func operationQueue(_ q: OperationQueue, didAddOperation op: NSOperation)
 
-  func operationQueue(q: OperationQueue, operationWillAddObserver op: NSOperation)
+  func operationQueue(_ q: OperationQueue, operationWillAddObserver op: NSOperation)
 
-  func operationQueue(q: OperationQueue, operationDidAddObserver op: NSOperation)
+  func operationQueue(_ q: OperationQueue, operationDidAddObserver op: NSOperation)
 
-  func operationQueue(q: OperationQueue, operationWillRemoveObserver op: NSOperation)
+  func operationQueue(_ q: OperationQueue, operationWillRemoveObserver op: NSOperation)
 
-  func operationQueue(q: OperationQueue, operationDidRemoveObserver op: NSOperation)
+  func operationQueue(_ q: OperationQueue, operationDidRemoveObserver op: NSOperation)
 
-  func operationQueue(q: OperationQueue, operationWillStart op: NSOperation)
+  func operationQueue(_ q: OperationQueue, operationWillStart op: NSOperation)
 
-  func operationQueue(q: OperationQueue, operationDidStart op: NSOperation)
+  func operationQueue(_ q: OperationQueue, operationDidStart op: NSOperation)
 
-  func operationQueue(q: OperationQueue, operationWillExecute op: NSOperation)
+  func operationQueue(_ q: OperationQueue, operationWillExecute op: NSOperation)
 
-  func operationQueue(q: OperationQueue, operationDidExecute op: NSOperation)
+  func operationQueue(_ q: OperationQueue, operationDidExecute op: NSOperation)
 
-  func operationQueue(q: OperationQueue, operationWillCancel op: NSOperation)
+  func operationQueue(_ q: OperationQueue, operationWillCancel op: NSOperation)
 
-  func operationQueue(q: OperationQueue, operationDidCancel op: NSOperation)
+  func operationQueue(_ q: OperationQueue, operationDidCancel op: NSOperation)
 
-  func operationQueue(q: OperationQueue, operation op: NSOperation, willChangeIsCancelled isCancelled: Bool)
+  func operationQueue(_ q: OperationQueue, operation op: NSOperation, willChangeIsCancelled isCancelled: Bool)
 
-  func operationQueue(q: OperationQueue, operation op: NSOperation, didChangeIsCancelled isCancelled: Bool, wasCancelled: Bool)
+  func operationQueue(_ q: OperationQueue, operation op: NSOperation, didChangeIsCancelled isCancelled: Bool, wasCancelled: Bool)
 
-  func operationQueue(q: OperationQueue, operation op: NSOperation, willChangeIsExecuting isExecuting: Bool)
+  func operationQueue(_ q: OperationQueue, operation op: NSOperation, willChangeIsExecuting isExecuting: Bool)
 
-  func operationQueue(q: OperationQueue, operation op: NSOperation, didChangeIsExecuting isExecuting: Bool, wasExecuting: Bool)
+  func operationQueue(_ q: OperationQueue, operation op: NSOperation, didChangeIsExecuting isExecuting: Bool, wasExecuting: Bool)
 
-  func operationQueue(q: OperationQueue, operation op: NSOperation, willChangeIsFinished isFinished: Bool)
+  func operationQueue(_ q: OperationQueue, operation op: NSOperation, willChangeIsFinished isFinished: Bool)
 
-  func operationQueue(q: OperationQueue, operation op: NSOperation, didChangeIsFinished isFinished: Bool, wasFinished: Bool)
+  func operationQueue(_ q: OperationQueue, operation op: NSOperation, didChangeIsFinished isFinished: Bool, wasFinished: Bool)
 
-  func operationQueue(q: OperationQueue, operation op: NSOperation, willChangeIsReady isReady: Bool)
+  func operationQueue(_ q: OperationQueue, operation op: NSOperation, willChangeIsReady isReady: Bool)
 
-  func operationQueue(q: OperationQueue, operation op: NSOperation, didChangeIsReady isReady: Bool, wasReady: Bool)
+  func operationQueue(_ q: OperationQueue, operation op: NSOperation, didChangeIsReady isReady: Bool, wasReady: Bool)
 
 }
 
 extension OperationQueueDelegate {
 
-  public func operationQueue(q: OperationQueue, willAddOperation op: NSOperation) {}
+  public func operationQueue(_ q: OperationQueue, willAddOperation op: NSOperation) {}
 
-  public func operationQueue(q: OperationQueue, didAddOperation op: NSOperation) {}
+  public func operationQueue(_ q: OperationQueue, didAddOperation op: NSOperation) {}
 
-  public func operationQueue(q: OperationQueue, operationWillAddObserver op: NSOperation) {}
+  public func operationQueue(_ q: OperationQueue, operationWillAddObserver op: NSOperation) {}
 
-  public func operationQueue(q: OperationQueue, operationDidAddObserver op: NSOperation) {}
+  public func operationQueue(_ q: OperationQueue, operationDidAddObserver op: NSOperation) {}
 
-  public func operationQueue(q: OperationQueue, operationWillRemoveObserver op: NSOperation) {}
+  public func operationQueue(_ q: OperationQueue, operationWillRemoveObserver op: NSOperation) {}
 
-  public func operationQueue(q: OperationQueue, operationDidRemoveObserver op: NSOperation) {}
+  public func operationQueue(_ q: OperationQueue, operationDidRemoveObserver op: NSOperation) {}
 
-  public func operationQueue(q: OperationQueue, operationWillStart op: NSOperation) {}
+  public func operationQueue(_ q: OperationQueue, operationWillStart op: NSOperation) {}
 
-  public func operationQueue(q: OperationQueue, operationDidStart op: NSOperation) {}
+  public func operationQueue(_ q: OperationQueue, operationDidStart op: NSOperation) {}
 
-  public func operationQueue(q: OperationQueue, operationWillExecute op: NSOperation) {}
+  public func operationQueue(_ q: OperationQueue, operationWillExecute op: NSOperation) {}
 
-  public func operationQueue(q: OperationQueue, operationDidExecute op: NSOperation) {}
+  public func operationQueue(_ q: OperationQueue, operationDidExecute op: NSOperation) {}
 
-  public func operationQueue(q: OperationQueue, operationWillCancel op: NSOperation) {}
+  public func operationQueue(_ q: OperationQueue, operationWillCancel op: NSOperation) {}
 
-  public func operationQueue(q: OperationQueue, operationDidCancel op: NSOperation) {}
+  public func operationQueue(_ q: OperationQueue, operationDidCancel op: NSOperation) {}
 
-  public func operationQueue(q: OperationQueue, operation op: NSOperation, willChangeIsCancelled isCancelled: Bool) {}
+  public func operationQueue(_ q: OperationQueue, operation op: NSOperation, willChangeIsCancelled isCancelled: Bool) {}
 
-  public func operationQueue(q: OperationQueue, operation op: NSOperation, didChangeIsCancelled isCancelled: Bool, wasCancelled: Bool) {}
+  public func operationQueue(_ q: OperationQueue, operation op: NSOperation, didChangeIsCancelled isCancelled: Bool, wasCancelled: Bool) {}
 
-  public func operationQueue(q: OperationQueue, operation op: NSOperation, willChangeIsExecuting isExecuting: Bool) {}
+  public func operationQueue(_ q: OperationQueue, operation op: NSOperation, willChangeIsExecuting isExecuting: Bool) {}
 
-  public func operationQueue(q: OperationQueue, operation op: NSOperation, didChangeIsExecuting isExecuting: Bool, wasExecuting: Bool) {}
+  public func operationQueue(_ q: OperationQueue, operation op: NSOperation, didChangeIsExecuting isExecuting: Bool, wasExecuting: Bool) {}
 
-  public func operationQueue(q: OperationQueue, operation op: NSOperation, willChangeIsFinished isFinished: Bool) {}
+  public func operationQueue(_ q: OperationQueue, operation op: NSOperation, willChangeIsFinished isFinished: Bool) {}
 
-  public func operationQueue(q: OperationQueue, operation op: NSOperation, didChangeIsFinished isFinished: Bool, wasFinished: Bool) {}
+  public func operationQueue(_ q: OperationQueue, operation op: NSOperation, didChangeIsFinished isFinished: Bool, wasFinished: Bool) {}
 
-  public func operationQueue(q: OperationQueue, operation op: NSOperation, willChangeIsReady isReady: Bool) {}
+  public func operationQueue(_ q: OperationQueue, operation op: NSOperation, willChangeIsReady isReady: Bool) {}
 
-  public func operationQueue(q: OperationQueue, operation op: NSOperation, didChangeIsReady isReady: Bool, wasReady: Bool) {}
+  public func operationQueue(_ q: OperationQueue, operation op: NSOperation, didChangeIsReady isReady: Bool, wasReady: Bool) {}
 
 }

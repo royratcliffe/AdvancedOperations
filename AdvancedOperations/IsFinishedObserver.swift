@@ -34,7 +34,7 @@ public class IsFinishedObserver: OperationChangeObserver {
     self.block = block
   }
 
-  public override func operation(op: NSOperation,
+  public override func operation(_ op: NSOperation,
                                  didChangeIsFinished isFinished: Bool,
                                                      wasFinished: Bool) {
     if isFinished && !wasFinished {

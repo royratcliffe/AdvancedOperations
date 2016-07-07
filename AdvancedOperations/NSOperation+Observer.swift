@@ -53,15 +53,15 @@ extension NSOperation {
   /// Note, adding an observer sends will- and did-add observer
   /// notifications. The observer composite does not itself trigger observer
   /// notifications.
-  public func addObserver(newObserver: OperationObserver) {
+  public func add(observer newObserver: OperationObserver) {
     newObserver.operationWillAddObserver(self)
     if let observer = observer {
       if let observers = observer as? OperationObservers {
-        observers.addObserver(newObserver)
+        observers.add(observer: newObserver)
       } else {
         let observers = OperationObservers()
-        observers.addObserver(observer)
-        observers.addObserver(newObserver)
+        observers.add(observer: observer)
+        observers.add(observer: newObserver)
         self.observer = observers
       }
     } else {
@@ -72,7 +72,7 @@ extension NSOperation {
 
   /// Removes an operation observer from this operation. The observer
   /// automatically receives notification of the removal, both before and after.
-  public func removeObserver(oldObserver: OperationObserver) {
+  public func remove(observer oldObserver: OperationObserver) {
     guard let observer = observer else {
       return
     }
@@ -81,11 +81,11 @@ extension NSOperation {
       self.observer = nil
       oldObserver.operationDidRemoveObserver(self)
     } else if let observers = observer as? OperationObservers {
-      guard observers.containsObserver(oldObserver) else {
+      guard observers.contains(observer: oldObserver) else {
         return
       }
       oldObserver.operationWillRemoveObserver(self)
-      observers.removeObserver(oldObserver)
+      let _ = observers.remove(observer: oldObserver)
       oldObserver.operationDidRemoveObserver(self)
     }
   }
