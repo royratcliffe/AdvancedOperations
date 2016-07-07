@@ -49,7 +49,7 @@ class OperationObserverTests: XCTestCase {
       })
 
     // when
-    q.addOperation(op)
+    q.add(operation: op)
 
     // then
     waitForExpectations(withTimeout: 10.0, handler: nil)

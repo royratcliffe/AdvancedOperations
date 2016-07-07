@@ -41,7 +41,7 @@ class OperationProducerTests: XCTestCase {
       })
     // when
     producingOp.produce(operation: producedOp)
-    q.addOperation(producingOp)
+    q.add(operation: producingOp)
     // then
     waitForExpectations(withTimeout: 10.0, handler: nil)
   }
@@ -57,7 +57,7 @@ class OperationProducerTests: XCTestCase {
       expectation.fulfill()
       })
     // when
-    q.addOperation(producingOp)
+    q.add(operation: producingOp)
     producingOp.produce(operation: producedOp)
     // then
     waitForExpectations(withTimeout: 10.0, handler: nil)
@@ -78,7 +78,7 @@ class OperationProducerTests: XCTestCase {
       expectation.fulfill()
       })
     // when
-    q.addOperation(producingOp)
+    q.add(operation: producingOp)
     // then
     waitForExpectations(withTimeout: 10.0, handler: nil)
   }
@@ -95,7 +95,7 @@ class OperationProducerTests: XCTestCase {
       }
       expectation.fulfill()
     }
-    q.addOperation(op)
+    q.add(operation: op)
     // then
     waitForExpectations(withTimeout: 10.0, handler: nil)
   }

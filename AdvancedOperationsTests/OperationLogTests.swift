@@ -49,7 +49,7 @@ class OperationLogTests: XCTestCase {
     fulfillOp.produce(dependency: op)
     op.queuePriority = .high
     fulfillOp.queuePriority = .normal
-    q.addOperation(fulfillOp)
+    q.add(operation: fulfillOp)
 
     // then
     waitForExpectations(withTimeout: 10.0, handler: nil)

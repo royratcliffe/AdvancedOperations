@@ -49,7 +49,7 @@ class DelayOperationTests: XCTestCase {
     // when
     firstOp.produce(dependent: delayOp)
     delayOp.produce(dependent: lastOp)
-    q.addOperation(firstOp)
+    q.add(operation: firstOp)
 
     // then
     waitForExpectations(withTimeout: 3.0) { (error) in
