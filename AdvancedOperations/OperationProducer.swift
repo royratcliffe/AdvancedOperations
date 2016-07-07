@@ -31,6 +31,6 @@ import Foundation
 /// what to do when one operation produces another.
 public protocol OperationProducer: class {
 
-  func produceOperation(_ op: NSOperation)
+  func produce(operation op: NSOperation)
 
 }

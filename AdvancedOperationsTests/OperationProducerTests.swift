@@ -40,7 +40,7 @@ class OperationProducerTests: XCTestCase {
       expectation.fulfill()
       })
     // when
-    producingOp.produceOperation(producedOp)
+    producingOp.produce(operation: producedOp)
     q.addOperation(producingOp)
     // then
     waitForExpectations(withTimeout: 10.0, handler: nil)
@@ -58,7 +58,7 @@ class OperationProducerTests: XCTestCase {
       })
     // when
     q.addOperation(producingOp)
-    producingOp.produceOperation(producedOp)
+    producingOp.produce(operation: producedOp)
     // then
     waitForExpectations(withTimeout: 10.0, handler: nil)
   }
@@ -70,7 +70,7 @@ class OperationProducerTests: XCTestCase {
     let producedOp = BlockOperation {}
     let producingOp = BlockOperation()
     producingOp.addExecutionBlock {
-      producingOp.produceOperation(producedOp)
+      producingOp.produce(operation: producedOp)
     }
     let expectation = self.expectation(withDescription: "\(#function)")
     producedOp.add(observer: IsFinishedObserver { (op) in

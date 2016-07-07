@@ -37,7 +37,7 @@ extension NSOperation {
   }
 
   /// Adds zero or more dependent operations.
-  public func addDependencies(dependencies: [NSOperation]) {
+  public func add(dependencies: [NSOperation]) {
     for dependency in dependencies {
       addDependency(dependency)
     }
@@ -52,7 +52,7 @@ extension NSOperation {
   /// actually replaces it with a new block which first invokes the existing
   /// block then invokes the new block, thereby chaining the blocks together. As
   /// a result, completion blocks always execute in the order added.
-  public func addCompletionBlock(newCompletionBlock: (Void) -> Void) {
+  public func add(completionBlock newCompletionBlock: (Void) -> Void) {
     if let oldCompletionBlock = completionBlock {
       completionBlock = {
         oldCompletionBlock()

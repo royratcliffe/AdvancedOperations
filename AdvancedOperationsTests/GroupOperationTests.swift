@@ -43,7 +43,7 @@ class GroupOperationTests: XCTestCase {
       }
 
       private override func execute() {
-        addOperation(BlockOperation())
+        add(operation: BlockOperation())
 
         // This test would fail if the group operation failed to un-suspend its
         // queue. It would wait indefinitely for the queue to resume. Some other

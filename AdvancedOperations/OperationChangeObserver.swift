@@ -28,7 +28,7 @@ public class OperationChangeObserver: KeyValueObserver, OperationObserver {
 
   /// Observes a given operation. Observes all its key-value-observing compliant
   /// properties.
-  public func addOperation(_ op: NSOperation) {
+  public func add(operation op: NSOperation) {
     for keyPath in ["isCancelled",
                     "isExecuting",
                     "isFinished",
@@ -42,7 +42,7 @@ public class OperationChangeObserver: KeyValueObserver, OperationObserver {
   }
 
   /// Removes all observations for the given operation.
-  public func removeOperation(_ op: NSOperation) {
+  public func remove(operation op: NSOperation) {
     remove(object: op)
   }
 
@@ -163,7 +163,7 @@ public class OperationChangeObserver: KeyValueObserver, OperationObserver {
   /// observing the operation immediately. This runs when the operation adds the
   /// observer.
   public func operationWillAddObserver(_ op: NSOperation) {
-    addOperation(op)
+    add(operation: op)
   }
 
   public func operationDidAddObserver(_ op: NSOperation) {}
@@ -171,7 +171,7 @@ public class OperationChangeObserver: KeyValueObserver, OperationObserver {
   public func operationWillRemoveObserver(_ op: NSOperation) {}
 
   public func operationDidRemoveObserver(_ op: NSOperation) {
-    removeOperation(op)
+    remove(operation: op)
   }
 
   public func operationWillStart(_ op: NSOperation) {}

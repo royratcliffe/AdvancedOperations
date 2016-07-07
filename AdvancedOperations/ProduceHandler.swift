@@ -40,7 +40,7 @@ public class ProduceHandler: NSObject, OperationProducer {
 
   // MARK: - OperationProducer
 
-  public func produceOperation(_ op: NSOperation) {
+  public func produce(operation op: NSOperation) {
     block(op)
   }
 

@@ -47,8 +47,8 @@ public class GroupOperation: Operation {
   /// not start until *this* operation starts. The group itself is an operation
   /// that needs adding to an operation queue in order to kickstart the group.
   /// - parameter op: Operation to add to this group.
-  public func addOperation(_ op: NSOperation) {
-    underlyingQueue.addOperation(op)
+  public func add(operation op: NSOperation) {
+    underlyingQueue.add(operation: op)
   }
 
   /// Accesses the group's suspend status. The group starts off suspended. Make

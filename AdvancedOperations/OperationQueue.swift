@@ -126,7 +126,7 @@ public class OperationQueue: NSOperationQueue {
   //----------------------------------------------------------------------------
   // MARK: - Delegate Notifications
 
-  public func willAddOperation(_ op: NSOperation) {
+  public func willAdd(operation op: NSOperation) {
     delegate?.operationQueue(self, willAddOperation: op)
   }
 
@@ -137,10 +137,10 @@ public class OperationQueue: NSOperationQueue {
   /// all its operations to this queue also. As the new producer, this queue
   /// then automatically adds any further produced operations to the queue, as
   /// and when they appear.
-  public func didAddOperation(_ op: NSOperation) {
+  public func didAdd(operation op: NSOperation) {
     delegate?.operationQueue(self, didAddOperation: op)
     op.add(observer: OperationObserver(self))
-    produceForOperation(op)
+    produceFor(operation: op)
   }
 
   public func operationWillAddObserver(_ op: NSOperation) {
@@ -227,9 +227,9 @@ public class OperationQueue: NSOperationQueue {
   // MARK: - NSOperationQueue Overrides
 
   public override func addOperation(_ op: NSOperation) {
-    willAddOperation(op)
+    willAdd(operation: op)
     super.addOperation(op)
-    didAddOperation(op)
+    didAdd(operation: op)
   }
 
   // Adds operations and optionally waits until finishes. This implementation
@@ -237,7 +237,7 @@ public class OperationQueue: NSOperationQueue {
   // super-class does not invoke `addOperation()` iteratively when adding.
   public override func addOperations(_ ops: [NSOperation], waitUntilFinished wait: Bool) {
     for op in ops {
-      addOperation(op)
+      add(operation: op)
     }
     if wait {
       waitUntilAllOperationsAreFinished()

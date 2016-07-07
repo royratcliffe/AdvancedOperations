@@ -45,7 +45,7 @@ public class OperationStash: NSObject, OperationProducer {
 
   // MARK: - OperationProducer
 
-  public func produceOperation(_ op: NSOperation) {
+  public func produce(operation op: NSOperation) {
     operations.append(op)
   }
 

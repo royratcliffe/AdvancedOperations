@@ -58,14 +58,14 @@ extension NSOperation {
   /// to trigger that step manually.
   ///
   /// - parameter op: Operation to produce.
-  public func produceOperation(_ op: NSOperation) {
-    willProduceOperation(op)
+  public func produce(operation op: NSOperation) {
+    willProduce(operation: op)
     if let producer = producer {
-      producer.produceOperation(op)
+      producer.produce(operation: op)
     } else {
       producer = OperationStash(ops: op)
     }
-    didProduceOperation(op)
+    didProduce(operation: op)
   }
 
   /// Produces an operation dependency. This operation will depend on the given
@@ -76,7 +76,7 @@ extension NSOperation {
   /// - parameter op: Operation to produce and make a dependency.
   public func produceDependency(_ op: NSOperation) {
     addDependency(op)
-    produceOperation(op)
+    produce(operation: op)
   }
 
   /// Produces a dependent operation.
@@ -84,7 +84,7 @@ extension NSOperation {
   ///   operation. Operation `op` will not start until this operation finishes.
   public func produceDependent(_ op: NSOperation) {
     op.addDependency(self)
-    produceOperation(op)
+    produce(operation: op)
   }
 
   /// Conveniently constructs a block operation using a given block, makes the
@@ -130,11 +130,11 @@ extension NSOperation {
     return op
   }
 
-  public func willProduceOperation(_ op: NSOperation) {
+  public func willProduce(operation op: NSOperation) {
     observer?.operation(self, willProduceOperation: op)
   }
 
-  public func didProduceOperation(_ op: NSOperation) {
+  public func didProduce(operation op: NSOperation) {
     observer?.operation(self, didProduceOperation: op)
   }
 
