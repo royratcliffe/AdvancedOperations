@@ -32,8 +32,8 @@ public class OperationQueueDelegates: OperationQueueDelegate {
 
   var delegates = [OperationQueueDelegate]()
 
-  public func add(delegate newDelegate: OperationQueueDelegate) {
-    delegates.append(newDelegate)
+  public func add(delegate: OperationQueueDelegate) {
+    delegates.append(delegate)
   }
 
   //----------------------------------------------------------------------------
