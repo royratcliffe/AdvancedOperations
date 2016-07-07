@@ -39,6 +39,7 @@ public class GroupOperation: Operation {
 
   public override init() {
     super.init()
+    isSuspended = true
     underlyingQueue.delegate = self
   }
 
