@@ -6,9 +6,5 @@ osx_image: xcode8
 # See https://docs.travis-ci.com/user/languages/objective-c for details.
 xcode_sdk: iphonesimulator
 
-before_install:
-  - brew update
-  - brew uninstall xctool && brew install --HEAD xctool
-
 xcode_project: AdvancedOperations.xcodeproj
 xcode_scheme: AdvancedOperations
