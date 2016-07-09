@@ -113,8 +113,8 @@
 		7893D93A1CC9175C0026AB53 = {
 			isa = PBXGroup;
 			children = (
-				7893D9461CC9175C0026AB53 /* AdvancedOperations */,
-				7893D9521CC9175C0026AB53 /* AdvancedOperationsTests */,
+				7893D9461CC9175C0026AB53 /* Sources */,
+				7893D9521CC9175C0026AB53 /* Tests */,
 				7893D9451CC9175C0026AB53 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -128,7 +128,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7893D9461CC9175C0026AB53 /* AdvancedOperations */ = {
+		7893D9461CC9175C0026AB53 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				7893D9471CC9175C0026AB53 /* AdvancedOperations.h */,
@@ -159,10 +159,10 @@
 				78AE26491CECA5C60027E909 /* DelayOperation.swift */,
 				7893D9491CC9175C0026AB53 /* Info.plist */,
 			);
-			path = AdvancedOperations;
+			path = Sources;
 			sourceTree = "<group>";
 		};
-		7893D9521CC9175C0026AB53 /* AdvancedOperationsTests */ = {
+		7893D9521CC9175C0026AB53 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				7893D9531CC9175C0026AB53 /* OperationsTests.swift */,
@@ -173,7 +173,7 @@
 				78AE264B1CECB1E70027E909 /* DelayOperationTests.swift */,
 				7893D9551CC9175C0026AB53 /* Info.plist */,
 			);
-			path = AdvancedOperationsTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
