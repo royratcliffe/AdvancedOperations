@@ -483,7 +483,7 @@
 		7893D95C1CC9175C0026AB53 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = AdvancedOperationsTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.pioneeringsoftware.AdvancedOperationsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -493,7 +493,7 @@
 		7893D95D1CC9175C0026AB53 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = AdvancedOperationsTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.pioneeringsoftware.AdvancedOperationsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
