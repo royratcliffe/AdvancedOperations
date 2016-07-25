@@ -101,7 +101,7 @@ extension NSOperation {
   ///   guard that there is some operation and that the operation is not
   ///   cancelled before proceeding.
   ///
-  ///       op.produceDependentWithBlock { (op) in
+  ///       op.produceDependent { (op) in
   ///         guard let op = op where !op.cancelled else {
   ///           return
   ///         }
@@ -110,7 +110,7 @@ extension NSOperation {
   ///
   /// - returns: The newly produced block operation on which this operation
   ///   depends.
-  public func produceDependencyWithBlock(block: (BlockOperation?) -> Void) -> BlockOperation {
+  public func produceDependency(with block: (BlockOperation?) -> Void) -> BlockOperation {
     let op = BlockOperation()
     op.addExecutionBlock { [weak op] in
       block(op)
@@ -121,7 +121,7 @@ extension NSOperation {
 
   /// Produces a dependent block operation whose start delays until this
   /// operation finishes.
-  public func produceDependentWithBlock(block: (BlockOperation?) -> Void) -> BlockOperation {
+  public func produceDependent(with block: (BlockOperation?) -> Void) -> BlockOperation {
     let op = BlockOperation()
     op.addExecutionBlock { [weak op] in
       block(op)
