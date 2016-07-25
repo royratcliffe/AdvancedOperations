@@ -40,7 +40,7 @@ class OperationObserverTests: XCTestCase {
       }
       let _ = semaphore.wait(timeout: DispatchTime.distantFuture)
     }
-    let expectation = self.expectation(withDescription: "IsFinished")
+    let expectation = self.expectation(description: "IsFinished")
     op.add(observer: IsFinishedObserver { (_) in
       // Fulfills the expectation when the operation changes from not finished to
       // finished. Assumes that it only observes one operation, hence ignores
@@ -52,7 +52,7 @@ class OperationObserverTests: XCTestCase {
     q.add(operation: op)
 
     // then
-    waitForExpectations(withTimeout: 10.0, handler: nil)
+    waitForExpectations(timeout: 10.0, handler: nil)
   }
 
 }

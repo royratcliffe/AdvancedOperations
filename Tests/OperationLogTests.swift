@@ -32,7 +32,7 @@ class OperationLogTests: XCTestCase {
   /// changes to the operation.
   func testLog() {
     // given
-    let expectation = self.expectation(withDescription: "Log")
+    let expectation = self.expectation(description: "Log")
     let q = AdvancedOperations.OperationQueue()
     let op = AdvancedOperations.Operation()
     let fulfillOp = BlockOperation {
@@ -52,7 +52,7 @@ class OperationLogTests: XCTestCase {
     q.add(operation: fulfillOp)
 
     // then
-    waitForExpectations(withTimeout: 10.0, handler: nil)
+    waitForExpectations(timeout: 10.0, handler: nil)
   }
 
 }

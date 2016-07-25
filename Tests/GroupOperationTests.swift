@@ -55,13 +55,13 @@ class GroupOperationTests: XCTestCase {
       }
 
     }
-    let groupOp = MyGroupOperation(expectation(withDescription: "\(#function)"))
+    let groupOp = MyGroupOperation(expectation(description: "\(#function)"))
 
     // when
     q.addOperation(groupOp)
 
     // then
-    waitForExpectations(withTimeout: 10.0, handler: nil)
+    waitForExpectations(timeout: 10.0, handler: nil)
   }
 
 }

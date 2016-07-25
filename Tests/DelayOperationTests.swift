@@ -33,7 +33,7 @@ class DelayOperationTests: XCTestCase {
   /// as well as fulfilling a one-second delay expectation.
   func testOneSecond() {
     // given
-    let expectation = self.expectation(withDescription: "OneSecond")
+    let expectation = self.expectation(description: "OneSecond")
     let q = AdvancedOperations.OperationQueue()
     var firstDate: Date?
     let firstOp = BlockOperation {
@@ -52,7 +52,7 @@ class DelayOperationTests: XCTestCase {
     q.add(operation: firstOp)
 
     // then
-    waitForExpectations(withTimeout: 3.0) { (error) in
+    waitForExpectations(timeout: 3.0) { (error) in
       if let error = error {
         NSLog("%@", error.localizedDescription)
       }

@@ -34,7 +34,7 @@ class OperationProducerTests: XCTestCase {
     let q = AdvancedOperations.OperationQueue()
     let producingOp = BlockOperation {}
     let producedOp = BlockOperation {}
-    let expectation = self.expectation(withDescription: "\(#function)")
+    let expectation = self.expectation(description: "\(#function)")
     producedOp.add(observer: IsFinishedObserver { (op) in
       XCTAssert(op === producedOp)
       expectation.fulfill()
@@ -43,7 +43,7 @@ class OperationProducerTests: XCTestCase {
     producingOp.produce(operation: producedOp)
     q.add(operation: producingOp)
     // then
-    waitForExpectations(withTimeout: 10.0, handler: nil)
+    waitForExpectations(timeout: 10.0, handler: nil)
   }
 
   func testProduceOperation() {
@@ -51,7 +51,7 @@ class OperationProducerTests: XCTestCase {
     let q = AdvancedOperations.OperationQueue()
     let producingOp = BlockOperation {}
     let producedOp = BlockOperation {}
-    let expectation = self.expectation(withDescription: "\(#function)")
+    let expectation = self.expectation(description: "\(#function)")
     producedOp.add(observer: IsFinishedObserver { (op) in
       XCTAssert(op === producedOp)
       expectation.fulfill()
@@ -60,7 +60,7 @@ class OperationProducerTests: XCTestCase {
     q.add(operation: producingOp)
     producingOp.produce(operation: producedOp)
     // then
-    waitForExpectations(withTimeout: 10.0, handler: nil)
+    waitForExpectations(timeout: 10.0, handler: nil)
   }
 
   /// Produces an operation while executing.
@@ -72,7 +72,7 @@ class OperationProducerTests: XCTestCase {
     producingOp.addExecutionBlock {
       producingOp.produce(operation: producedOp)
     }
-    let expectation = self.expectation(withDescription: "\(#function)")
+    let expectation = self.expectation(description: "\(#function)")
     producedOp.add(observer: IsFinishedObserver { (op) in
       XCTAssert(op === producedOp)
       expectation.fulfill()
@@ -80,14 +80,14 @@ class OperationProducerTests: XCTestCase {
     // when
     q.add(operation: producingOp)
     // then
-    waitForExpectations(withTimeout: 10.0, handler: nil)
+    waitForExpectations(timeout: 10.0, handler: nil)
   }
 
   func testProduceDependentWithBlock() {
     // given
     let q = AdvancedOperations.OperationQueue()
     let op = BlockOperation {}
-    let expectation = self.expectation(withDescription: "\(#function)")
+    let expectation = self.expectation(description: "\(#function)")
     // when
     let _ = op.produceDependentWithBlock { (op) in
       guard let op = op where !op.isCancelled else {
@@ -97,7 +97,7 @@ class OperationProducerTests: XCTestCase {
     }
     q.add(operation: op)
     // then
-    waitForExpectations(withTimeout: 10.0, handler: nil)
+    waitForExpectations(timeout: 10.0, handler: nil)
   }
 
 }
