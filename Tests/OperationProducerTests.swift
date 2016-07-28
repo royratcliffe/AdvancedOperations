@@ -90,7 +90,7 @@ class OperationProducerTests: XCTestCase {
     let expectation = self.expectation(description: "\(#function)")
     // when
     let _ = op.produceDependent { (op) in
-      guard let op = op where !op.isCancelled else {
+      guard let op = op, !op.isCancelled else {
         return
       }
       expectation.fulfill()
