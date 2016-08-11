@@ -1,5 +1,15 @@
 # Change Log
 
+## [0.1.11](https://github.com/royratcliffe/AdvancedOperations/tree/0.1.11) (2016-08-11)
+
+- Merge branch 'feature/swift_2_3' into develop
+- Fixed relative project path within workspace
+- Use whole-module optimisation
+- Using Xcode 8
+- Start Swift 2.3 migration
+
+[Full Change Log](https://github.com/royratcliffe/AdvancedOperations/compare/0.1.10...0.1.11)
+
 ## [0.1.10](https://github.com/royratcliffe/AdvancedOperations/tree/0.1.10) (2016-05-26)
 
 - Merge branch 'feature/delay_operation' into develop
