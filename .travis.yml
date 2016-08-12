@@ -3,7 +3,7 @@ osx_image: xcode8
 
 env:
   matrix:
-    - DESTINATION="platform=iOS Simulator,name=iPhone 6s"
+    - DESTINATION="name=iPhone 6s"
 
 script:
   - xcodebuild -sdk "$TRAVIS_XCODE_SDK" -destination "$DESTINATION" -scheme "$TRAVIS_XCODE_SCHEME" test
