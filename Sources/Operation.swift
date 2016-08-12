@@ -68,7 +68,7 @@ public class Operation: NSOperation {
   }
 
   public override func main() {
-    guard !cancelled else {
+    guard !isCancelled else {
       return
     }
     willExecute()

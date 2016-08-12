@@ -1,4 +1,4 @@
-// AdvancedOperationsTests OperationObserverTests.swift
+// AdvancedOperations OperationStash.swift
 //
 // Copyright © 2016, Roy Ratcliffe, Pioneering Software, United Kingdom
 //
@@ -22,38 +22,31 @@
 //
 //------------------------------------------------------------------------------
 
-import XCTest
-import AdvancedOperations
+import Foundation
 
-class OperationObserverTests: XCTestCase {
+/// Implements the operation producer protocol. Does nothing with the operations
+/// except for stashing them.
+public class OperationStash: NSObject, OperationProducer {
 
-  /// Tests operation is-finished observations. Executes a three-second waiting
-  /// operation while watching for its finished status to change from false to
-  /// true.
-  func testIsFinished() {
-    // given
-    let q = OperationQueue()
-    let op = NSBlockOperation {
-      let semaphore = dispatch_semaphore_create(0)
-      let when = dispatch_time(DISPATCH_TIME_NOW, Int64(3.0 * Double(NSEC_PER_SEC)))
-      dispatch_after(when, dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0)) {
-        dispatch_semaphore_signal(semaphore)
-      }
-      dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
-    }
-    let expectation = expectationWithDescription("IsFinished")
-    op.addObserver(IsFinishedObserver { (_) in
-      // Fulfills the expectation when the operation changes from not finished to
-      // finished. Assumes that it only observes one operation, hence ignores
-      // *which* operation finished, if there really are more than one.
-      expectation.fulfill()
-      })
+  /// - returns: an array of stashed operations. Accessing the operations does
+  ///   not empty the stash. Invoke `removeAllOperations()` to empty all stashed
+  ///   operations.
+  private(set) var operations = [NSOperation]()
 
-    // when
-    q.addOperation(op)
+  public convenience init(ops: NSOperation...) {
+    self.init()
+    operations.append(contentsOf: ops)
+  }
 
-    // then
-    waitForExpectationsWithTimeout(10.0, handler: nil)
+  /// Empties the stash.
+  public func removeAllOperations() {
+    operations.removeAll()
+  }
+
+  // MARK: - OperationProducer
+
+  public func produce(operation op: NSOperation) {
+    operations.append(op)
   }
 
 }

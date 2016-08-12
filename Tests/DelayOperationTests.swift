@@ -1,4 +1,4 @@
-// AdvancedOperations OperationQueueDelegates.swift
+// AdvancedOperationsTests DelayOperationTests.swift
 //
 // Copyright © 2016, Roy Ratcliffe, Pioneering Software, United Kingdom
 //
@@ -22,33 +22,45 @@
 //
 //------------------------------------------------------------------------------
 
-import Foundation
+import XCTest
+import AdvancedOperations
 
-/// Implements an operation-queue delegate that relays delegate notifications to
-/// zero or more *other* operation-queue delegates. The `addDelegate()` method
-/// of `OperationQueue` uses an instance of this class to add new delegates when
-/// an already-existing delegate appears for the queue.
-public class OperationQueueDelegates: OperationQueueDelegate {
+class DelayOperationTests: XCTestCase {
 
-  var delegates = [OperationQueueDelegate]()
-
-  public func addDelegate(newDelegate: OperationQueueDelegate) {
-    delegates.append(newDelegate)
-  }
-
-  //----------------------------------------------------------------------------
-  // MARK: - OperationQueueDelegate
-
-  public func operationQueue(q: OperationQueue, willAddOperation op: NSOperation) {
-    for delegate in delegates {
-      delegate.operationQueue(q, willAddOperation: op)
+  /// Sets up a series of three interdependent operations: a first block
+  /// operation that samples the current date and time, a one-second delay
+  /// operation, then a last block operation that samples the current date-time
+  /// as well as fulfilling a one-second delay expectation.
+  func testOneSecond() {
+    // given
+    let expectation = self.expectation(description: "OneSecond")
+    let q = AdvancedOperations.OperationQueue()
+    var firstDate: Date?
+    let firstOp = BlockOperation {
+      firstDate = Date()
     }
-  }
-
-  public func operationQueue(q: OperationQueue, didAddOperation op: NSOperation) {
-    for delegate in delegates {
-      delegate.operationQueue(q, didAddOperation: op)
+    let delayOp = DelayOperation(timeInterval: 1.0)
+    var lastDate: Date?
+    let lastOp = BlockOperation {
+      lastDate = Date()
+      expectation.fulfill()
     }
+
+    // when
+    firstOp.produce(dependent: delayOp)
+    delayOp.produce(dependent: lastOp)
+    q.add(operation: firstOp)
+
+    // then
+    waitForExpectations(timeout: 3.0) { (error) in
+      if let error = error {
+        NSLog("%@", error.localizedDescription)
+      }
+      XCTAssertNil(error)
+    }
+    XCTAssertNotNil(firstDate)
+    XCTAssertNotNil(lastDate)
+    XCTAssertEqualWithAccuracy(lastDate!.timeIntervalSince(firstDate!), 1.0, accuracy: 0.25)
   }
 
 }

@@ -49,75 +49,75 @@ public class OperationQueue: NSOperationQueue {
       self.q = q
     }
 
-    internal override func operationWillAddObserver(op: NSOperation) {
+    internal override func operationWillAddObserver(_ op: NSOperation) {
       q?.operationWillAddObserver(op)
     }
 
-    internal override func operationDidAddObserver(op: NSOperation) {
+    internal override func operationDidAddObserver(_ op: NSOperation) {
       q?.operationDidAddObserver(op)
     }
 
-    internal override func operationWillRemoveObserver(op: NSOperation) {
+    internal override func operationWillRemoveObserver(_ op: NSOperation) {
       q?.operationWillRemoveObserver(op)
     }
 
-    internal override func operationDidRemoveObserver(op: NSOperation) {
+    internal override func operationDidRemoveObserver(_ op: NSOperation) {
       q?.operationDidRemoveObserver(op)
     }
 
-    internal override func operationWillStart(op: NSOperation) {
+    internal override func operationWillStart(_ op: NSOperation) {
       q?.operationWillStart(op)
     }
 
-    internal override func operationDidStart(op: NSOperation) {
+    internal override func operationDidStart(_ op: NSOperation) {
       q?.operationDidStart(op)
     }
 
-    internal override func operationWillExecute(op: NSOperation) {
+    internal override func operationWillExecute(_ op: NSOperation) {
       q?.operationWillExecute(op)
     }
 
-    internal override func operationDidExecute(op: NSOperation) {
+    internal override func operationDidExecute(_ op: NSOperation) {
       q?.operationDidExecute(op)
     }
 
-    internal override func operationWillCancel(op: NSOperation) {
+    internal override func operationWillCancel(_ op: NSOperation) {
       q?.operationWillCancel(op)
     }
 
-    internal override func operationDidCancel(op: NSOperation) {
+    internal override func operationDidCancel(_ op: NSOperation) {
       q?.operationDidCancel(op)
     }
 
-    internal override func operation(op: NSOperation, willChangeIsCancelled isCancelled: Bool) {
+    internal override func operation(_ op: NSOperation, willChangeIsCancelled isCancelled: Bool) {
       q?.operation(op, willChangeIsCancelled: isCancelled)
     }
 
-    internal override func operation(op: NSOperation, didChangeIsCancelled isCancelled: Bool, wasCancelled: Bool) {
+    internal override func operation(_ op: NSOperation, didChangeIsCancelled isCancelled: Bool, wasCancelled: Bool) {
       q?.operation(op, didChangeIsCancelled: isCancelled, wasCancelled: wasCancelled)
     }
 
-    internal override func operation(op: NSOperation, willChangeIsExecuting isExecuting: Bool) {
+    internal override func operation(_ op: NSOperation, willChangeIsExecuting isExecuting: Bool) {
       q?.operation(op, willChangeIsExecuting: isExecuting)
     }
 
-    internal override func operation(op: NSOperation, didChangeIsExecuting isExecuting: Bool, wasExecuting: Bool) {
+    internal override func operation(_ op: NSOperation, didChangeIsExecuting isExecuting: Bool, wasExecuting: Bool) {
       q?.operation(op, didChangeIsExecuting: isExecuting, wasExecuting: wasExecuting)
     }
 
-    internal override func operation(op: NSOperation, willChangeIsFinished isFinished: Bool) {
+    internal override func operation(_ op: NSOperation, willChangeIsFinished isFinished: Bool) {
       q?.operation(op, willChangeIsFinished: isFinished)
     }
 
-    internal override func operation(op: NSOperation, didChangeIsFinished isFinished: Bool, wasFinished: Bool) {
+    internal override func operation(_ op: NSOperation, didChangeIsFinished isFinished: Bool, wasFinished: Bool) {
       q?.operation(op, didChangeIsFinished: isFinished, wasFinished: wasFinished)
     }
 
-    internal override func operation(op: NSOperation, willChangeIsReady isReady: Bool) {
+    internal override func operation(_ op: NSOperation, willChangeIsReady isReady: Bool) {
       q?.operation(op, willChangeIsReady: isReady)
     }
 
-    internal override func operation(op: NSOperation, didChangeIsReady isReady: Bool, wasReady: Bool) {
+    internal override func operation(_ op: NSOperation, didChangeIsReady isReady: Bool, wasReady: Bool) {
       q?.operation(op, didChangeIsReady: isReady, wasReady: wasReady)
     }
 
@@ -126,7 +126,7 @@ public class OperationQueue: NSOperationQueue {
   //----------------------------------------------------------------------------
   // MARK: - Delegate Notifications
 
-  public func willAddOperation(op: NSOperation) {
+  public func willAdd(operation op: NSOperation) {
     delegate?.operationQueue(self, willAddOperation: op)
   }
 
@@ -137,99 +137,107 @@ public class OperationQueue: NSOperationQueue {
   /// all its operations to this queue also. As the new producer, this queue
   /// then automatically adds any further produced operations to the queue, as
   /// and when they appear.
-  public func didAddOperation(op: NSOperation) {
+  public func didAdd(operation op: NSOperation) {
     delegate?.operationQueue(self, didAddOperation: op)
-    op.addObserver(OperationObserver(self))
-    produceForOperation(op)
+    op.add(observer: OperationObserver(self))
+    produceFor(operation: op)
   }
 
-  public func operationWillAddObserver(op: NSOperation) {
+  public func operationWillAddObserver(_ op: NSOperation) {
     delegate?.operationQueue(self, operationWillAddObserver: op)
   }
 
-  public func operationDidAddObserver(op: NSOperation) {
+  public func operationDidAddObserver(_ op: NSOperation) {
     delegate?.operationQueue(self, operationDidAddObserver: op)
   }
 
-  public func operationWillRemoveObserver(op: NSOperation) {
+  public func operationWillRemoveObserver(_ op: NSOperation) {
     delegate?.operationQueue(self, operationWillRemoveObserver: op)
   }
 
-  public func operationDidRemoveObserver(op: NSOperation) {
+  public func operationDidRemoveObserver(_ op: NSOperation) {
     delegate?.operationQueue(self, operationDidRemoveObserver: op)
   }
 
-  public func operationWillStart(op: NSOperation) {
+  public func operationWillStart(_ op: NSOperation) {
     delegate?.operationQueue(self, operationWillStart: op)
   }
 
-  public func operationDidStart(op: NSOperation) {
+  public func operationDidStart(_ op: NSOperation) {
     delegate?.operationQueue(self, operationDidStart: op)
   }
 
-  public func operationWillExecute(op: NSOperation) {
+  public func operationWillExecute(_ op: NSOperation) {
     delegate?.operationQueue(self, operationWillExecute: op)
   }
 
-  public func operationDidExecute(op: NSOperation) {
+  public func operationDidExecute(_ op: NSOperation) {
     delegate?.operationQueue(self, operationDidExecute: op)
   }
 
-  public func operationWillCancel(op: NSOperation) {
+  public func operationWillCancel(_ op: NSOperation) {
     delegate?.operationQueue(self, operationWillCancel: op)
   }
 
-  public func operationDidCancel(op: NSOperation) {
+  public func operationDidCancel(_ op: NSOperation) {
     delegate?.operationQueue(self, operationDidCancel: op)
   }
 
-  public func operation(op: NSOperation, willChangeIsCancelled isCancelled: Bool) {
+  public func operation(_ op: NSOperation, willChangeIsCancelled isCancelled: Bool) {
     delegate?.operationQueue(self, operation: op, willChangeIsCancelled: isCancelled)
   }
 
-  public func operation(op: NSOperation, didChangeIsCancelled isCancelled: Bool, wasCancelled: Bool) {
+  public func operation(_ op: NSOperation, didChangeIsCancelled isCancelled: Bool, wasCancelled: Bool) {
     delegate?.operationQueue(self, operation: op, didChangeIsCancelled: isCancelled, wasCancelled: wasCancelled)
   }
 
-  public func operation(op: NSOperation, willChangeIsExecuting isExecuting: Bool) {
+  public func operation(_ op: NSOperation, willChangeIsExecuting isExecuting: Bool) {
     delegate?.operationQueue(self, operation: op, willChangeIsExecuting: isExecuting)
   }
 
-  public func operation(op: NSOperation, didChangeIsExecuting isExecuting: Bool, wasExecuting: Bool) {
+  public func operation(_ op: NSOperation, didChangeIsExecuting isExecuting: Bool, wasExecuting: Bool) {
     delegate?.operationQueue(self, operation: op, didChangeIsExecuting: isExecuting, wasExecuting: wasExecuting)
   }
 
-  public func operation(op: NSOperation, willChangeIsFinished isFinished: Bool) {
+  public func operation(_ op: NSOperation, willChangeIsFinished isFinished: Bool) {
     delegate?.operationQueue(self, operation: op, willChangeIsFinished: isFinished)
   }
 
-  public func operation(op: NSOperation, didChangeIsFinished isFinished: Bool, wasFinished: Bool) {
+  public func operation(_ op: NSOperation, didChangeIsFinished isFinished: Bool, wasFinished: Bool) {
     delegate?.operationQueue(self, operation: op, didChangeIsFinished: isFinished, wasFinished: wasFinished)
   }
 
-  public func operation(op: NSOperation, willChangeIsReady isReady: Bool) {
+  public func operation(_ op: NSOperation, willChangeIsReady isReady: Bool) {
     delegate?.operationQueue(self, operation: op, willChangeIsReady: isReady)
   }
 
-  public func operation(op: NSOperation, didChangeIsReady isReady: Bool, wasReady: Bool) {
+  public func operation(_ op: NSOperation, didChangeIsReady isReady: Bool, wasReady: Bool) {
     delegate?.operationQueue(self, operation: op, didChangeIsReady: isReady, wasReady: wasReady)
+  }
+
+  public func add(operation: NSOperation) {
+    addOperation(operation)
+  }
+
+  public func add(operations: [NSOperation], waitUntilFinished: Bool) {
+    addOperations(operations, waitUntilFinished: waitUntilFinished)
   }
 
   //----------------------------------------------------------------------------
   // MARK: - NSOperationQueue Overrides
 
-  public override func addOperation(op: NSOperation) {
-    willAddOperation(op)
+  public override func addOperation(_ op: NSOperation) {
+    willAdd(operation: op)
     super.addOperation(op)
-    didAddOperation(op)
+    didAdd(operation: op)
   }
 
   // Adds operations and optionally waits until finishes. This implementation
   // entirely replaces that of the underlying `NSOperation` method since the
   // super-class does not invoke `addOperation()` iteratively when adding.
-  public override func addOperations(ops: [NSOperation], waitUntilFinished wait: Bool) {
+  public override func addOperations(_ ops: [NSOperation], waitUntilFinished wait: Bool) {
     for op in ops {
-      addOperation(op)
+      add(operation: op)
     }
     if wait {
       waitUntilAllOperationsAreFinished()

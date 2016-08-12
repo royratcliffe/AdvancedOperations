@@ -1,4 +1,4 @@
-// AdvancedOperationsTests GroupOperationTests.swift
+// AdvancedOperations OperationQueue+Delegates.swift
 //
 // Copyright © 2016, Roy Ratcliffe, Pioneering Software, United Kingdom
 //
@@ -22,46 +22,27 @@
 //
 //------------------------------------------------------------------------------
 
-import XCTest
-import AdvancedOperations
+import Foundation
 
-class GroupOperationTests: XCTestCase {
+extension OperationQueue {
 
-  let q = OperationQueue()
-
-  /// Adds a group operation to an operation queue. The group operation, in
-  /// turn, adds a nested operation to its internal queue. The group operation
-  /// then un-suspends the queue and waits for the sub-operation to finish.
-  func testWaitUntilAllOperationsAreFinished() {
-    // given
-    class MyGroupOperation: GroupOperation {
-
-      let expectation: XCTestExpectation
-
-      init(_ expectation: XCTestExpectation) {
-        self.expectation = expectation
+  /// Adds a delegate to the operation queue. If necessary, converts the queue's
+  /// delegate to a composite delegate. Only *sets* the new delegate if the
+  /// queue does not already have a delegate. The queue's delegate progresses
+  /// from `nil`, to delegate to composite.
+  public func add(delegate newDelegate: OperationQueueDelegate) {
+    if let delegate = delegate {
+      if let delegates = delegate as? OperationQueueDelegates {
+        delegates.add(delegate: newDelegate)
+      } else {
+        let delegates = OperationQueueDelegates()
+        delegates.add(delegate: delegate)
+        delegates.add(delegate: newDelegate)
+        self.delegate = delegates
       }
-
-      private override func execute() {
-        addOperation(NSBlockOperation())
-
-        // This test would fail if the group operation failed to un-suspend its
-        // queue. It would wait indefinitely for the queue to resume. Some other
-        // operation or block would have to resume it.
-        suspended = false
-
-        waitUntilAllOperationsAreFinished()
-        expectation.fulfill()
-      }
-
+    } else {
+      delegate = newDelegate
     }
-    let groupOp = MyGroupOperation(expectationWithDescription("\(#function)"))
-
-    // when
-    q.addOperation(groupOp)
-
-    // then
-    waitForExpectationsWithTimeout(10.0, handler: nil)
   }
 
 }

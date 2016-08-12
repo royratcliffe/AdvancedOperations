@@ -1,4 +1,4 @@
-// AdvancedOperations IsFinishedObserver.swift
+// AdvancedOperations NSOperationQueue+Producer.swift
 //
 // Copyright © 2016, Roy Ratcliffe, Pioneering Software, United Kingdom
 //
@@ -24,21 +24,17 @@
 
 import Foundation
 
-public class IsFinishedObserver: OperationChangeObserver {
+extension NSOperationQueue {
 
-  public typealias Block = (NSOperation) -> Void
-
-  let block: Block
-
-  public init(_ block: Block) {
-    self.block = block
-  }
-
-  public override func operation(op: NSOperation,
-                                 didChangeIsFinished isFinished: Bool,
-                                                     wasFinished: Bool) {
-    if isFinished && !wasFinished {
-      block(op)
+  /// Sets up producing of operations using this queue. Additionally sets up any
+  /// stashed operations. Replaces any existing operation producer.
+  /// - parameter op: Operation to produce for.
+  public func produceFor(operation op: NSOperation) {
+    if let stash = op.producer as? OperationStash {
+      addOperations(stash.operations, waitUntilFinished: false)
+    }
+    op.producer = ProduceHandler { [weak self] (op) in
+      self?.addOperation(op)
     }
   }
 
