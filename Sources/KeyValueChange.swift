@@ -27,12 +27,12 @@ import Foundation
 /// Wraps a key-value change dictionary.
 public struct KeyValueChange {
 
-  let change: [String: AnyObject]
+  let change: [NSKeyValueChangeKey: AnyObject]
 
   /// Initialises the change wrapper using an optional change dictionary. Fails
   /// to wrap if the change dictionary does not exist. You get a `nil` change
   /// wrapper for a `nil` dictionary.
-  public init?(change: [String: AnyObject]?) {
+  public init?(change: [NSKeyValueChangeKey: AnyObject]?) {
     guard let change = change else { return nil }
     self.change = change
   }
@@ -42,8 +42,8 @@ public struct KeyValueChange {
   ///   dictionary does not contain a change kind, or the change kind is not a
   ///   number, or that number does not match any of the enumerator values.
   public var kind: NSKeyValueChange? {
-    guard let rawKind = change[NSKeyValueChangeKindKey] as? NSNumber,
-          let kind = NSKeyValueChange(rawValue: rawKind.unsignedIntegerValue) else {
+    guard let rawKind = change[NSKeyValueChangeKey.kindKey] as? NSNumber,
+          let kind = NSKeyValueChange(rawValue: rawKind.uintValue) else {
       return nil
     }
     return kind
@@ -51,17 +51,17 @@ public struct KeyValueChange {
 
   /// - returns: the new value, if there is one.
   public var newValue: AnyObject? {
-    return change[NSKeyValueChangeNewKey]
+    return change[NSKeyValueChangeKey.newKey]
   }
 
   /// - returns: the old value, if there is one.
   public var oldValue: AnyObject? {
-    return change[NSKeyValueChangeOldKey]
+    return change[NSKeyValueChangeKey.oldKey]
   }
 
   /// - returns: the indexes, if there are any.
   public var indexes: NSIndexSet? {
-    return change[NSKeyValueChangeIndexesKey] as? NSIndexSet
+    return change[NSKeyValueChangeKey.indexesKey] as? NSIndexSet
   }
 
   /// - returns: if the change is a prior notification or not. Returns false if
@@ -70,7 +70,7 @@ public struct KeyValueChange {
   ///   that the change is *not* a prior notification; priors must have an
   ///   is-prior key-boolean pair *and* the boolean must be true.
   public var isPrior: Bool {
-    return change[NSKeyValueChangeNotificationIsPriorKey] as? Bool ?? false
+    return change[NSKeyValueChangeKey.notificationIsPriorKey] as? Bool ?? false
   }
 
 }

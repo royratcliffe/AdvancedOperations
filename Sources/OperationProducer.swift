@@ -1,4 +1,4 @@
-// AdvancedOperations AdvancedOperations.h
+// AdvancedOperations OperationProducer.swift
 //
 // Copyright © 2016, Roy Ratcliffe, Pioneering Software, United Kingdom
 //
@@ -22,7 +22,15 @@
 //
 //------------------------------------------------------------------------------
 
-@import UIKit;
+import Foundation
 
-FOUNDATION_EXPORT double AdvancedOperationsVersionNumber;
-FOUNDATION_EXPORT const unsigned char AdvancedOperationsVersionString[];
+/// Operations produce another operation by invoking their producer. The
+/// producer receives the same operation with a request to produce it. The
+/// Operation-instance message just relays the new operation to the producer,
+/// not much more apart from sending observer notifications. Producers known
+/// what to do when one operation produces another.
+public protocol OperationProducer: class {
+
+  func produce(operation op: NSOperation)
+
+}

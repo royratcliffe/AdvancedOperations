@@ -1,7 +1,7 @@
 # coding: utf-8
 Pod::Spec.new do |spec|
   spec.name = 'AdvancedOperations'
-  spec.version = '0.1.11'
+  spec.version = '0.2.0'
   spec.summary = 'Advanced NSOperations Framework for Swift'
   spec.description = <<-DESCRIPTION.gsub(/\s+/, ' ').chomp
   Framework that decouples the Advanced NSOperations concepts as much as
@@ -15,7 +15,7 @@ Pod::Spec.new do |spec|
   spec.source = {
     git: 'https://github.com/royratcliffe/AdvancedOperations.git',
     tag: spec.version.to_s }
-  spec.source_files = 'AdvancedOperations/**/*.{swift,h}'
+  spec.source_files = 'Sources/**/*.{swift,h}'
   spec.platform = :ios, '9.0'
   spec.requires_arc = true
 end

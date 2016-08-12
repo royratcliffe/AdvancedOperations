@@ -1,4 +1,4 @@
-// AdvancedOperations OperationProducer.swift
+// AdvancedOperationsTests GroupOperationTests.swift
 //
 // Copyright © 2016, Roy Ratcliffe, Pioneering Software, United Kingdom
 //
@@ -22,15 +22,46 @@
 //
 //------------------------------------------------------------------------------
 
-import Foundation
+import XCTest
+import AdvancedOperations
 
-/// Operations produce another operation by invoking their producer. The
-/// producer receives the same operation with a request to produce it. The
-/// Operation-instance message just relays the new operation to the producer,
-/// not much more apart from sending observer notifications. Producers known
-/// what to do when one operation produces another.
-public protocol OperationProducer: class {
+class GroupOperationTests: XCTestCase {
 
-  func produceOperation(op: NSOperation)
+  let q = AdvancedOperations.OperationQueue()
+
+  /// Adds a group operation to an operation queue. The group operation, in
+  /// turn, adds a nested operation to its internal queue. The group operation
+  /// then un-suspends the queue and waits for the sub-operation to finish.
+  func testWaitUntilAllOperationsAreFinished() {
+    // given
+    class MyGroupOperation: GroupOperation {
+
+      let expectation: XCTestExpectation
+
+      init(_ expectation: XCTestExpectation) {
+        self.expectation = expectation
+      }
+
+      private override func execute() {
+        add(operation: BlockOperation())
+
+        // This test would fail if the group operation failed to un-suspend its
+        // queue. It would wait indefinitely for the queue to resume. Some other
+        // operation or block would have to resume it.
+        isSuspended = false
+
+        waitUntilAllOperationsAreFinished()
+        expectation.fulfill()
+      }
+
+    }
+    let groupOp = MyGroupOperation(expectation(description: "\(#function)"))
+
+    // when
+    q.addOperation(groupOp)
+
+    // then
+    waitForExpectations(timeout: 10.0, handler: nil)
+  }
 
 }

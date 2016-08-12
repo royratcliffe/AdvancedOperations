@@ -1,4 +1,4 @@
-// AdvancedOperationsTests DelayOperationTests.swift
+// AdvancedOperationsTests OperationObserverTests.swift
 //
 // Copyright © 2016, Roy Ratcliffe, Pioneering Software, United Kingdom
 //
@@ -25,42 +25,34 @@
 import XCTest
 import AdvancedOperations
 
-class DelayOperationTests: XCTestCase {
+class OperationObserverTests: XCTestCase {
 
-  /// Sets up a series of three interdependent operations: a first block
-  /// operation that samples the current date and time, a one-second delay
-  /// operation, then a last block operation that samples the current date-time
-  /// as well as fulfilling a one-second delay expectation.
-  func testOneSecond() {
+  /// Tests operation is-finished observations. Executes a three-second waiting
+  /// operation while watching for its finished status to change from false to
+  /// true.
+  func testIsFinished() {
     // given
-    let expectation = expectationWithDescription("OneSecond")
-    let q = OperationQueue()
-    var firstDate: NSDate?
-    let firstOp = NSBlockOperation {
-      firstDate = NSDate()
+    let q = AdvancedOperations.OperationQueue()
+    let op = BlockOperation {
+      let semaphore = DispatchSemaphore(value: 0)
+      DispatchQueue.global(qos: .default).asyncAfter(deadline: .now() + 3.0) {
+        semaphore.signal()
+      }
+      _ = semaphore.wait(timeout: DispatchTime.distantFuture)
     }
-    let delayOp = DelayOperation(timeInterval: 1.0)
-    var lastDate: NSDate?
-    let lastOp = NSBlockOperation {
-      lastDate = NSDate()
+    let expectation = self.expectation(description: "IsFinished")
+    op.add(observer: IsFinishedObserver { (_) in
+      // Fulfills the expectation when the operation changes from not finished to
+      // finished. Assumes that it only observes one operation, hence ignores
+      // *which* operation finished, if there really are more than one.
       expectation.fulfill()
-    }
+      })
 
     // when
-    firstOp.produceDependent(delayOp)
-    delayOp.produceDependent(lastOp)
-    q.addOperation(firstOp)
+    q.add(operation: op)
 
     // then
-    waitForExpectationsWithTimeout(3.0) { (error) in
-      if let error = error {
-        NSLog("%@", error.localizedDescription)
-      }
-      XCTAssertNil(error)
-    }
-    XCTAssertNotNil(firstDate)
-    XCTAssertNotNil(lastDate)
-    XCTAssertEqualWithAccuracy(lastDate!.timeIntervalSinceDate(firstDate!), 1.0, accuracy: 0.1)
+    waitForExpectations(timeout: 10.0, handler: nil)
   }
 
 }

@@ -1,4 +1,4 @@
-// AdvancedOperationsTests OperationLogTests.swift
+// AdvancedOperations AdvancedOperations.h
 //
 // Copyright © 2016, Roy Ratcliffe, Pioneering Software, United Kingdom
 //
@@ -22,37 +22,7 @@
 //
 //------------------------------------------------------------------------------
 
-import XCTest
-import AdvancedOperations
+@import Foundation;
 
-class OperationLogTests: XCTestCase {
-
-  /// Launch an empty block operation. Add a logging operation observer. The
-  /// operation retains its observers. The Apple system log facility reports
-  /// changes to the operation.
-  func testLog() {
-    // given
-    let expectation = expectationWithDescription("Log")
-    let q = OperationQueue()
-    let op = Operation()
-    let fulfillOp = NSBlockOperation {
-      expectation.fulfill()
-    }
-    let observer = OperationLogObserver()
-    q.name = "MyQueue"
-    op.name = "MyOp"
-    fulfillOp.name = "MyFulfillOp"
-
-    // when
-    op.addObserver(observer)
-    fulfillOp.addObserver(observer)
-    fulfillOp.produceDependency(op)
-    op.queuePriority = .High
-    fulfillOp.queuePriority = .Normal
-    q.addOperation(fulfillOp)
-
-    // then
-    waitForExpectationsWithTimeout(10.0, handler: nil)
-  }
-
-}
+FOUNDATION_EXPORT double AdvancedOperationsVersionNumber;
+FOUNDATION_EXPORT const unsigned char AdvancedOperationsVersionString[];

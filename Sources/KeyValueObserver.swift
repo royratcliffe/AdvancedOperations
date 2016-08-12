@@ -69,7 +69,7 @@ public class KeyValueObserver: NSObject {
   /// - parameter object: Object to observe.
   /// - parameter keyPath: Property to observe.
   /// - parameter options: Key-value observing options, including new, old and prior.
-  public func addObject(object: NSObject, keyPath: String, options: NSKeyValueObservingOptions) {
+  public func add(object: NSObject, keyPath: String, options: NSKeyValueObservingOptions) {
     object.addObserver(self, forKeyPath: keyPath, options: options, context: nil)
     observing.append((object: object, keyPath: keyPath))
   }
@@ -78,21 +78,21 @@ public class KeyValueObserver: NSObject {
   /// key paths. Use this method if you want to remove an object before the
   /// observer disappears. All observations automatically remove when the
   /// observer destructs.
-  public func removeObject(object: NSObject) {
+  public func remove(object: NSObject) {
     let indexes = NSMutableIndexSet()
-    for (index, objectAndKeyPath) in observing.enumerate() {
+    for (index, objectAndKeyPath) in observing.enumerated() {
       if objectAndKeyPath.object === object {
         objectAndKeyPath.object.removeObserver(self, forKeyPath: objectAndKeyPath.keyPath)
-        indexes.addIndex(index)
+        indexes.add(index)
       }
     }
-    indexes.sort().reverse().forEach { (index) in
-      observing.removeAtIndex(index)
+    indexes.sorted().reversed().forEach { (index) in
+      observing.remove(at: index)
     }
   }
 
   /// Sub-classes override this method.
-  func observeValueForKeyPath(keyPath: String, ofObject object: NSObject, change: KeyValueChange) {}
+  func observeValue(forKeyPath keyPath: String, of object: NSObject, change: KeyValueChange) {}
 
   //----------------------------------------------------------------------------
   // MARK: - NSObject Overrides
@@ -100,17 +100,17 @@ public class KeyValueObserver: NSObject {
   // Observes key-value change notifications. Wraps the change in a key-value
   // change structure then passes the key-path, Next Step object and the change
   // wrapper to the method for override.
-  public override func observeValueForKeyPath(keyPath: String?,
-                                              ofObject object: AnyObject?,
-                                                       change: [String: AnyObject]?,
-                                                       context: UnsafeMutablePointer<Void>) {
+  public override func observeValue(forKeyPath keyPath: String?,
+                                    of object: AnyObject?,
+                                    change: [NSKeyValueChangeKey: AnyObject]?,
+                                    context: UnsafeMutablePointer<Void>?) {
     guard let keyPath = keyPath,
           let object = object as? NSObject,
           let change = KeyValueChange(change: change),
           let _ = change.kind else {
       return
     }
-    observeValueForKeyPath(keyPath, ofObject: object, change: change)
+    observeValue(forKeyPath: keyPath, of: object, change: change)
   }
 
 }
