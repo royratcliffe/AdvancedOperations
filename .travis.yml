@@ -1,8 +1,12 @@
 language: objective-c
 osx_image: xcode8
 
+env:
+  matrix:
+    - SDK="iphonesimulator" DESTINATION="platform=iOS Simulator,name=iPhone 6s"
+
 script:
-  - xcodebuild -scheme "$SCHEME" -destination "$DESTINATION" $EXTRA $ACTION
+  - xcodebuild -sdk "$SDK" -destination "$DESTINATION" -scheme AdvancedOperations test
 
 # Important to specify the simulator SDK, otherwise Travis CI will attempt to
 # build for the real iPhone and fail due to code-signing issues.
