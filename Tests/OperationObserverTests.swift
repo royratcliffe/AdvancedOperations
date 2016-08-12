@@ -38,7 +38,7 @@ class OperationObserverTests: XCTestCase {
       DispatchQueue.global(qos: .default).asyncAfter(deadline: .now() + 3.0) {
         semaphore.signal()
       }
-      let _ = semaphore.wait(timeout: DispatchTime.distantFuture)
+      _ = semaphore.wait(timeout: DispatchTime.distantFuture)
     }
     let expectation = self.expectation(description: "IsFinished")
     op.add(observer: IsFinishedObserver { (_) in

@@ -89,7 +89,7 @@ class OperationProducerTests: XCTestCase {
     let op = BlockOperation {}
     let expectation = self.expectation(description: "\(#function)")
     // when
-    let _ = op.produceDependent { (op) in
+    _ = op.produceDependent { (op) in
       guard let op = op, !op.isCancelled else {
         return
       }

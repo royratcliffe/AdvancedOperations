@@ -85,7 +85,7 @@ extension NSOperation {
         return
       }
       oldObserver.operationWillRemoveObserver(self)
-      let _ = observers.remove(observer: oldObserver)
+      _ = observers.remove(observer: oldObserver)
       oldObserver.operationDidRemoveObserver(self)
     }
   }
