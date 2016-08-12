@@ -1,5 +1,21 @@
 # Change Log
 
+## [0.2.0](https://github.com/royratcliffe/AdvancedOperations/tree/0.2.0) (2016-08-12)
+
+- Merge branch 'feature/travis_xcodebuild' into develop
+- Pipe through XCPretty
+- Place TRAVIS_XCODE variables side-by-side; use default project
+- SDK implies platform=iOS Simulator
+- Use TRAVIS_XCODE_* variables
+- Test on iPhone 6s iOS Simulator platform with simulator SDK
+- Use destination, extra and action
+- Merge branch 'feature/swift_3_0' into develop
+- Apply plain xcodebuild to build and test
+- Removed redundant `let`
+- Upgraded Swift for Xcode 8, beta 5
+
+[Full Change Log](https://github.com/royratcliffe/AdvancedOperations/compare/0.1.11...0.2.0)
+
 ## [0.1.11](https://github.com/royratcliffe/AdvancedOperations/tree/0.1.11) (2016-08-11)
 
 - Merge branch 'feature/swift_2_3' into develop
