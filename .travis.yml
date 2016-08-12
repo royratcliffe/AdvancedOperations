@@ -1,6 +1,9 @@
 language: objective-c
 osx_image: xcode8
 
+script:
+  - xcodebuild build test -scheme "$TRAVIS_XCODE_SCHEME"
+
 # Important to specify the simulator SDK, otherwise Travis CI will attempt to
 # build for the real iPhone and fail due to code-signing issues.
 # See https://docs.travis-ci.com/user/languages/objective-c for details.
