@@ -35,7 +35,7 @@ class OperationObserverTests: XCTestCase {
     let q = AdvancedOperations.OperationQueue()
     let op = BlockOperation {
       let semaphore = DispatchSemaphore(value: 0)
-      DispatchQueue.global(attributes: .qosDefault).after(when: .now() + 3.0) {
+      DispatchQueue.global(qos: .default).asyncAfter(deadline: .now() + 3.0) {
         semaphore.signal()
       }
       let _ = semaphore.wait(timeout: DispatchTime.distantFuture)

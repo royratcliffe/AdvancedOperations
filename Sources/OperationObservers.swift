@@ -48,7 +48,7 @@ public class OperationObservers: OperationObserver {
 
   /// - returns: True if the sub-observer is currently registered, false if not.
   public func contains(observer: OperationObserver) -> Bool {
-    return observers.contains({ $0 === observer })
+    return observers.contains(where: { $0 === observer })
   }
 
   //----------------------------------------------------------------------------

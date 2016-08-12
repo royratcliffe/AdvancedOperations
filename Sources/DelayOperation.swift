@@ -84,8 +84,8 @@ public class DelayOperation: Operation {
       return
     }
     let semaphore = DispatchSemaphore(value: 0)
-    let queue = DispatchQueue.global(attributes: .qosDefault)
-    queue.after(when: .now() + timeInterval) {
+    let queue = DispatchQueue.global(qos: .default)
+    queue.asyncAfter(deadline: .now() + timeInterval) {
       semaphore.signal()
     }
     semaphore.wait()
