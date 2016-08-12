@@ -20,6 +20,8 @@
 		780D49081CD325A300F56D4C /* GroupOperationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780D49071CD325A300F56D4C /* GroupOperationTests.swift */; };
 		784C619E1CD218D2008F26BC /* NSOperation+AdvancedOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784C619D1CD218D2008F26BC /* NSOperation+AdvancedOperations.swift */; };
 		78663A001CEB2A2C0081D667 /* OperationLogObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786639FF1CEB2A2C0081D667 /* OperationLogObserver.swift */; };
+		787A48691D1941EF00B2B2AF /* NSOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A48681D1941EF00B2B2AF /* NSOperation.swift */; };
+		787A486B1D19454400B2B2AF /* NSOperationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A486A1D19454400B2B2AF /* NSOperationQueue.swift */; };
 		7887540E1CC9627000E4DFCB /* KeyValueObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7887540B1CC9627000E4DFCB /* KeyValueObserver.swift */; };
 		7887540F1CC9627000E4DFCB /* KeyValueChangeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7887540C1CC9627000E4DFCB /* KeyValueChangeHandler.swift */; };
 		788754101CC9627000E4DFCB /* KeyValueChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7887540D1CC9627000E4DFCB /* KeyValueChange.swift */; };
@@ -64,6 +66,8 @@
 		780D49071CD325A300F56D4C /* GroupOperationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupOperationTests.swift; sourceTree = "<group>"; };
 		784C619D1CD218D2008F26BC /* NSOperation+AdvancedOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSOperation+AdvancedOperations.swift"; sourceTree = "<group>"; };
 		786639FF1CEB2A2C0081D667 /* OperationLogObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationLogObserver.swift; sourceTree = "<group>"; };
+		787A48681D1941EF00B2B2AF /* NSOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSOperation.swift; sourceTree = "<group>"; };
+		787A486A1D19454400B2B2AF /* NSOperationQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSOperationQueue.swift; sourceTree = "<group>"; };
 		7887540B1CC9627000E4DFCB /* KeyValueObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyValueObserver.swift; sourceTree = "<group>"; };
 		7887540C1CC9627000E4DFCB /* KeyValueChangeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyValueChangeHandler.swift; sourceTree = "<group>"; };
 		7887540D1CC9627000E4DFCB /* KeyValueChange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyValueChange.swift; sourceTree = "<group>"; };
@@ -109,8 +113,8 @@
 		7893D93A1CC9175C0026AB53 = {
 			isa = PBXGroup;
 			children = (
-				7893D9461CC9175C0026AB53 /* AdvancedOperations */,
-				7893D9521CC9175C0026AB53 /* AdvancedOperationsTests */,
+				7893D9461CC9175C0026AB53 /* Sources */,
+				7893D9521CC9175C0026AB53 /* Tests */,
 				7893D9451CC9175C0026AB53 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -124,10 +128,12 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7893D9461CC9175C0026AB53 /* AdvancedOperations */ = {
+		7893D9461CC9175C0026AB53 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				7893D9471CC9175C0026AB53 /* AdvancedOperations.h */,
+				787A48681D1941EF00B2B2AF /* NSOperation.swift */,
+				787A486A1D19454400B2B2AF /* NSOperationQueue.swift */,
 				7893D9601CC918F60026AB53 /* Operation.swift */,
 				7893D9621CC9190E0026AB53 /* OperationQueue.swift */,
 				7893D9641CC935130026AB53 /* OperationQueueDelegate.swift */,
@@ -153,10 +159,10 @@
 				78AE26491CECA5C60027E909 /* DelayOperation.swift */,
 				7893D9491CC9175C0026AB53 /* Info.plist */,
 			);
-			path = AdvancedOperations;
+			path = Sources;
 			sourceTree = "<group>";
 		};
-		7893D9521CC9175C0026AB53 /* AdvancedOperationsTests */ = {
+		7893D9521CC9175C0026AB53 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				7893D9531CC9175C0026AB53 /* OperationsTests.swift */,
@@ -167,7 +173,7 @@
 				78AE264B1CECB1E70027E909 /* DelayOperationTests.swift */,
 				7893D9551CC9175C0026AB53 /* Info.plist */,
 			);
-			path = AdvancedOperationsTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -300,6 +306,7 @@
 				78064E171CD0809800A8224F /* OperationProducer.swift in Sources */,
 				784C619E1CD218D2008F26BC /* NSOperation+AdvancedOperations.swift in Sources */,
 				78064E251CD0B93200A8224F /* NSOperationQueue+Producer.swift in Sources */,
+				787A486B1D19454400B2B2AF /* NSOperationQueue.swift in Sources */,
 				7893D9691CC937B20026AB53 /* OperationQueue+Delegates.swift in Sources */,
 				78064E1F1CD09C7100A8224F /* OperationStash.swift in Sources */,
 				7887540F1CC9627000E4DFCB /* KeyValueChangeHandler.swift in Sources */,
@@ -319,6 +326,7 @@
 				78AE264A1CECA5C60027E909 /* DelayOperation.swift in Sources */,
 				780981901CC9F580001D1491 /* OperationObservers.swift in Sources */,
 				78663A001CEB2A2C0081D667 /* OperationLogObserver.swift in Sources */,
+				787A48691D1941EF00B2B2AF /* NSOperation.swift in Sources */,
 				780981921CC9FEE6001D1491 /* OperationChangeObserver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -446,14 +454,14 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = AdvancedOperations/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.pioneeringsoftware.AdvancedOperations;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -465,37 +473,37 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = AdvancedOperations/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.pioneeringsoftware.AdvancedOperations;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 		7893D95C1CC9175C0026AB53 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = AdvancedOperationsTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.pioneeringsoftware.AdvancedOperationsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		7893D95D1CC9175C0026AB53 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = AdvancedOperationsTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.pioneeringsoftware.AdvancedOperationsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

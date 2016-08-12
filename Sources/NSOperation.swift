@@ -1,4 +1,4 @@
-// AdvancedOperations OperationStash.swift
+// AdvancedOperations NSOperation.swift
 //
 // Copyright © 2016, Roy Ratcliffe, Pioneering Software, United Kingdom
 //
@@ -24,29 +24,4 @@
 
 import Foundation
 
-/// Implements the operation producer protocol. Does nothing with the operations
-/// except for stashing them.
-public class OperationStash: NSObject, OperationProducer {
-
-  /// - returns: an array of stashed operations. Accessing the operations does
-  ///   not empty the stash. Invoke `removeAllOperations()` to empty all stashed
-  ///   operations.
-  private(set) var operations = [NSOperation]()
-
-  public convenience init(ops: NSOperation...) {
-    self.init()
-    operations.appendContentsOf(ops)
-  }
-
-  /// Empties the stash.
-  public func removeAllOperations() {
-    operations.removeAll()
-  }
-
-  // MARK: - OperationProducer
-
-  public func produceOperation(op: NSOperation) {
-    operations.append(op)
-  }
-
-}
+public typealias NSOperation = Foundation.Operation

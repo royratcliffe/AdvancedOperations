@@ -58,14 +58,14 @@ extension NSOperation {
   /// to trigger that step manually.
   ///
   /// - parameter op: Operation to produce.
-  public func produceOperation(op: NSOperation) {
-    willProduceOperation(op)
+  public func produce(operation op: NSOperation) {
+    willProduce(operation: op)
     if let producer = producer {
-      producer.produceOperation(op)
+      producer.produce(operation: op)
     } else {
       producer = OperationStash(ops: op)
     }
-    didProduceOperation(op)
+    didProduce(operation: op)
   }
 
   /// Produces an operation dependency. This operation will depend on the given
@@ -74,17 +74,17 @@ extension NSOperation {
   /// hence this operation will not start until `op` has finished; where
   /// finished includes cancelled.
   /// - parameter op: Operation to produce and make a dependency.
-  public func produceDependency(op: NSOperation) {
+  public func produce(dependency op: NSOperation) {
     addDependency(op)
-    produceOperation(op)
+    produce(operation: op)
   }
 
   /// Produces a dependent operation.
   /// - parameter op: Operation to produce and make dependent on this
   ///   operation. Operation `op` will not start until this operation finishes.
-  public func produceDependent(op: NSOperation) {
+  public func produce(dependent op: NSOperation) {
     op.addDependency(self)
-    produceOperation(op)
+    produce(operation: op)
   }
 
   /// Conveniently constructs a block operation using a given block, makes the
@@ -101,7 +101,7 @@ extension NSOperation {
   ///   guard that there is some operation and that the operation is not
   ///   cancelled before proceeding.
   ///
-  ///       op.produceDependentWithBlock { (op) in
+  ///       op.produceDependent { (op) in
   ///         guard let op = op where !op.cancelled else {
   ///           return
   ///         }
@@ -110,31 +110,31 @@ extension NSOperation {
   ///
   /// - returns: The newly produced block operation on which this operation
   ///   depends.
-  public func produceDependencyWithBlock(block: (NSBlockOperation?) -> Void) -> NSBlockOperation {
-    let op = NSBlockOperation()
+  public func produceDependency(with block: (BlockOperation?) -> Void) -> BlockOperation {
+    let op = BlockOperation()
     op.addExecutionBlock { [weak op] in
       block(op)
     }
-    produceDependency(op)
+    produce(dependency: op)
     return op
   }
 
   /// Produces a dependent block operation whose start delays until this
   /// operation finishes.
-  public func produceDependentWithBlock(block: (NSBlockOperation?) -> Void) -> NSBlockOperation {
-    let op = NSBlockOperation()
+  public func produceDependent(with block: (BlockOperation?) -> Void) -> BlockOperation {
+    let op = BlockOperation()
     op.addExecutionBlock { [weak op] in
       block(op)
     }
-    produceDependent(op)
+    produce(dependent: op)
     return op
   }
 
-  public func willProduceOperation(op: NSOperation) {
+  public func willProduce(operation op: NSOperation) {
     observer?.operation(self, willProduceOperation: op)
   }
 
-  public func didProduceOperation(op: NSOperation) {
+  public func didProduce(operation op: NSOperation) {
     observer?.operation(self, didProduceOperation: op)
   }
 

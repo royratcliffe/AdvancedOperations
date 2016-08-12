@@ -1,4 +1,4 @@
-// AdvancedOperations ProduceHandler.swift
+// AdvancedOperations OperationQueueDelegates.swift
 //
 // Copyright © 2016, Roy Ratcliffe, Pioneering Software, United Kingdom
 //
@@ -24,24 +24,31 @@
 
 import Foundation
 
-/// Encapsulates a block that handles operation production events. The given
-/// block implements the operation producer protocol by taking the newly
-/// produced operation and doing something appropriate to make the new operation
-/// run.
-public class ProduceHandler: NSObject, OperationProducer {
+/// Implements an operation-queue delegate that relays delegate notifications to
+/// zero or more *other* operation-queue delegates. The `addDelegate()` method
+/// of `OperationQueue` uses an instance of this class to add new delegates when
+/// an already-existing delegate appears for the queue.
+public class OperationQueueDelegates: OperationQueueDelegate {
 
-  public typealias Block = (NSOperation) -> Void
+  var delegates = [OperationQueueDelegate]()
 
-  let block: Block
-
-  public init(block: Block) {
-    self.block = block
+  public func add(delegate: OperationQueueDelegate) {
+    delegates.append(delegate)
   }
 
-  // MARK: - OperationProducer
+  //----------------------------------------------------------------------------
+  // MARK: - OperationQueueDelegate
 
-  public func produceOperation(op: NSOperation) {
-    block(op)
+  public func operationQueue(_ q: OperationQueue, willAddOperation op: NSOperation) {
+    for delegate in delegates {
+      delegate.operationQueue(q, willAddOperation: op)
+    }
+  }
+
+  public func operationQueue(_ q: OperationQueue, didAddOperation op: NSOperation) {
+    for delegate in delegates {
+      delegate.operationQueue(q, didAddOperation: op)
+    }
   }
 
 }
