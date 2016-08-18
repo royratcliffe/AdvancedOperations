@@ -47,7 +47,7 @@ public class OperationChangeObserver: KeyValueObserver, OperationObserver {
   }
 
   // swiftlint:disable:next cyclomatic_complexity
-  public func operation(_ op: NSOperation, willChange keyPath: String, oldValue: AnyObject) {
+  public func operation(_ op: NSOperation, willChange keyPath: String, oldValue: Any) {
     switch keyPath {
     case "isCancelled":
       guard let oldValue = oldValue as? Bool else {
@@ -85,7 +85,7 @@ public class OperationChangeObserver: KeyValueObserver, OperationObserver {
   }
 
   // swiftlint:disable:next cyclomatic_complexity
-  public func operation(_ op: NSOperation, didChange keyPath: String, oldValue: AnyObject, newValue: AnyObject) {
+  public func operation(_ op: NSOperation, didChange keyPath: String, oldValue: Any, newValue: Any) {
     switch keyPath {
     case "isCancelled":
       guard let oldValue = oldValue as? Bool,

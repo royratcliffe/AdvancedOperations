@@ -28,7 +28,7 @@ import Foundation
 /// or more sub-operations and wait for them to finish during execution of this
 /// operation. You can add sub-operations at any time, and wait for operations
 /// more than once.
-public class GroupOperation: Operation {
+open class GroupOperation: Operation {
 
   /// Accesses the underlying group operation queue. Sub-classes or other
   /// callers can access the queue directly, if necessary. It might be necessary
@@ -106,7 +106,7 @@ public class GroupOperation: Operation {
   /// was suspended initially. Then waits for all operations in the queue to
   /// finish. Finishing includes cancelling. Hence when this operation finishes,
   /// all its component operations have also finished.
-  public override func execute() {
+  open override func execute() {
     isSuspended = false
     waitUntilAllOperationsAreFinished()
   }

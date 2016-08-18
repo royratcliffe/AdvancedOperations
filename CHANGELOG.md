@@ -1,5 +1,14 @@
 # Change Log
 
+## [0.2.1](https://github.com/royratcliffe/AdvancedOperations/tree/0.2.1) (2016-08-18)
+
+- Function types cannot have argument labels
+- Mark escaping blocks with `@escaping`
+- Open access for Operation and GroupOperation and their overridable methods
+- `AnyObject` to `Any`
+
+[Full Change Log](https://github.com/royratcliffe/AdvancedOperations/compare/0.2.0...0.2.1)
+
 ## [0.2.0](https://github.com/royratcliffe/AdvancedOperations/tree/0.2.0) (2016-08-12)
 
 - Merge branch 'feature/travis_xcodebuild' into develop

@@ -27,7 +27,7 @@ import Foundation
 /// Special kind of key-value observer that handles changes using a block.
 public class KeyValueChangeHandler: KeyValueObserver {
 
-  public typealias Block = (keyPath: String, object: NSObject, change: KeyValueChange) -> Void
+  public typealias Block = (_ keyPath: String, _ object: NSObject, _ change: KeyValueChange) -> Void
 
   let block: Block
 
@@ -38,7 +38,7 @@ public class KeyValueChangeHandler: KeyValueObserver {
   override func observeValue(forKeyPath keyPath: String,
                              of object: NSObject,
                              change: KeyValueChange) {
-    block(keyPath: keyPath, object: object, change: change)
+    block(keyPath, object, change)
   }
 
 }

@@ -110,7 +110,7 @@ extension NSOperation {
   ///
   /// - returns: The newly produced block operation on which this operation
   ///   depends.
-  public func produceDependency(with block: (BlockOperation?) -> Void) -> BlockOperation {
+  public func produceDependency(with block: @escaping (BlockOperation?) -> Void) -> BlockOperation {
     let op = BlockOperation()
     op.addExecutionBlock { [weak op] in
       block(op)
@@ -121,7 +121,7 @@ extension NSOperation {
 
   /// Produces a dependent block operation whose start delays until this
   /// operation finishes.
-  public func produceDependent(with block: (BlockOperation?) -> Void) -> BlockOperation {
+  public func produceDependent(with block: @escaping (BlockOperation?) -> Void) -> BlockOperation {
     let op = BlockOperation()
     op.addExecutionBlock { [weak op] in
       block(op)
