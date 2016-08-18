@@ -27,12 +27,12 @@ import Foundation
 /// Wraps a key-value change dictionary.
 public struct KeyValueChange {
 
-  let change: [NSKeyValueChangeKey: AnyObject]
+  let change: [NSKeyValueChangeKey: Any]
 
   /// Initialises the change wrapper using an optional change dictionary. Fails
   /// to wrap if the change dictionary does not exist. You get a `nil` change
   /// wrapper for a `nil` dictionary.
-  public init?(change: [NSKeyValueChangeKey: AnyObject]?) {
+  public init?(change: [NSKeyValueChangeKey: Any]?) {
     guard let change = change else { return nil }
     self.change = change
   }
@@ -50,12 +50,12 @@ public struct KeyValueChange {
   }
 
   /// - returns: the new value, if there is one.
-  public var newValue: AnyObject? {
+  public var newValue: Any? {
     return change[NSKeyValueChangeKey.newKey]
   }
 
   /// - returns: the old value, if there is one.
-  public var oldValue: AnyObject? {
+  public var oldValue: Any? {
     return change[NSKeyValueChangeKey.oldKey]
   }
 

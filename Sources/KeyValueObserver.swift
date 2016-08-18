@@ -101,9 +101,9 @@ public class KeyValueObserver: NSObject {
   // change structure then passes the key-path, Next Step object and the change
   // wrapper to the method for override.
   public override func observeValue(forKeyPath keyPath: String?,
-                                    of object: AnyObject?,
-                                    change: [NSKeyValueChangeKey: AnyObject]?,
-                                    context: UnsafeMutablePointer<Void>?) {
+                                    of object: Any?,
+                                    change: [NSKeyValueChangeKey: Any]?,
+                                    context: UnsafeMutableRawPointer?) {
     guard let keyPath = keyPath,
           let object = object as? NSObject,
           let change = KeyValueChange(change: change),

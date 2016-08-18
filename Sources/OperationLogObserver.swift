@@ -28,19 +28,19 @@ import Foundation
 ///
 /// The implementation converts the old and new values to strings using Swift
 /// first, before sending the resulting strings to Cocoa's `NSLog`. The latter
-/// does not accept `AnyObject` types in variadic argument lists.
+/// does not accept `Any` types in variadic argument lists.
 public class OperationLogObserver: OperationChangeObserver {
 
   public override func operation(_ op: NSOperation,
                                  willChange keyPath: String,
-                                            oldValue: AnyObject) {
+                                            oldValue: Any) {
     NSLog("%@ %@ will change %@", op, keyPath, "\(oldValue)")
   }
 
   public override func operation(_ op: NSOperation,
                                  didChange keyPath: String,
-                                           oldValue: AnyObject,
-                                           newValue: AnyObject) {
+                                           oldValue: Any,
+                                           newValue: Any) {
     NSLog("%@ %@ did change %@ -> %@", op, keyPath, "\(oldValue)", "\(newValue)")
   }
 
