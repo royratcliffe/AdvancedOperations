@@ -24,7 +24,7 @@
 
 import Foundation
 
-public class Operation: NSOperation {
+open class Operation: NSOperation {
 
   /// Issues a pre-start notification to the observer, or observers if a
   /// composite. Override this method in order to insert behaviour just before
@@ -56,18 +56,18 @@ public class Operation: NSOperation {
     observer?.operationDidCancel(self)
   }
 
-  public func execute() {}
+  open func execute() {}
 
   //----------------------------------------------------------------------------
   // MARK: - NSOperation Overrides
 
-  public override func start() {
+  open override func start() {
     willStart()
     super.start()
     didStart()
   }
 
-  public override func main() {
+  open override func main() {
     guard !isCancelled else {
       return
     }
@@ -76,7 +76,7 @@ public class Operation: NSOperation {
     didExecute()
   }
 
-  public override func cancel() {
+  open override func cancel() {
     willCancel()
     super.cancel()
     didCancel()
