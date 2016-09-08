@@ -1,5 +1,11 @@
 # Change Log
 
+## [0.3.0](https://github.com/royratcliffe/AdvancedOperations/tree/0.3.0) (2016-09-08)
+
+- Mark escaping blocks as `@escaping` (Xcode 8 GM)
+
+[Full Change Log](https://github.com/royratcliffe/AdvancedOperations/compare/0.2.1...0.3.0)
+
 ## [0.2.1](https://github.com/royratcliffe/AdvancedOperations/tree/0.2.1) (2016-08-18)
 
 - Function types cannot have argument labels
