@@ -30,7 +30,7 @@ public class IsFinishedObserver: OperationChangeObserver {
 
   let block: Block
 
-  public init(_ block: Block) {
+  public init(_ block: @escaping Block) {
     self.block = block
   }
 
