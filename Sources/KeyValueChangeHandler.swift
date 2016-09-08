@@ -31,7 +31,7 @@ public class KeyValueChangeHandler: KeyValueObserver {
 
   let block: Block
 
-  public init(block: Block) {
+  public init(block: @escaping Block) {
     self.block = block
   }
 

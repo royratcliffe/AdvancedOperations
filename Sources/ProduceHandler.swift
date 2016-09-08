@@ -34,7 +34,7 @@ public class ProduceHandler: NSObject, OperationProducer {
 
   let block: Block
 
-  public init(block: Block) {
+  public init(block: @escaping Block) {
     self.block = block
   }
 
