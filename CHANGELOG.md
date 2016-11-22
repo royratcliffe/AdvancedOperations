@@ -1,5 +1,11 @@
 # Change Log
 
+## [0.3.2](https://github.com/royratcliffe/AdvancedOperations/tree/0.3.2) (2016-11-22)
+
+- Format Travis output using `xcpretty-travis-formatter`
+
+[Full Change Log](https://github.com/royratcliffe/AdvancedOperations/compare/0.3.1...0.3.2)
+
 ## [0.3.1](https://github.com/royratcliffe/AdvancedOperations/tree/0.3.1) (2016-11-22)
 
 - Fix for Swift 3.0.1: needs same accessibility
