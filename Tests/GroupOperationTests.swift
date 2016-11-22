@@ -42,7 +42,7 @@ class GroupOperationTests: XCTestCase {
         self.expectation = expectation
       }
 
-      private override func execute() {
+      override func execute() {
         add(operation: BlockOperation())
 
         // This test would fail if the group operation failed to un-suspend its
