@@ -1,5 +1,11 @@
 # Change Log
 
+## [0.3.1](https://github.com/royratcliffe/AdvancedOperations/tree/0.3.1) (2016-11-22)
+
+- Fix for Swift 3.0.1: needs same accessibility
+
+[Full Change Log](https://github.com/royratcliffe/AdvancedOperations/compare/0.3.0...0.3.1)
+
 ## [0.3.0](https://github.com/royratcliffe/AdvancedOperations/tree/0.3.0) (2016-09-08)
 
 - Mark escaping blocks as `@escaping` (Xcode 8 GM)
