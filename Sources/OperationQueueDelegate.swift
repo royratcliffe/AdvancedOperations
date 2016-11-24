@@ -24,6 +24,23 @@
 
 import Foundation
 
+/// Operation queue delegates receive messages when operation queues either:
+///
+/// - add operations,
+/// - add or remove observers,
+/// - start an operation,
+/// - execute an operation,
+/// - cancel an operation,
+///
+/// or when a queued operation transitions:
+///
+/// - to or from cancelled state,
+/// - to or from executing state,
+/// - to or from finished state, or
+/// - to or from ready state.
+///
+/// All operation queue delegate messages send the delegated operation queue as
+/// the first parameter. Delegates can belong to more than one queue.
 public protocol OperationQueueDelegate: class {
 
   func operationQueue(_ q: OperationQueue, willAddOperation op: NSOperation)

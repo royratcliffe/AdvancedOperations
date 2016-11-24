@@ -49,7 +49,7 @@ states: from not started to started; from started to executing or cancelled;
 and finally from executing to finished or cancelled. Advanced operations only
 execute if not cancelled, and usually stop executing when cancelled.
 
-### Observe Operations
+### Observe Operations and Operation Queues
 
 You can observe operation events. You add an observer to an operation. All
 operations support observers, and that includes Foundation Operations.

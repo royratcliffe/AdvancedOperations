@@ -24,4 +24,5 @@
 
 import Foundation
 
+/// Next Step operation queue, a.k.a. Foundation operation queue.
 public typealias NSOperationQueue = Foundation.OperationQueue

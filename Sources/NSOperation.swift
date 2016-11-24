@@ -24,4 +24,5 @@
 
 import Foundation
 
+/// Next Step operation, a.k.a. Foundation operation.
 public typealias NSOperation = Foundation.Operation
