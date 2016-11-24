@@ -1,3 +1,8 @@
 # Swift's `build` command places products and caches in `.build` by default. You
 # can change it using the `--build-path` option.
 .build
+
+# Ignore everything beneath `build` and `docs`. Jazzy runs `xcodebuild` from the
+# project folder and creates them both.
+build
+docs
