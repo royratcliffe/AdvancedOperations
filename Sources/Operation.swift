@@ -24,6 +24,13 @@
 
 import Foundation
 
+/// Foundation operations run their `main()` method whereas Advanced operations
+/// run their `execute()` method. This is only in order that the Advanced
+/// operation can signal will-and-did start, execute and cancel
+/// events. Observers can watch Advanced operations transition between running
+/// states: from not started to started; from started to executing or cancelled;
+/// and finally from executing to finished or cancelled. Advanced operations
+/// only execute if not cancelled, and usually stop executing when cancelled.
 open class Operation: NSOperation {
 
   /// Issues a pre-start notification to the observer, or observers if a
