@@ -52,10 +52,36 @@ concert. The sample code includes some great ideas.</p>
 <p>Trouble is, the Advanced NSOperations sample code can introduce some
 complications and snags that can be very difficult to track down and debug. The
 sample interweaves concepts such as conditions, producing operations, and
-observing operation state changes. This Operations framework <strong>decouples</strong> the
-concepts as much as possible in order to allow applications to take what they
-need, and not take what they do not need. You might call this Operations
-decoupled, or Operations-lite.</p>
+observing operation state changes. This AdvancedOperations framework
+<strong>decouples</strong> the concepts as much as possible in order to allow applications
+to take what they need, and not take what they do not need. You might call this
+AdvancedOperations decoupled, or AdvancedOperations-lite. Rather than
+one-size-fits-all approach (actually, fits none) this framework provides a
+&lsquo;toolbox&rsquo; of operations-related constructs. Take what you need, leave what you
+do not.</p>
+<a href='#what-can-it-do' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='what-can-it-do'>What Can It Do?</h2>
+
+<p>This framework introduces two new complementary classes, called <code>Operation</code> and
+<code>OperationQueue</code>. Both inherit from their Foundation-framework counterparts.
+See basic class diagram below.</p>
+
+<p><img src="http://royratcliffe.github.io/AdvancedOperations/images/basic-classes.svg" alt="Basic Classes" title="Basic Classes"></p>
+
+<p>Notice that <code>AdvancedOperations.Operation</code> is a special kind of
+<code>Foundation.Operation</code>, where <code>Foundation.Operation</code> is the traditionally named
+<code>NSOperation</code>; and similarly for <code>AdvancedOperations.OperationQueue</code> and
+<code>Foundation.OperationQueue</code>. You add operations to an operation queue in order
+to execute them. Foundation operations run their <code>main()</code> method whereas
+Advanced operations run their <code>execute()</code> method. This is only in order that
+the Advanced operation can signal will-and-did start, execute and cancel
+events. Observers can watch Advanced operations transition between running
+states: from not started to started; from started to executing or cancelled;
+and finally from executing to finished or cancelled. Advanced operations only
+execute if not cancelled, and usually stop executing when cancelled.</p>
+<a href='#observe-operations' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='observe-operations'>Observe Operations</h3>
+
+<p>You can observe operation events. You add an observer to an operation. All
+operations support observers, and that includes Foundation Operations.</p>
         </section>
 
         <aside id="sidebar">
