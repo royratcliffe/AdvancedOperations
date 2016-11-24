@@ -31,13 +31,26 @@ do not.
 
 ## What Can It Do?
 
-This framework introduces two new complementary classes, called `Operation` and `OperationQueue`. Both inherit from their Foundation-framework counterparts. See basic class diagram below.
+This framework introduces two new complementary classes, called `Operation` and
+`OperationQueue`. Both inherit from their Foundation-framework counterparts.
+See basic class diagram below.
 
 ![Basic Classes](http://royratcliffe.github.io/AdvancedOperations/images/basic-classes.svg "Basic Classes")
 
-Notice that `AdvancedOperations.Operation` is a special kind of `Foundation.Operation`, where `Foundation.Operation` is the traditionally named `NSOperation`; and similarly for `AdvancedOperations.OperationQueue` and `Foundation.OperationQueue`. You add operations to an operation queue in order to execute them. Foundation operations run their `main()` method whereas Advanced operations run their `execute()` method. This is only in order that the Advanced operation can signal will-and-did start, execute and cancel events. Observers can watch Advanced operations transition between running states: from not started to started; from started to executing or cancelled; and finally from executing to finished or cancelled. Advanced operations only execute if not cancelled, and usually stop executing when cancelled.
+Notice that `AdvancedOperations.Operation` is a special kind of
+`Foundation.Operation`, where `Foundation.Operation` is the traditionally named
+`NSOperation`; and similarly for `AdvancedOperations.OperationQueue` and
+`Foundation.OperationQueue`. You add operations to an operation queue in order
+to execute them. Foundation operations run their `main()` method whereas
+Advanced operations run their `execute()` method. This is only in order that
+the Advanced operation can signal will-and-did start, execute and cancel
+events. Observers can watch Advanced operations transition between running
+states: from not started to started; from started to executing or cancelled;
+and finally from executing to finished or cancelled. Advanced operations only
+execute if not cancelled, and usually stop executing when cancelled.
 
 ### Observe Operations
 
-You can observe operation events. You add an observer to an operation. All operations support observers, and that includes Foundation Operations.
+You can observe operation events. You add an observer to an operation. All
+operations support observers, and that includes Foundation Operations.
 
