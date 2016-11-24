@@ -21,8 +21,11 @@ concert. The sample code includes some great ideas.
 Trouble is, the Advanced NSOperations sample code can introduce some
 complications and snags that can be very difficult to track down and debug. The
 sample interweaves concepts such as conditions, producing operations, and
-observing operation state changes. This Operations framework __decouples__ the
-concepts as much as possible in order to allow applications to take what they
-need, and not take what they do not need. You might call this Operations
-decoupled, or Operations-lite.
+observing operation state changes. This AdvancedOperations framework
+__decouples__ the concepts as much as possible in order to allow applications
+to take what they need, and not take what they do not need. You might call this
+AdvancedOperations decoupled, or AdvancedOperations-lite. Rather than
+one-size-fits-all approach (actually, fits none) this framework provides a
+'toolbox' of operations-related constructs. Take what you need, leave what you
+do not.
 
