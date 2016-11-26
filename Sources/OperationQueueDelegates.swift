@@ -25,7 +25,7 @@
 import Foundation
 
 /// Implements an operation-queue delegate that relays delegate notifications to
-/// zero or more *other* operation-queue delegates. The `addDelegate()` method
+/// zero or more *other* operation-queue delegates. The `add(delegate:)` method
 /// of `OperationQueue` uses an instance of this class to add new delegates when
 /// an already-existing delegate appears for the queue.
 public class OperationQueueDelegates: OperationQueueDelegate {
