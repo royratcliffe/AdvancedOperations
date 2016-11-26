@@ -31,6 +31,10 @@ import Foundation
 /// does not accept `Any` types in variadic argument lists.
 public class NSLogObserver: OperationChangeObserver {
 
+  /// Overrides the `Any`-value change observations, rather than having separate
+  /// methods for is-cancelled, executing, finished and ready; also for
+  /// dependencies and queue priority. Uses Swift to convert `Any`-type values
+  /// to strings.
   public override func operation(_ op: NSOperation,
                                  willChange keyPath: String,
                                             oldValue: Any) {
