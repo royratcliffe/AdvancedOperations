@@ -19,7 +19,7 @@
 		780981B41CCA5B39001D1491 /* OperationObserverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780981B31CCA5B39001D1491 /* OperationObserverTests.swift */; };
 		780D49081CD325A300F56D4C /* GroupOperationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780D49071CD325A300F56D4C /* GroupOperationTests.swift */; };
 		784C619E1CD218D2008F26BC /* NSOperation+AdvancedOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784C619D1CD218D2008F26BC /* NSOperation+AdvancedOperations.swift */; };
-		78663A001CEB2A2C0081D667 /* OperationLogObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786639FF1CEB2A2C0081D667 /* OperationLogObserver.swift */; };
+		78663A001CEB2A2C0081D667 /* NSLogObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786639FF1CEB2A2C0081D667 /* NSLogObserver.swift */; };
 		787A48691D1941EF00B2B2AF /* NSOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A48681D1941EF00B2B2AF /* NSOperation.swift */; };
 		787A486B1D19454400B2B2AF /* NSOperationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A486A1D19454400B2B2AF /* NSOperationQueue.swift */; };
 		7887540E1CC9627000E4DFCB /* KeyValueObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7887540B1CC9627000E4DFCB /* KeyValueObserver.swift */; };
@@ -35,7 +35,7 @@
 		7893D9671CC936B40026AB53 /* OperationQueueDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7893D9661CC936B40026AB53 /* OperationQueueDelegates.swift */; };
 		7893D9691CC937B20026AB53 /* OperationQueue+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7893D9681CC937B20026AB53 /* OperationQueue+Delegates.swift */; };
 		7893D96B1CC953E90026AB53 /* GroupOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7893D96A1CC953E90026AB53 /* GroupOperation.swift */; };
-		78AE26481CEC7B9A0027E909 /* OperationLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AE26471CEC7B9A0027E909 /* OperationLogTests.swift */; };
+		78AE26481CEC7B9A0027E909 /* NSLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AE26471CEC7B9A0027E909 /* NSLogTests.swift */; };
 		78AE264A1CECA5C60027E909 /* DelayOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AE26491CECA5C60027E909 /* DelayOperation.swift */; };
 		78AE264C1CECB1E70027E909 /* DelayOperationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AE264B1CECB1E70027E909 /* DelayOperationTests.swift */; };
 		78F2448D1CD1511800B80CAB /* OperationProducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F2448C1CD1511800B80CAB /* OperationProducerTests.swift */; };
@@ -65,7 +65,7 @@
 		780981B31CCA5B39001D1491 /* OperationObserverTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationObserverTests.swift; sourceTree = "<group>"; };
 		780D49071CD325A300F56D4C /* GroupOperationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupOperationTests.swift; sourceTree = "<group>"; };
 		784C619D1CD218D2008F26BC /* NSOperation+AdvancedOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSOperation+AdvancedOperations.swift"; sourceTree = "<group>"; };
-		786639FF1CEB2A2C0081D667 /* OperationLogObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationLogObserver.swift; sourceTree = "<group>"; };
+		786639FF1CEB2A2C0081D667 /* NSLogObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSLogObserver.swift; sourceTree = "<group>"; };
 		787A48681D1941EF00B2B2AF /* NSOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSOperation.swift; sourceTree = "<group>"; };
 		787A486A1D19454400B2B2AF /* NSOperationQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSOperationQueue.swift; sourceTree = "<group>"; };
 		7887540B1CC9627000E4DFCB /* KeyValueObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyValueObserver.swift; sourceTree = "<group>"; };
@@ -84,7 +84,7 @@
 		7893D9661CC936B40026AB53 /* OperationQueueDelegates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = OperationQueueDelegates.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		7893D9681CC937B20026AB53 /* OperationQueue+Delegates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "OperationQueue+Delegates.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		7893D96A1CC953E90026AB53 /* GroupOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = GroupOperation.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		78AE26471CEC7B9A0027E909 /* OperationLogTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationLogTests.swift; sourceTree = "<group>"; };
+		78AE26471CEC7B9A0027E909 /* NSLogTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSLogTests.swift; sourceTree = "<group>"; };
 		78AE26491CECA5C60027E909 /* DelayOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelayOperation.swift; sourceTree = "<group>"; };
 		78AE264B1CECB1E70027E909 /* DelayOperationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelayOperationTests.swift; sourceTree = "<group>"; };
 		78F2448C1CD1511800B80CAB /* OperationProducerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = OperationProducerTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -117,7 +117,7 @@
 				780D49071CD325A300F56D4C /* GroupOperationTests.swift */,
 				780981B31CCA5B39001D1491 /* OperationObserverTests.swift */,
 				78F2448C1CD1511800B80CAB /* OperationProducerTests.swift */,
-				78AE26471CEC7B9A0027E909 /* OperationLogTests.swift */,
+				78AE26471CEC7B9A0027E909 /* NSLogTests.swift */,
 				78AE264B1CECB1E70027E909 /* DelayOperationTests.swift */,
 			);
 			path = AdvancedOperationsTests;
@@ -162,7 +162,7 @@
 				7809818F1CC9F580001D1491 /* OperationObservers.swift */,
 				780981911CC9FEE6001D1491 /* OperationChangeObserver.swift */,
 				78F2448E1CD1561600B80CAB /* IsFinishedObserver.swift */,
-				786639FF1CEB2A2C0081D667 /* OperationLogObserver.swift */,
+				786639FF1CEB2A2C0081D667 /* NSLogObserver.swift */,
 				78064E161CD0809800A8224F /* OperationProducer.swift */,
 				78064E181CD087FF00A8224F /* NSOperation+Producer.swift */,
 				78064E241CD0B93200A8224F /* NSOperationQueue+Producer.swift */,
@@ -333,7 +333,7 @@
 				788754121CC962CB00E4DFCB /* OperationObserver.swift in Sources */,
 				78AE264A1CECA5C60027E909 /* DelayOperation.swift in Sources */,
 				780981901CC9F580001D1491 /* OperationObservers.swift in Sources */,
-				78663A001CEB2A2C0081D667 /* OperationLogObserver.swift in Sources */,
+				78663A001CEB2A2C0081D667 /* NSLogObserver.swift in Sources */,
 				787A48691D1941EF00B2B2AF /* NSOperation.swift in Sources */,
 				780981921CC9FEE6001D1491 /* OperationChangeObserver.swift in Sources */,
 			);
@@ -347,7 +347,7 @@
 				7893D9541CC9175C0026AB53 /* OperationsTests.swift in Sources */,
 				780D49081CD325A300F56D4C /* GroupOperationTests.swift in Sources */,
 				78F2448D1CD1511800B80CAB /* OperationProducerTests.swift in Sources */,
-				78AE26481CEC7B9A0027E909 /* OperationLogTests.swift in Sources */,
+				78AE26481CEC7B9A0027E909 /* NSLogTests.swift in Sources */,
 				780981B41CCA5B39001D1491 /* OperationObserverTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
