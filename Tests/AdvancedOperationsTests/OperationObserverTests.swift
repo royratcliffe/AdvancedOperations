@@ -46,7 +46,7 @@ class OperationObserverTests: XCTestCase {
       // finished. Assumes that it only observes one operation, hence ignores
       // *which* operation finished, if there really are more than one.
       expectation.fulfill()
-      })
+    })
 
     // when
     q.add(operation: op)
