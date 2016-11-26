@@ -1,4 +1,4 @@
-// AdvancedOperations OperationLogObserver.swift
+// AdvancedOperations NSLogger.swift
 //
 // Copyright © 2016, Roy Ratcliffe, Pioneering Software, United Kingdom
 //
@@ -29,8 +29,12 @@ import Foundation
 /// The implementation converts the old and new values to strings using Swift
 /// first, before sending the resulting strings to Cocoa's `NSLog`. The latter
 /// does not accept `Any` types in variadic argument lists.
-public class OperationLogObserver: OperationChangeObserver {
+public class NSLogger: OperationChangeObserver {
 
+  /// Overrides the `Any`-value change observations, rather than having separate
+  /// methods for is-cancelled, executing, finished and ready; also for
+  /// dependencies and queue priority. Uses Swift to convert `Any`-type values
+  /// to strings.
   public override func operation(_ op: NSOperation,
                                  willChange keyPath: String,
                                             oldValue: Any) {
