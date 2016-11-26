@@ -51,4 +51,28 @@ public class OperationQueueDelegates: OperationQueueDelegate {
     }
   }
 
+  public func operationQueue(_ q: OperationQueue, operation op: NSOperation, willAddObserver observer: OperationObserver) {
+    for delegate in delegates {
+      delegate.operationQueue(q, operation: op, willAddObserver: observer)
+    }
+  }
+
+  public func operationQueue(_ q: OperationQueue, operation op: NSOperation, didAddObserver observer: OperationObserver) {
+    for delegate in delegates {
+      delegate.operationQueue(q, operation: op, didAddObserver: observer)
+    }
+  }
+
+  public func operationQueue(_ q: OperationQueue, operation op: NSOperation, willRemoveObserver observer: OperationObserver) {
+    for delegate in delegates {
+      delegate.operationQueue(q, operation: op, willRemoveObserver: observer)
+    }
+  }
+
+  public func operationQueue(_ q: OperationQueue, operation op: NSOperation, didRemoveObserver observer: OperationObserver) {
+    for delegate in delegates {
+      delegate.operationQueue(q, operation: op, didRemoveObserver: observer)
+    }
+  }
+
 }
