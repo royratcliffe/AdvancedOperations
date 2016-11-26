@@ -114,10 +114,10 @@
 			isa = PBXGroup;
 			children = (
 				7893D9531CC9175C0026AB53 /* OperationsTests.swift */,
-				780D49071CD325A300F56D4C /* GroupOperationTests.swift */,
-				780981B31CCA5B39001D1491 /* OperationObserverTests.swift */,
 				78F2448C1CD1511800B80CAB /* OperationProducerTests.swift */,
+				780981B31CCA5B39001D1491 /* OperationObserverTests.swift */,
 				78AE26471CEC7B9A0027E909 /* NSLoggerTests.swift */,
+				780D49071CD325A300F56D4C /* GroupOperationTests.swift */,
 				78AE264B1CECB1E70027E909 /* DelayOperationTests.swift */,
 			);
 			path = AdvancedOperationsTests;
@@ -343,12 +343,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78AE264C1CECB1E70027E909 /* DelayOperationTests.swift in Sources */,
 				7893D9541CC9175C0026AB53 /* OperationsTests.swift in Sources */,
-				780D49081CD325A300F56D4C /* GroupOperationTests.swift in Sources */,
 				78F2448D1CD1511800B80CAB /* OperationProducerTests.swift in Sources */,
-				78AE26481CEC7B9A0027E909 /* NSLoggerTests.swift in Sources */,
 				780981B41CCA5B39001D1491 /* OperationObserverTests.swift in Sources */,
+				78AE26481CEC7B9A0027E909 /* NSLoggerTests.swift in Sources */,
+				780D49081CD325A300F56D4C /* GroupOperationTests.swift in Sources */,
+				78AE264C1CECB1E70027E909 /* DelayOperationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
