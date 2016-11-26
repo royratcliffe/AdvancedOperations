@@ -75,4 +75,40 @@ public class OperationQueueDelegates: OperationQueueDelegate {
     }
   }
 
+  public func operationQueue(_ q: OperationQueue, operationWillStart op: NSOperation) {
+    for delegate in delegates {
+      delegate.operationQueue(q, operationWillStart: op)
+    }
+  }
+
+  public func operationQueue(_ q: OperationQueue, operationDidStart op: NSOperation) {
+    for delegate in delegates {
+      delegate.operationQueue(q, operationDidStart: op)
+    }
+  }
+
+  public func operationQueue(_ q: OperationQueue, operationWillExecute op: NSOperation) {
+    for delegate in delegates {
+      delegate.operationQueue(q, operationWillExecute: op)
+    }
+  }
+
+  public func operationQueue(_ q: OperationQueue, operationDidExecute op: NSOperation) {
+    for delegate in delegates {
+      delegate.operationQueue(q, operationDidExecute: op)
+    }
+  }
+
+  public func operationQueue(_ q: OperationQueue, operationWillCancel op: NSOperation) {
+    for delegate in delegates {
+      delegate.operationQueue(q, operationWillCancel: op)
+    }
+  }
+
+  public func operationQueue(_ q: OperationQueue, operationDidCancel op: NSOperation) {
+    for delegate in delegates {
+      delegate.operationQueue(q, operationDidCancel: op)
+    }
+  }
+
 }
