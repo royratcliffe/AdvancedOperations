@@ -1,4 +1,4 @@
-// AdvancedOperationsTests NSLogTests.swift
+// AdvancedOperationsTests NSLoggerTests.swift
 //
 // Copyright © 2016, Roy Ratcliffe, Pioneering Software, United Kingdom
 //
@@ -25,7 +25,7 @@
 import XCTest
 import AdvancedOperations
 
-class NSLogTests: XCTestCase {
+class NSLoggerTests: XCTestCase {
 
   /// Launch an empty block operation. Add a logging operation observer. The
   /// operation retains its observers. The Apple system log facility reports
@@ -38,7 +38,7 @@ class NSLogTests: XCTestCase {
     let fulfillOp = BlockOperation {
       expectation.fulfill()
     }
-    let observer = NSLogObserver()
+    let observer = NSLogger()
     q.name = "MyQueue"
     op.name = "MyOp"
     fulfillOp.name = "MyFulfillOp"
