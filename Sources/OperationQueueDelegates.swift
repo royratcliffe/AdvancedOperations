@@ -32,6 +32,12 @@ public class OperationQueueDelegates: OperationQueueDelegate {
 
   var delegates = [OperationQueueDelegate]()
 
+  /// Adds an operation-queue delegate to this collection of delegates. Does not
+  /// check for the delegate already existing in this collection; adds the
+  /// delegate regardless. In such a case, a delegate will receive the same
+  /// delegate message more than once.
+  /// - parameter delegate: Object implementing the operation-queue delegate
+  ///   protocol.
   public func add(delegate: OperationQueueDelegate) {
     delegates.append(delegate)
   }
