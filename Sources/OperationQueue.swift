@@ -49,20 +49,20 @@ public class OperationQueue: NSOperationQueue {
       self.q = q
     }
 
-    internal override func operationWillAddObserver(_ op: NSOperation) {
-      q?.operationWillAddObserver(op)
+    internal override func operation(_ op: NSOperation, willAddObserver observer: AdvancedOperations.OperationObserver) {
+      q?.operation(op, willAddObserver: observer)
     }
 
-    internal override func operationDidAddObserver(_ op: NSOperation) {
-      q?.operationDidAddObserver(op)
+    internal override func operation(_ op: NSOperation, didAddObserver observer: AdvancedOperations.OperationObserver) {
+      q?.operation(op, didAddObserver: observer)
     }
 
-    internal override func operationWillRemoveObserver(_ op: NSOperation) {
-      q?.operationWillRemoveObserver(op)
+    internal override func operation(_ op: NSOperation, willRemoveObserver observer: AdvancedOperations.OperationObserver) {
+      q?.operation(op, willRemoveObserver: observer)
     }
 
-    internal override func operationDidRemoveObserver(_ op: NSOperation) {
-      q?.operationDidRemoveObserver(op)
+    internal override func operation(_ op: NSOperation, didRemoveObserver observer: AdvancedOperations.OperationObserver) {
+      q?.operation(op, didRemoveObserver: observer)
     }
 
     internal override func operationWillStart(_ op: NSOperation) {
@@ -143,20 +143,20 @@ public class OperationQueue: NSOperationQueue {
     produceFor(operation: op)
   }
 
-  public func operationWillAddObserver(_ op: NSOperation) {
-    delegate?.operationQueue(self, operationWillAddObserver: op)
+  public func operation(_ op: NSOperation, willAddObserver observer: AdvancedOperations.OperationObserver) {
+    delegate?.operationQueue(self, operation: op, willAddObserver: observer)
   }
 
-  public func operationDidAddObserver(_ op: NSOperation) {
-    delegate?.operationQueue(self, operationDidAddObserver: op)
+  public func operation(_ op: NSOperation, didAddObserver observer: AdvancedOperations.OperationObserver) {
+    delegate?.operationQueue(self, operation: op, didAddObserver: observer)
   }
 
-  public func operationWillRemoveObserver(_ op: NSOperation) {
-    delegate?.operationQueue(self, operationWillRemoveObserver: op)
+  public func operation(_ op: NSOperation, willRemoveObserver observer: AdvancedOperations.OperationObserver) {
+    delegate?.operationQueue(self, operation: op, willRemoveObserver: observer)
   }
 
-  public func operationDidRemoveObserver(_ op: NSOperation) {
-    delegate?.operationQueue(self, operationDidRemoveObserver: op)
+  public func operation(_ op: NSOperation, didRemoveObserver observer: AdvancedOperations.OperationObserver) {
+    delegate?.operationQueue(self, operation: op, didRemoveObserver: observer)
   }
 
   public func operationWillStart(_ op: NSOperation) {

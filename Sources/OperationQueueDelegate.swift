@@ -30,13 +30,13 @@ public protocol OperationQueueDelegate: class {
 
   func operationQueue(_ q: OperationQueue, didAddOperation op: NSOperation)
 
-  func operationQueue(_ q: OperationQueue, operationWillAddObserver op: NSOperation)
+  func operationQueue(_ q: OperationQueue, operation op: NSOperation, willAddObserver observer: OperationObserver)
 
-  func operationQueue(_ q: OperationQueue, operationDidAddObserver op: NSOperation)
+  func operationQueue(_ q: OperationQueue, operation op: NSOperation, didAddObserver observer: OperationObserver)
 
-  func operationQueue(_ q: OperationQueue, operationWillRemoveObserver op: NSOperation)
+  func operationQueue(_ q: OperationQueue, operation op: NSOperation, willRemoveObserver observer: OperationObserver)
 
-  func operationQueue(_ q: OperationQueue, operationDidRemoveObserver op: NSOperation)
+  func operationQueue(_ q: OperationQueue, operation op: NSOperation, didRemoveObserver observer: OperationObserver)
 
   func operationQueue(_ q: OperationQueue, operationWillStart op: NSOperation)
 
@@ -74,13 +74,13 @@ extension OperationQueueDelegate {
 
   public func operationQueue(_ q: OperationQueue, didAddOperation op: NSOperation) {}
 
-  public func operationQueue(_ q: OperationQueue, operationWillAddObserver op: NSOperation) {}
+  public func operationQueue(_ q: OperationQueue, operation op: NSOperation, willAddObserver observer: OperationObserver) {}
 
-  public func operationQueue(_ q: OperationQueue, operationDidAddObserver op: NSOperation) {}
+  public func operationQueue(_ q: OperationQueue, operation op: NSOperation, didAddObserver observer: OperationObserver) {}
 
-  public func operationQueue(_ q: OperationQueue, operationWillRemoveObserver op: NSOperation) {}
+  public func operationQueue(_ q: OperationQueue, operation op: NSOperation, willRemoveObserver observer: OperationObserver) {}
 
-  public func operationQueue(_ q: OperationQueue, operationDidRemoveObserver op: NSOperation) {}
+  public func operationQueue(_ q: OperationQueue, operation op: NSOperation, didRemoveObserver observer: OperationObserver) {}
 
   public func operationQueue(_ q: OperationQueue, operationWillStart op: NSOperation) {}
 

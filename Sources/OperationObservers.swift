@@ -54,27 +54,27 @@ public class OperationObservers: OperationObserver {
   //----------------------------------------------------------------------------
   // MARK: - OperationObserver
 
-  public func operationWillAddObserver(_ op: NSOperation) {
+  public func operation(_ op: NSOperation, willAddObserver observer: OperationObserver) {
     for observer in observers {
-      observer.operationWillAddObserver(op)
+      observer.operation(op, willAddObserver: observer)
     }
   }
 
-  public func operationDidAddObserver(_ op: NSOperation) {
+  public func operation(_ op: NSOperation, didAddObserver observer: OperationObserver) {
     for observer in observers {
-      observer.operationDidAddObserver(op)
+      observer.operation(op, didAddObserver: observer)
     }
   }
 
-  public func operationWillRemoveObserver(_ op: NSOperation) {
+  public func operation(_ op: NSOperation, willRemoveObserver observer: OperationObserver) {
     for observer in observers {
-      observer.operationWillRemoveObserver(op)
+      observer.operation(op, willRemoveObserver: observer)
     }
   }
 
-  public func operationDidRemoveObserver(_ op: NSOperation) {
+  public func operation(_ op: NSOperation, didRemoveObserver observer: OperationObserver) {
     for observer in observers {
-      observer.operationDidRemoveObserver(op)
+      observer.operation(op, didRemoveObserver: observer)
     }
   }
 

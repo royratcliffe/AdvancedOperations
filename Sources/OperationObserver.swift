@@ -29,13 +29,13 @@ import Foundation
 /// was made. It appears as the first parameter.
 public protocol OperationObserver: class {
 
-  func operationWillAddObserver(_ op: NSOperation)
+  func operation(_ op: NSOperation, willAddObserver observer: OperationObserver)
 
-  func operationDidAddObserver(_ op: NSOperation)
+  func operation(_ op: NSOperation, didAddObserver observer: OperationObserver)
 
-  func operationWillRemoveObserver(_ op: NSOperation)
+  func operation(_ op: NSOperation, willRemoveObserver observer: OperationObserver)
 
-  func operationDidRemoveObserver(_ op: NSOperation)
+  func operation(_ op: NSOperation, didRemoveObserver observer: OperationObserver)
 
   func operationWillStart(_ op: NSOperation)
 
@@ -81,13 +81,13 @@ public protocol OperationObserver: class {
 
 extension OperationObserver {
 
-  public func operationWillAddObserver(_ op: NSOperation) {}
+  public func operation(_ op: NSOperation, willAddObserver observer: OperationObserver) {}
 
-  public func operationDidAddObserver(_ op: NSOperation) {}
+  public func operation(_ op: NSOperation, didAddObserver observer: OperationObserver) {}
 
-  public func operationWillRemoveObserver(_ op: NSOperation) {}
+  public func operation(_ op: NSOperation, willRemoveObserver observer: OperationObserver) {}
 
-  public func operationDidRemoveObserver(_ op: NSOperation) {}
+  public func operation(_ op: NSOperation, didRemoveObserver observer: OperationObserver) {}
 
   public func operationWillStart(_ op: NSOperation) {}
 

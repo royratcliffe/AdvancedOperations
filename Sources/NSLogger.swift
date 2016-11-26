@@ -48,24 +48,24 @@ public class NSLogger: OperationChangeObserver {
     NSLog("%@ %@ did change %@ -> %@", op, keyPath, "\(oldValue)", "\(newValue)")
   }
 
-  public override func operationWillAddObserver(_ op: NSOperation) {
-    NSLog("%@ will add observer %@", op, self)
-    super.operationWillAddObserver(op)
+  public override func operation(_ op: NSOperation, willAddObserver observer: OperationObserver) {
+    NSLog("%@ will add observer %@", op, "\(observer)")
+    super.operation(op, willAddObserver: observer)
   }
 
-  public override func operationDidAddObserver(_ op: NSOperation) {
-    super.operationDidAddObserver(op)
-    NSLog("%@ did add observer %@", op, self)
+  public override func operation(_ op: NSOperation, didAddObserver observer: OperationObserver) {
+    super.operation(op, didAddObserver: observer)
+    NSLog("%@ did add observer %@", op, "\(observer)")
   }
 
-  public override func operationWillRemoveObserver(_ op: NSOperation) {
-    NSLog("%@ will remove observer %@", op, self)
-    super.operationWillRemoveObserver(op)
+  public override func operation(_ op: NSOperation, willRemoveObserver observer: OperationObserver) {
+    NSLog("%@ will remove observer %@", op, "\(observer)")
+    super.operation(op, willRemoveObserver: observer)
   }
 
-  public override func operationDidRemoveObserver(_ op: NSOperation) {
-    super.operationDidRemoveObserver(op)
-    NSLog("%@ did remove observer %@", op, self)
+  public override func operation(_ op: NSOperation, didRemoveObserver observer: OperationObserver) {
+    super.operation(op, didRemoveObserver: observer)
+    NSLog("%@ did remove observer %@", op, "\(observer)")
   }
 
   public override func operationWillStart(_ op: NSOperation) {

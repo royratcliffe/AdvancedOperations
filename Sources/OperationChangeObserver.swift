@@ -177,16 +177,20 @@ public class OperationChangeObserver: KeyValueObserver, OperationObserver {
   /// Change observers see themselves being added to an operation. Start
   /// observing the operation immediately. This runs when the operation adds the
   /// observer.
-  public func operationWillAddObserver(_ op: NSOperation) {
-    add(operation: op)
+  public func operation(_ op: NSOperation, willAddObserver observer: OperationObserver) {
+    if observer === self {
+      add(operation: op)
+    }
   }
 
-  public func operationDidAddObserver(_ op: NSOperation) {}
+  public func operation(_ op: NSOperation, didAddObserver observer: OperationObserver) {}
 
-  public func operationWillRemoveObserver(_ op: NSOperation) {}
+  public func operation(_ op: NSOperation, willRemoveObserver observer: OperationObserver) {}
 
-  public func operationDidRemoveObserver(_ op: NSOperation) {
-    remove(operation: op)
+  public func operation(_ op: NSOperation, didRemoveObserver observer: OperationObserver) {
+    if observer === self {
+      remove(operation: op)
+    }
   }
 
   public func operationWillStart(_ op: NSOperation) {}
