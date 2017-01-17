@@ -54,7 +54,7 @@ extension NSOperation {
   /// notifications. The observer composite does not itself trigger observer
   /// notifications.
   public func add(observer newObserver: OperationObserver) {
-    newObserver.operationWillAddObserver(self)
+    newObserver.operation(self, willAddObserver: newObserver)
     if let observer = observer {
       if let observers = observer as? OperationObservers {
         observers.add(observer: newObserver)
@@ -67,7 +67,7 @@ extension NSOperation {
     } else {
       observer = newObserver
     }
-    newObserver.operationDidAddObserver(self)
+    newObserver.operation(self, didAddObserver: newObserver)
   }
 
   /// Removes an operation observer from this operation. The observer
@@ -77,16 +77,16 @@ extension NSOperation {
       return
     }
     if observer === oldObserver {
-      oldObserver.operationWillRemoveObserver(self)
+      oldObserver.operation(self, willRemoveObserver: oldObserver)
       self.observer = nil
-      oldObserver.operationDidRemoveObserver(self)
+      oldObserver.operation(self, didRemoveObserver: oldObserver)
     } else if let observers = observer as? OperationObservers {
       guard observers.contains(observer: oldObserver) else {
         return
       }
-      oldObserver.operationWillRemoveObserver(self)
+      oldObserver.operation(self, willRemoveObserver: oldObserver)
       _ = observers.remove(observer: oldObserver)
-      oldObserver.operationDidRemoveObserver(self)
+      oldObserver.operation(self, didRemoveObserver: oldObserver)
     }
   }
 

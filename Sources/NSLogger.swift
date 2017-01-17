@@ -1,4 +1,4 @@
-// AdvancedOperations OperationLogObserver.swift
+// AdvancedOperations NSLogger.swift
 //
 // Copyright © 2016, Roy Ratcliffe, Pioneering Software, United Kingdom
 //
@@ -29,8 +29,12 @@ import Foundation
 /// The implementation converts the old and new values to strings using Swift
 /// first, before sending the resulting strings to Cocoa's `NSLog`. The latter
 /// does not accept `Any` types in variadic argument lists.
-public class OperationLogObserver: OperationChangeObserver {
+public class NSLogger: OperationChangeObserver {
 
+  /// Overrides the `Any`-value change observations, rather than having separate
+  /// methods for is-cancelled, executing, finished and ready; also for
+  /// dependencies and queue priority. Uses Swift to convert `Any`-type values
+  /// to strings.
   public override func operation(_ op: NSOperation,
                                  willChange keyPath: String,
                                             oldValue: Any) {
@@ -44,24 +48,24 @@ public class OperationLogObserver: OperationChangeObserver {
     NSLog("%@ %@ did change %@ -> %@", op, keyPath, "\(oldValue)", "\(newValue)")
   }
 
-  public override func operationWillAddObserver(_ op: NSOperation) {
-    NSLog("%@ will add observer %@", op, self)
-    super.operationWillAddObserver(op)
+  public override func operation(_ op: NSOperation, willAddObserver observer: OperationObserver) {
+    NSLog("%@ will add observer %@", op, "\(observer)")
+    super.operation(op, willAddObserver: observer)
   }
 
-  public override func operationDidAddObserver(_ op: NSOperation) {
-    super.operationDidAddObserver(op)
-    NSLog("%@ did add observer %@", op, self)
+  public override func operation(_ op: NSOperation, didAddObserver observer: OperationObserver) {
+    super.operation(op, didAddObserver: observer)
+    NSLog("%@ did add observer %@", op, "\(observer)")
   }
 
-  public override func operationWillRemoveObserver(_ op: NSOperation) {
-    NSLog("%@ will remove observer %@", op, self)
-    super.operationWillRemoveObserver(op)
+  public override func operation(_ op: NSOperation, willRemoveObserver observer: OperationObserver) {
+    NSLog("%@ will remove observer %@", op, "\(observer)")
+    super.operation(op, willRemoveObserver: observer)
   }
 
-  public override func operationDidRemoveObserver(_ op: NSOperation) {
-    super.operationDidRemoveObserver(op)
-    NSLog("%@ did remove observer %@", op, self)
+  public override func operation(_ op: NSOperation, didRemoveObserver observer: OperationObserver) {
+    super.operation(op, didRemoveObserver: observer)
+    NSLog("%@ did remove observer %@", op, "\(observer)")
   }
 
   public override func operationWillStart(_ op: NSOperation) {

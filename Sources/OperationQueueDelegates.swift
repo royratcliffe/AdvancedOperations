@@ -57,4 +57,112 @@ public class OperationQueueDelegates: OperationQueueDelegate {
     }
   }
 
+  public func operationQueue(_ q: OperationQueue, operation op: NSOperation, willAddObserver observer: OperationObserver) {
+    for delegate in delegates {
+      delegate.operationQueue(q, operation: op, willAddObserver: observer)
+    }
+  }
+
+  public func operationQueue(_ q: OperationQueue, operation op: NSOperation, didAddObserver observer: OperationObserver) {
+    for delegate in delegates {
+      delegate.operationQueue(q, operation: op, didAddObserver: observer)
+    }
+  }
+
+  public func operationQueue(_ q: OperationQueue, operation op: NSOperation, willRemoveObserver observer: OperationObserver) {
+    for delegate in delegates {
+      delegate.operationQueue(q, operation: op, willRemoveObserver: observer)
+    }
+  }
+
+  public func operationQueue(_ q: OperationQueue, operation op: NSOperation, didRemoveObserver observer: OperationObserver) {
+    for delegate in delegates {
+      delegate.operationQueue(q, operation: op, didRemoveObserver: observer)
+    }
+  }
+
+  public func operationQueue(_ q: OperationQueue, operationWillStart op: NSOperation) {
+    for delegate in delegates {
+      delegate.operationQueue(q, operationWillStart: op)
+    }
+  }
+
+  public func operationQueue(_ q: OperationQueue, operationDidStart op: NSOperation) {
+    for delegate in delegates {
+      delegate.operationQueue(q, operationDidStart: op)
+    }
+  }
+
+  public func operationQueue(_ q: OperationQueue, operationWillExecute op: NSOperation) {
+    for delegate in delegates {
+      delegate.operationQueue(q, operationWillExecute: op)
+    }
+  }
+
+  public func operationQueue(_ q: OperationQueue, operationDidExecute op: NSOperation) {
+    for delegate in delegates {
+      delegate.operationQueue(q, operationDidExecute: op)
+    }
+  }
+
+  public func operationQueue(_ q: OperationQueue, operationWillCancel op: NSOperation) {
+    for delegate in delegates {
+      delegate.operationQueue(q, operationWillCancel: op)
+    }
+  }
+
+  public func operationQueue(_ q: OperationQueue, operationDidCancel op: NSOperation) {
+    for delegate in delegates {
+      delegate.operationQueue(q, operationDidCancel: op)
+    }
+  }
+
+  public func operationQueue(_ q: OperationQueue, operation op: NSOperation, willChangeIsCancelled isCancelled: Bool) {
+    for delegate in delegates {
+      delegate.operationQueue(q, operation: op, willChangeIsCancelled: isCancelled)
+    }
+  }
+
+  public func operationQueue(_ q: OperationQueue, operation op: NSOperation, didChangeIsCancelled isCancelled: Bool, wasCancelled: Bool) {
+    for delegate in delegates {
+      delegate.operationQueue(q, operation: op, didChangeIsCancelled: isCancelled, wasCancelled: wasCancelled)
+    }
+  }
+
+  public func operationQueue(_ q: OperationQueue, operation op: NSOperation, willChangeIsExecuting isExecuting: Bool) {
+    for delegate in delegates {
+      delegate.operationQueue(q, operation: op, willChangeIsExecuting: isExecuting)
+    }
+  }
+
+  public func operationQueue(_ q: OperationQueue, operation op: NSOperation, didChangeIsExecuting isExecuting: Bool, wasExecuting: Bool) {
+    for delegate in delegates {
+      delegate.operationQueue(q, operation: op, didChangeIsExecuting: isExecuting, wasExecuting: wasExecuting)
+    }
+  }
+
+  public func operationQueue(_ q: OperationQueue, operation op: NSOperation, willChangeIsFinished isFinished: Bool) {
+    for delegate in delegates {
+      delegate.operationQueue(q, operation: op, willChangeIsFinished: isFinished)
+    }
+  }
+
+  public func operationQueue(_ q: OperationQueue, operation op: NSOperation, didChangeIsFinished isFinished: Bool, wasFinished: Bool) {
+    for delegate in delegates {
+      delegate.operationQueue(q, operation: op, didChangeIsFinished: isFinished, wasFinished: wasFinished)
+    }
+  }
+
+  public func operationQueue(_ q: OperationQueue, operation op: NSOperation, willChangeIsReady isReady: Bool) {
+    for delegate in delegates {
+      delegate.operationQueue(q, operation: op, willChangeIsReady: isReady)
+    }
+  }
+
+  public func operationQueue(_ q: OperationQueue, operation op: NSOperation, didChangeIsReady isReady: Bool, wasReady: Bool) {
+    for delegate in delegates {
+      delegate.operationQueue(q, operation: op, didChangeIsReady: isReady, wasReady: wasReady)
+    }
+  }
+
 }

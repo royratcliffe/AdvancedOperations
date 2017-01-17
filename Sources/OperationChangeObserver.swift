@@ -46,85 +46,100 @@ public class OperationChangeObserver: KeyValueObserver, OperationObserver {
     remove(object: op)
   }
 
-  // swiftlint:disable:next cyclomatic_complexity
+  func op(_ op: NSOperation, willChangeIsCancelled isCancelled: Bool) {
+    operation(op, willChangeIsCancelled: isCancelled)
+  }
+
+  func op(_ op: NSOperation, willChangeIsExecuting isExecuting: Bool) {
+    operation(op, willChangeIsExecuting: isExecuting)
+  }
+
+  func op(_ op: NSOperation, willChangeIsFinished isFinished: Bool) {
+    operation(op, willChangeIsFinished: isFinished)
+  }
+
+  func op(_ op: NSOperation, willChangeIsReady isReady: Bool) {
+    operation(op, willChangeIsReady: isReady)
+  }
+
+  static let willChangeIs = [
+    "isCancelled": OperationChangeObserver.op(_:willChangeIsCancelled:),
+    "isExecuting": OperationChangeObserver.op(_:willChangeIsExecuting:),
+    "isFinished": OperationChangeObserver.op(_:willChangeIsFinished:),
+    "isReady": OperationChangeObserver.op(_:willChangeIsReady:),
+  ]
+
   public func operation(_ op: NSOperation, willChange keyPath: String, oldValue: Any) {
-    switch keyPath {
-    case "isCancelled":
-      guard let oldValue = oldValue as? Bool else {
-        break
-      }
-      operation(op, willChangeIsCancelled: oldValue)
-    case "isExecuting":
-      guard let oldValue = oldValue as? Bool else {
-        break
-      }
-      operation(op, willChangeIsExecuting: oldValue)
-    case "isFinished":
-      guard let oldValue = oldValue as? Bool else {
-        break
-      }
-      operation(op, willChangeIsFinished: oldValue)
-    case "isReady":
-      guard let oldValue = oldValue as? Bool else {
-        break
-      }
-      operation(op, willChangeIsReady: oldValue)
-    case "dependencies":
-      guard let oldValue = oldValue as? [NSOperation] else {
-        return
-      }
-      operation(op, willChangeDependencies: oldValue)
-    case "queuePriority":
-      guard let oldValue = oldValue as? Operation.QueuePriority else {
-        return
-      }
-      operation(op, willChangeQueuePriority: oldValue)
+    switch oldValue {
+    case let oldBool as Bool:
+      OperationChangeObserver.willChangeIs[keyPath]?(self)(op, oldBool)
     default:
-      break
+      switch keyPath {
+      case "dependencies":
+        guard let oldValue = oldValue as? [NSOperation] else {
+          return
+        }
+        operation(op, willChangeDependencies: oldValue)
+      case "queuePriority":
+        guard let oldValue = oldValue as? Operation.QueuePriority else {
+          return
+        }
+        operation(op, willChangeQueuePriority: oldValue)
+      default:
+        break
+      }
     }
   }
 
-  // swiftlint:disable:next cyclomatic_complexity
+  func op(_ op: NSOperation, didChangeIsCancelled isCancelled: Bool, wasCancelled: Bool) {
+    operation(op, didChangeIsCancelled: isCancelled, wasCancelled: wasCancelled)
+  }
+
+  func op(_ op: NSOperation, didChangeIsExecuting isExecuting: Bool, wasExecuting: Bool) {
+    operation(op, didChangeIsExecuting: isExecuting, wasExecuting: wasExecuting)
+  }
+
+  func op(_ op: NSOperation, didChangeIsFinished isFinished: Bool, wasFinished: Bool) {
+    operation(op, didChangeIsFinished: isFinished, wasFinished: wasFinished)
+  }
+
+  func op(_ op: NSOperation, didChangeIsReady isReady: Bool, wasReady: Bool) {
+    operation(op, didChangeIsReady: isReady, wasReady: wasReady)
+  }
+
+  static let didChangeIs = [
+    "isCancelled": OperationChangeObserver.op(_:didChangeIsCancelled:wasCancelled:),
+    "isExecuting": OperationChangeObserver.op(_:didChangeIsExecuting:wasExecuting:),
+    "isFinished": OperationChangeObserver.op(_:didChangeIsFinished:wasFinished:),
+    "isReady": OperationChangeObserver.op(_:didChangeIsReady:wasReady:),
+  ]
+
   public func operation(_ op: NSOperation, didChange keyPath: String, oldValue: Any, newValue: Any) {
-    switch keyPath {
-    case "isCancelled":
-      guard let oldValue = oldValue as? Bool,
-            let newValue = newValue as? Bool else {
+    switch oldValue {
+    case let oldBool as Bool:
+      switch newValue {
+      case let newBool as Bool:
+        OperationChangeObserver.didChangeIs[keyPath]?(self)(op, newBool, oldBool)
+      default:
         break
       }
-      operation(op, didChangeIsCancelled: newValue, wasCancelled: oldValue)
-    case "isExecuting":
-      guard let oldValue = oldValue as? Bool,
-            let newValue = newValue as? Bool else {
-        break
-      }
-      operation(op, didChangeIsExecuting: newValue, wasExecuting: oldValue)
-    case "isFinished":
-      guard let oldValue = oldValue as? Bool,
-            let newValue = newValue as? Bool else {
-        break
-      }
-      operation(op, didChangeIsFinished: newValue, wasFinished: oldValue)
-    case "isReady":
-      guard let oldValue = oldValue as? Bool,
-            let newValue = newValue as? Bool else {
-        break
-      }
-      operation(op, didChangeIsReady: newValue, wasReady: oldValue)
-    case "dependencies":
-      guard let oldValue = oldValue as? [NSOperation],
-            let newValue = newValue as? [NSOperation] else {
-        return
-      }
-      operation(op, didChangeDependencies: newValue, hadDependencies: oldValue)
-    case "queuePriority":
-      guard let oldValue = oldValue as? Operation.QueuePriority,
-            let newValue = newValue as? Operation.QueuePriority else {
-        return
-      }
-      operation(op, didChangeQueuePriority: newValue, hadQueuePriority: oldValue)
     default:
-      break
+      switch keyPath {
+      case "dependencies":
+        guard let oldValue = oldValue as? [NSOperation],
+          let newValue = newValue as? [NSOperation] else {
+            return
+        }
+        operation(op, didChangeDependencies: newValue, hadDependencies: oldValue)
+      case "queuePriority":
+        guard let oldValue = oldValue as? Operation.QueuePriority,
+          let newValue = newValue as? Operation.QueuePriority else {
+            return
+        }
+        operation(op, didChangeQueuePriority: newValue, hadQueuePriority: oldValue)
+      default:
+        break
+      }
     }
   }
 
@@ -162,16 +177,20 @@ public class OperationChangeObserver: KeyValueObserver, OperationObserver {
   /// Change observers see themselves being added to an operation. Start
   /// observing the operation immediately. This runs when the operation adds the
   /// observer.
-  public func operationWillAddObserver(_ op: NSOperation) {
-    add(operation: op)
+  public func operation(_ op: NSOperation, willAddObserver observer: OperationObserver) {
+    if observer === self {
+      add(operation: op)
+    }
   }
 
-  public func operationDidAddObserver(_ op: NSOperation) {}
+  public func operation(_ op: NSOperation, didAddObserver observer: OperationObserver) {}
 
-  public func operationWillRemoveObserver(_ op: NSOperation) {}
+  public func operation(_ op: NSOperation, willRemoveObserver observer: OperationObserver) {}
 
-  public func operationDidRemoveObserver(_ op: NSOperation) {
-    remove(operation: op)
+  public func operation(_ op: NSOperation, didRemoveObserver observer: OperationObserver) {
+    if observer === self {
+      remove(operation: op)
+    }
   }
 
   public func operationWillStart(_ op: NSOperation) {}

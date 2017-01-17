@@ -26,8 +26,11 @@ import Foundation
 
 extension NSOperationQueue {
 
-  /// Sets up producing of operations using this queue. Additionally sets up any
-  /// stashed operations. Replaces any existing operation producer.
+  /// Sets up producing of operations using this queue. This operation queue now
+  /// acts as an operation-producer for the given operation. When the given
+  /// operation produces another operation, this producer adds it to the
+  /// queue. Additionally sets up any stashed operations. Replaces any existing
+  /// operation producer.
   /// - parameter op: Operation to produce for.
   public func produceFor(operation op: NSOperation) {
     if let stash = op.producer as? OperationStash {
