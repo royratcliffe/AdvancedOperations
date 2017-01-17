@@ -30,7 +30,7 @@ extension NSOperation {
 
   /// Operations can have an associated producer. They have none by default. But
   /// if you produce an operation, a stash appears by default; see the
-  /// `produceOperation()` implementation. Producing an operation thereby
+  /// `produce(operation:)` implementation. Producing an operation thereby
   /// stashes the operation until later.
   public var producer: OperationProducer? {
     get {
